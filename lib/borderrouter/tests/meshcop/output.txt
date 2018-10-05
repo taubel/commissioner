@@ -1,0 +1,1375 @@
+Commission server[1179]: connecting: ssl-setup
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:6336: => handshake
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 0
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 1
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_cli.c:717: => write client hello
+Commission server[1179]: repo/library/ssl_cli.c:755: client hello, max version: [254:253]
+Commission server[1179]: repo/library/ssl_cli.c:764: dumping 'client hello, random bytes' (32 bytes)
+Commission server[1179]: repo/library/ssl_cli.c:764: 0000:  a3 16 f0 52 c2 22 16 32 3d 48 2b dd 65 15 0c 24  ...R.".2=H+.e..$
+Commission server[1179]: repo/library/ssl_cli.c:764: 0010:  01 58 fc 53 21 62 b2 02 ab 72 5a f4 ef d9 1d 07  .X.S!b...rZ.....
+Commission server[1179]: repo/library/ssl_cli.c:817: client hello, session id len.: 0
+Commission server[1179]: repo/library/ssl_cli.c:818: dumping 'client hello, session id' (0 bytes)
+Commission server[1179]: repo/library/ssl_cli.c:828: no verify cookie to send
+Commission server[1179]: repo/library/ssl_cli.c:885: client hello, add ciphersuite: c0ff
+Commission server[1179]: repo/library/ssl_cli.c:918: client hello, got 2 ciphersuites
+Commission server[1179]: repo/library/ssl_cli.c:949: client hello, compress len.: 1
+Commission server[1179]: repo/library/ssl_cli.c:951: client hello, compress alg.: 0
+Commission server[1179]: repo/library/ssl_cli.c:263: client hello, adding supported_elliptic_curves extension
+Commission server[1179]: repo/library/ssl_cli.c:326: client hello, adding supported_point_formats extension
+Commission server[1179]: repo/library/ssl_cli.c:364: client hello, adding ecjpake_kkpp extension
+Commission server[1179]: repo/library/ssl_cli.c:383: generating new ecjpake parameters
+Commission server[1179]: repo/library/ssl_cli.c:1023: client hello, total extension length: 348
+Commission server[1179]: repo/library/ssl_tls.c:135: update timeout value to 8000 millisecs
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 8000 ms
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 22, version = [254:253], msglen = 406
+Commission server[1179]: repo/library/ssl_tls.c:2841: dumping 'output record sent to network' (419 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0000:  16 fe fd 00 00 00 00 00 00 00 00 01 96 01 00 01  ................
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0010:  8a 00 00 00 00 00 00 01 8a fe fd a3 16 f0 52 c2  ..............R.
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0020:  22 16 32 3d 48 2b dd 65 15 0c 24 01 58 fc 53 21  ".2=H+.e..$.X.S!
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0030:  62 b2 02 ab 72 5a f4 ef d9 1d 07 00 00 00 04 c0  b...rZ..........
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0040:  ff 00 ff 01 00 01 5c 00 0a 00 04 00 02 00 17 00  ......\.........
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0050:  0b 00 02 01 00 01 00 01 4a 41 04 47 de 54 dc 9f  ........JA.G.T..
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0060:  c0 aa 2d 6c 7f 9e fa e3 c7 c8 b0 1e 44 2d f2 16  ..-l........D-..
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0070:  97 98 0e 2d 11 9d ed 34 cd 47 5f 6a 6a 08 30 6f  ...-...4.G_jj.0o
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0080:  40 61 c0 c7 69 46 98 08 3c bd c7 82 79 6e 42 f5  @a..iF..<...ynB.
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0090:  44 59 62 33 e5 17 03 cb bf 67 99 41 04 5e c3 13  DYb3.....g.A.^..
+Commission server[1179]: repo/library/ssl_tls.c:2841: 00a0:  1b b3 1c f9 5f 43 89 ca 5b b2 cf 78 02 98 4e ab  ...._C..[..x..N.
+Commission server[1179]: repo/library/ssl_tls.c:2841: 00b0:  df 91 c3 e4 76 ea e7 55 a6 5f d1 cd 32 67 43 f6  ....v..U._..2gC.
+Commission server[1179]: repo/library/ssl_tls.c:2841: 00c0:  d2 f7 f7 5e 38 ea bf f6 03 8d a1 72 69 19 a6 aa  ...^8......ri...
+Commission server[1179]: repo/library/ssl_tls.c:2841: 00d0:  5f ec 56 a5 01 56 23 01 6c 1d 6b fd ad 20 25 05  _.V..V#.l.k.. %.
+Commission server[1179]: repo/library/ssl_tls.c:2841: 00e0:  5c ad 1c 33 98 df f7 c1 a9 a9 52 67 1a ff 0d 1b  \..3......Rg....
+Commission server[1179]: repo/library/ssl_tls.c:2841: 00f0:  61 51 d1 65 66 59 8b 6b 72 ec 84 7d e6 83 41 04  aQ.efY.kr..}..A.
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0100:  1a 9a cf 45 a7 34 b4 60 95 44 ff c3 69 75 2c 44  ...E.4.`.D..iu,D
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0110:  a2 51 ef a7 9d f3 70 46 ee 66 b1 f3 28 01 c2 81  .Q....pF.f..(...
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0120:  2f c3 a1 b3 ef 9a 4e b7 4d 0f 79 97 0f 54 f6 71  /.....N.M.y..T.q
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0130:  31 2b f4 88 f0 eb 51 e0 60 94 96 f6 41 9d c6 02  1+....Q.`...A...
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0140:  41 04 74 4a 32 c1 a2 a1 91 28 8c 7d 13 3a d2 45  A.tJ2....(.}.:.E
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0150:  bd 7c 74 fe db 46 97 0f 12 51 c2 0b 6f 23 1e a3  .|t..F...Q..o#..
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0160:  68 dd 8e ac 2f ae 23 73 24 e6 ad 5b 39 ef 9b d4  h.../.#s$..[9...
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0170:  8f 8c 5d 8f 44 17 cb 94 31 4c f8 4a 80 d0 bb 0c  ..].D...1L.J....
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0180:  0c ff 20 e4 f8 5b 57 aa 3f 4e 28 26 07 fa b3 8b  .. ..[W.?N(&....
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0190:  42 c5 45 e2 71 c5 0b e5 7e 63 5a 92 fa 91 b5 88  B.E.q...~cZ.....
+Commission server[1179]: repo/library/ssl_tls.c:2841: 01a0:  29 bf 71                                         ).q
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 419, out_left: 419
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 419 (-0xfffffe5d)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_cli.c:1049: <= write client hello
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 2
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_cli.c:1410: => parse server hello
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 8000 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 60 (-0xffffffc4)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3479: dumping 'input record header' (13 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3479: 0000:  16 fe fd 00 00 00 00 00 00 00 00 00 2f           ............/
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 22, version = [3:3], msglen = 47
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 60, nb_want: 60
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3657: dumping 'input record from network' (60 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0000:  16 fe fd 00 00 00 00 00 00 00 00 00 2f 03 00 00  ............/...
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0010:  23 00 00 00 00 00 00 00 23 fe fd 20 00 00 00 00  #.......#.. ....
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0020:  29 56 f0 87 69 ae c2 be 1b 1f 42 d4 d0 e9 a5 7f  )V..i.....B.....
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0030:  e0 e8 b5 49 b7 17 2a ed c7 77 12 1a              ...I..*..w..
+Commission server[1179]: repo/library/ssl_tls.c:3089: handshake message: msglen = 47, type = 3, hslen = 47
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_cli.c:1449: received hello verify request
+Commission server[1179]: repo/library/ssl_cli.c:1450: <= parse server hello
+Commission server[1179]: repo/library/ssl_cli.c:1326: => parse hello verify request
+Commission server[1179]: repo/library/ssl_cli.c:1334: dumping 'server version' (2 bytes)
+Commission server[1179]: repo/library/ssl_cli.c:1334: 0000:  fe fd                                            ..
+Commission server[1179]: repo/library/ssl_cli.c:1356: dumping 'cookie' (32 bytes)
+Commission server[1179]: repo/library/ssl_cli.c:1356: 0000:  00 00 00 00 29 56 f0 87 69 ae c2 be 1b 1f 42 d4  ....)V..i.....B.
+Commission server[1179]: repo/library/ssl_cli.c:1356: 0010:  d0 e9 a5 7f e0 e8 b5 49 b7 17 2a ed c7 77 12 1a  .......I..*..w..
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_cli.c:1385: <= parse hello verify request
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 1
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_cli.c:717: => write client hello
+Commission server[1179]: repo/library/ssl_cli.c:755: client hello, max version: [254:253]
+Commission server[1179]: repo/library/ssl_cli.c:764: dumping 'client hello, random bytes' (32 bytes)
+Commission server[1179]: repo/library/ssl_cli.c:764: 0000:  a3 16 f0 52 c2 22 16 32 3d 48 2b dd 65 15 0c 24  ...R.".2=H+.e..$
+Commission server[1179]: repo/library/ssl_cli.c:764: 0010:  01 58 fc 53 21 62 b2 02 ab 72 5a f4 ef d9 1d 07  .X.S!b...rZ.....
+Commission server[1179]: repo/library/ssl_cli.c:817: client hello, session id len.: 0
+Commission server[1179]: repo/library/ssl_cli.c:818: dumping 'client hello, session id' (0 bytes)
+Commission server[1179]: repo/library/ssl_cli.c:835: dumping 'client hello, cookie' (32 bytes)
+Commission server[1179]: repo/library/ssl_cli.c:835: 0000:  00 00 00 00 29 56 f0 87 69 ae c2 be 1b 1f 42 d4  ....)V..i.....B.
+Commission server[1179]: repo/library/ssl_cli.c:835: 0010:  d0 e9 a5 7f e0 e8 b5 49 b7 17 2a ed c7 77 12 1a  .......I..*..w..
+Commission server[1179]: repo/library/ssl_cli.c:885: client hello, add ciphersuite: c0ff
+Commission server[1179]: repo/library/ssl_cli.c:918: client hello, got 2 ciphersuites
+Commission server[1179]: repo/library/ssl_cli.c:949: client hello, compress len.: 1
+Commission server[1179]: repo/library/ssl_cli.c:951: client hello, compress alg.: 0
+Commission server[1179]: repo/library/ssl_cli.c:263: client hello, adding supported_elliptic_curves extension
+Commission server[1179]: repo/library/ssl_cli.c:326: client hello, adding supported_point_formats extension
+Commission server[1179]: repo/library/ssl_cli.c:364: client hello, adding ecjpake_kkpp extension
+Commission server[1179]: repo/library/ssl_cli.c:406: re-using cached ecjpake parameters
+Commission server[1179]: repo/library/ssl_cli.c:1023: client hello, total extension length: 348
+Commission server[1179]: repo/library/ssl_tls.c:135: update timeout value to 8000 millisecs
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 8000 ms
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 22, version = [254:253], msglen = 438
+Commission server[1179]: repo/library/ssl_tls.c:2841: dumping 'output record sent to network' (451 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0000:  16 fe fd 00 00 00 00 00 00 00 01 01 b6 01 00 01  ................
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0010:  aa 00 01 00 00 00 00 01 aa fe fd a3 16 f0 52 c2  ..............R.
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0020:  22 16 32 3d 48 2b dd 65 15 0c 24 01 58 fc 53 21  ".2=H+.e..$.X.S!
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0030:  62 b2 02 ab 72 5a f4 ef d9 1d 07 00 20 00 00 00  b...rZ...... ...
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0040:  00 29 56 f0 87 69 ae c2 be 1b 1f 42 d4 d0 e9 a5  .)V..i.....B....
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0050:  7f e0 e8 b5 49 b7 17 2a ed c7 77 12 1a 00 04 c0  ....I..*..w.....
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0060:  ff 00 ff 01 00 01 5c 00 0a 00 04 00 02 00 17 00  ......\.........
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0070:  0b 00 02 01 00 01 00 01 4a 41 04 47 de 54 dc 9f  ........JA.G.T..
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0080:  c0 aa 2d 6c 7f 9e fa e3 c7 c8 b0 1e 44 2d f2 16  ..-l........D-..
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0090:  97 98 0e 2d 11 9d ed 34 cd 47 5f 6a 6a 08 30 6f  ...-...4.G_jj.0o
+Commission server[1179]: repo/library/ssl_tls.c:2841: 00a0:  40 61 c0 c7 69 46 98 08 3c bd c7 82 79 6e 42 f5  @a..iF..<...ynB.
+Commission server[1179]: repo/library/ssl_tls.c:2841: 00b0:  44 59 62 33 e5 17 03 cb bf 67 99 41 04 5e c3 13  DYb3.....g.A.^..
+Commission server[1179]: repo/library/ssl_tls.c:2841: 00c0:  1b b3 1c f9 5f 43 89 ca 5b b2 cf 78 02 98 4e ab  ...._C..[..x..N.
+Commission server[1179]: repo/library/ssl_tls.c:2841: 00d0:  df 91 c3 e4 76 ea e7 55 a6 5f d1 cd 32 67 43 f6  ....v..U._..2gC.
+Commission server[1179]: repo/library/ssl_tls.c:2841: 00e0:  d2 f7 f7 5e 38 ea bf f6 03 8d a1 72 69 19 a6 aa  ...^8......ri...
+Commission server[1179]: repo/library/ssl_tls.c:2841: 00f0:  5f ec 56 a5 01 56 23 01 6c 1d 6b fd ad 20 25 05  _.V..V#.l.k.. %.
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0100:  5c ad 1c 33 98 df f7 c1 a9 a9 52 67 1a ff 0d 1b  \..3......Rg....
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0110:  61 51 d1 65 66 59 8b 6b 72 ec 84 7d e6 83 41 04  aQ.efY.kr..}..A.
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0120:  1a 9a cf 45 a7 34 b4 60 95 44 ff c3 69 75 2c 44  ...E.4.`.D..iu,D
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0130:  a2 51 ef a7 9d f3 70 46 ee 66 b1 f3 28 01 c2 81  .Q....pF.f..(...
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0140:  2f c3 a1 b3 ef 9a 4e b7 4d 0f 79 97 0f 54 f6 71  /.....N.M.y..T.q
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0150:  31 2b f4 88 f0 eb 51 e0 60 94 96 f6 41 9d c6 02  1+....Q.`...A...
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0160:  41 04 74 4a 32 c1 a2 a1 91 28 8c 7d 13 3a d2 45  A.tJ2....(.}.:.E
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0170:  bd 7c 74 fe db 46 97 0f 12 51 c2 0b 6f 23 1e a3  .|t..F...Q..o#..
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0180:  68 dd 8e ac 2f ae 23 73 24 e6 ad 5b 39 ef 9b d4  h.../.#s$..[9...
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0190:  8f 8c 5d 8f 44 17 cb 94 31 4c f8 4a 80 d0 bb 0c  ..].D...1L.J....
+Commission server[1179]: repo/library/ssl_tls.c:2841: 01a0:  0c ff 20 e4 f8 5b 57 aa 3f 4e 28 26 07 fa b3 8b  .. ..[W.?N(&....
+Commission server[1179]: repo/library/ssl_tls.c:2841: 01b0:  42 c5 45 e2 71 c5 0b e5 7e 63 5a 92 fa 91 b5 88  B.E.q...~cZ.....
+Commission server[1179]: repo/library/ssl_tls.c:2841: 01c0:  29 bf 71                                         ).q
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 451, out_left: 451
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 451 (-0xfffffe3d)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_cli.c:1049: <= write client hello
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 2
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_cli.c:1410: => parse server hello
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 8000 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 660 (-0xfffffd6c)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3479: dumping 'input record header' (13 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3479: 0000:  16 fe fd 00 00 00 00 00 00 00 01 01 ad           .............
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 22, version = [3:3], msglen = 429
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 660, nb_want: 442
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3657: dumping 'input record from network' (442 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0000:  16 fe fd 00 00 00 00 00 00 00 01 01 ad 02 00 01  ................
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0010:  a1 00 01 00 00 00 00 01 a1 fe fd 2c 6a e5 d1 9a  ...........,j...
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0020:  85 df 24 32 ee 5a 09 ce ce 82 1a 1d b7 d7 04 cd  ..$2.Z..........
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0030:  77 7d 63 9e ae 89 71 e6 7e 3b f6 20 88 46 67 0e  w}c...q.~;. .Fg.
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0040:  c3 0d f0 78 b5 f7 90 19 57 39 ae 51 25 a2 5b a1  ...x....W9.Q%.[.
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0050:  05 fb ae d5 b8 7b 8c 5e 53 35 e8 7a c0 ff 00 01  .....{.^S5.z....
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0060:  59 ff 01 00 01 00 00 0b 00 02 01 00 01 00 01 4a  Y..............J
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0070:  41 04 05 99 1a 08 49 58 28 b3 2e a5 d0 78 9e 3b  A.....IX(....x.;
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0080:  68 16 9c 8b c2 1c 6b ab 40 80 9e 34 8f 2b 3c 6b  h.....k.@..4.+<k
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0090:  08 e6 91 6d 80 36 7a 9b 26 7e 43 e5 86 22 37 f5  ...m.6z.&~C.."7.
+Commission server[1179]: repo/library/ssl_tls.c:3657: 00a0:  f5 3e 0c 66 6d 53 c4 c3 73 27 9e 78 d2 61 a2 06  .>.fmS..s'.x.a..
+Commission server[1179]: repo/library/ssl_tls.c:3657: 00b0:  6e 83 41 04 a5 37 a9 37 0e 89 25 86 b9 9e 65 43  n.A..7.7..%...eC
+Commission server[1179]: repo/library/ssl_tls.c:3657: 00c0:  43 c1 c3 20 e2 6b 58 85 5e 7e 3a 91 11 c2 eb 48  C.. .kX.^~:....H
+Commission server[1179]: repo/library/ssl_tls.c:3657: 00d0:  6d 2c 70 bf 96 24 2d 6c 48 f7 f7 6e b4 a0 c5 7e  m,p..$-lH..n...~
+Commission server[1179]: repo/library/ssl_tls.c:3657: 00e0:  cf d2 9f 3d d8 d4 13 d9 9f c0 a3 19 42 8b fe 49  ...=........B..I
+Commission server[1179]: repo/library/ssl_tls.c:3657: 00f0:  f7 48 c9 1f 20 3b 96 71 1f 8a 1f bd 74 d8 cd 05  .H.. ;.q....t...
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0100:  49 84 a7 bd c2 a8 65 14 cb dc 8b 23 59 25 4d 22  I.....e....#Y%M"
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0110:  e3 af 86 27 71 41 04 22 98 c7 12 30 c2 fd 70 a0  ...'qA."...0..p.
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0120:  1e 15 b6 fa a6 4c 22 0d 7e ec d4 78 60 6c 05 b7  .....L".~..x`l..
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0130:  f9 a9 bc 61 43 3f e9 64 43 8d 01 5c 70 91 d8 1a  ...aC?.dC..\p...
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0140:  1e cf fc 76 83 a8 72 d4 43 ed 1c 3b 4b 30 49 c9  ...v..r.C..;K0I.
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0150:  b6 03 59 85 fb 87 3d 41 04 3c 87 d5 80 a2 be 17  ..Y...=A.<......
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0160:  9e 39 ec 60 10 46 4a 79 c8 d2 0c c9 9a 53 de a0  .9.`.FJy.....S..
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0170:  70 82 6a 48 62 36 9c d0 7d 23 65 ae 16 0d f9 c2  p.jHb6..}#e.....
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0180:  24 b5 84 37 7c ea 7f f7 21 6b 89 50 51 f4 db d4  $..7|...!k.PQ...
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0190:  7d 29 45 2e cc 0c 56 67 fe 20 bb f0 72 16 f0 07  })E...Vg. ..r...
+Commission server[1179]: repo/library/ssl_tls.c:3657: 01a0:  3e d7 58 cb b8 92 6c c9 41 4f 87 47 3e 29 6e ad  >.X...l.AO.G>)n.
+Commission server[1179]: repo/library/ssl_tls.c:3657: 01b0:  da 90 44 0d a7 55 c2 69 94 cc                    ..D..U.i..
+Commission server[1179]: repo/library/ssl_tls.c:3089: handshake message: msglen = 429, type = 2, hslen = 429
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_cli.c:1483: dumping 'server hello, version' (2 bytes)
+Commission server[1179]: repo/library/ssl_cli.c:1483: 0000:  fe fd                                            ..
+Commission server[1179]: repo/library/ssl_cli.c:1509: server hello, current time: 745203153
+Commission server[1179]: repo/library/ssl_cli.c:1516: dumping 'server hello, random bytes' (32 bytes)
+Commission server[1179]: repo/library/ssl_cli.c:1516: 0000:  2c 6a e5 d1 9a 85 df 24 32 ee 5a 09 ce ce 82 1a  ,j.....$2.Z.....
+Commission server[1179]: repo/library/ssl_cli.c:1516: 0010:  1d b7 d7 04 cd 77 7d 63 9e ae 89 71 e6 7e 3b f6  .....w}c...q.~;.
+Commission server[1179]: repo/library/ssl_cli.c:1586: server hello, session id len.: 32
+Commission server[1179]: repo/library/ssl_cli.c:1587: dumping 'server hello, session id' (32 bytes)
+Commission server[1179]: repo/library/ssl_cli.c:1587: 0000:  88 46 67 0e c3 0d f0 78 b5 f7 90 19 57 39 ae 51  .Fg....x....W9.Q
+Commission server[1179]: repo/library/ssl_cli.c:1587: 0010:  25 a2 5b a1 05 fb ae d5 b8 7b 8c 5e 53 35 e8 7a  %.[......{.^S5.z
+Commission server[1179]: repo/library/ssl_cli.c:1623: no session has been resumed
+Commission server[1179]: repo/library/ssl_cli.c:1625: server hello, chosen ciphersuite: c0ff
+Commission server[1179]: repo/library/ssl_cli.c:1626: server hello, compress alg.: 0
+Commission server[1179]: repo/library/ssl_cli.c:1640: server hello, chosen ciphersuite: TLS-ECJPAKE-WITH-AES-128-CCM-8
+Commission server[1179]: repo/library/ssl_cli.c:1671: server hello, total extension length: 345
+Commission server[1179]: repo/library/ssl_cli.c:1689: found renegotiation extension
+Commission server[1179]: repo/library/ssl_cli.c:1768: found supported_point_formats extension
+Commission server[1179]: repo/library/ssl_cli.c:1224: point format selected: 0
+Commission server[1179]: repo/library/ssl_cli.c:1782: found ecjpake_kkpp extension
+Commission server[1179]: repo/library/ssl_cli.c:1859: <= parse server hello
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 3
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:4084: => parse certificate
+Commission server[1179]: repo/library/ssl_tls.c:4091: <= skip parse certificate
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 4
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_cli.c:2198: => parse server key exchange
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2259: next record in same datagram, offset: 442
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 218, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3479: dumping 'input record header' (13 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3479: 0000:  16 fe fd 00 00 00 00 00 00 00 02 00 b4           .............
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 22, version = [3:3], msglen = 180
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 218, nb_want: 193
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3657: dumping 'input record from network' (193 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0000:  16 fe fd 00 00 00 00 00 00 00 02 00 b4 0c 00 00  ................
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0010:  a8 00 02 00 00 00 00 00 a8 03 00 17 41 04 25 2a  ............A.%*
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0020:  48 eb aa d8 79 85 29 e5 b0 3b e5 50 45 da 9c cc  H...y.)..;.PE...
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0030:  c4 5f 07 d1 cb 58 6e 86 ed b1 5e c6 05 e0 20 1b  ._...Xn...^... .
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0040:  50 52 ee 7d 6a b3 2a bc 6a f5 f7 8b fd b2 3b 52  PR.}j.*.j.....;R
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0050:  fc e7 05 8d dd 30 25 38 d2 d8 3e 20 8b 49 41 04  .....0%8..> .IA.
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0060:  e4 97 35 73 32 af 1c 0c 11 6e 11 c4 9f 21 6a 82  ..5s2....n...!j.
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0070:  d0 ca c7 eb b8 05 17 b3 1f e3 61 f7 75 f4 b6 85  ..........a.u...
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0080:  db 22 5e c1 8e 12 3b c1 41 c3 28 25 d7 92 d2 59  ."^...;.A.(%...Y
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0090:  84 70 89 06 63 c3 e3 b6 5b 5d ef 5e 97 4b 2a d8  .p..c...[].^.K*.
+Commission server[1179]: repo/library/ssl_tls.c:3657: 00a0:  20 fa d4 71 19 89 bd fa c7 ff a6 a6 95 f9 fb fb   ..q............
+Commission server[1179]: repo/library/ssl_tls.c:3657: 00b0:  eb c6 6f c1 25 10 08 5c ca b4 5c ce d1 bd 37 71  ..o.%..\..\...7q
+Commission server[1179]: repo/library/ssl_tls.c:3657: 00c0:  e0                                               .
+Commission server[1179]: repo/library/ssl_tls.c:3089: handshake message: msglen = 180, type = 12, hslen = 180
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_cli.c:2262: dumping 'server key exchange' (168 bytes)
+Commission server[1179]: repo/library/ssl_cli.c:2262: 0000:  03 00 17 41 04 25 2a 48 eb aa d8 79 85 29 e5 b0  ...A.%*H...y.)..
+Commission server[1179]: repo/library/ssl_cli.c:2262: 0010:  3b e5 50 45 da 9c cc c4 5f 07 d1 cb 58 6e 86 ed  ;.PE...._...Xn..
+Commission server[1179]: repo/library/ssl_cli.c:2262: 0020:  b1 5e c6 05 e0 20 1b 50 52 ee 7d 6a b3 2a bc 6a  .^... .PR.}j.*.j
+Commission server[1179]: repo/library/ssl_cli.c:2262: 0030:  f5 f7 8b fd b2 3b 52 fc e7 05 8d dd 30 25 38 d2  .....;R.....0%8.
+Commission server[1179]: repo/library/ssl_cli.c:2262: 0040:  d8 3e 20 8b 49 41 04 e4 97 35 73 32 af 1c 0c 11  .> .IA...5s2....
+Commission server[1179]: repo/library/ssl_cli.c:2262: 0050:  6e 11 c4 9f 21 6a 82 d0 ca c7 eb b8 05 17 b3 1f  n...!j..........
+Commission server[1179]: repo/library/ssl_cli.c:2262: 0060:  e3 61 f7 75 f4 b6 85 db 22 5e c1 8e 12 3b c1 41  .a.u...."^...;.A
+Commission server[1179]: repo/library/ssl_cli.c:2262: 0070:  c3 28 25 d7 92 d2 59 84 70 89 06 63 c3 e3 b6 5b  .(%...Y.p..c...[
+Commission server[1179]: repo/library/ssl_cli.c:2262: 0080:  5d ef 5e 97 4b 2a d8 20 fa d4 71 19 89 bd fa c7  ].^.K*. ..q.....
+Commission server[1179]: repo/library/ssl_cli.c:2262: 0090:  ff a6 a6 95 f9 fb fb eb c6 6f c1 25 10 08 5c ca  .........o.%..\.
+Commission server[1179]: repo/library/ssl_cli.c:2262: 00a0:  b4 5c ce d1 bd 37 71 e0                          .\...7q.
+Commission server[1179]: repo/library/ssl_cli.c:2516: <= parse server key exchange
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 5
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_cli.c:2531: => parse certificate request
+Commission server[1179]: repo/library/ssl_cli.c:2539: <= skip parse certificate request
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 6
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_cli.c:2689: => parse server hello done
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2259: next record in same datagram, offset: 193
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 25, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3479: dumping 'input record header' (13 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3479: 0000:  16 fe fd 00 00 00 00 00 00 00 03 00 0c           .............
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 22, version = [3:3], msglen = 12
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 25, nb_want: 25
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3657: dumping 'input record from network' (25 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0000:  16 fe fd 00 00 00 00 00 00 00 03 00 0c 0e 00 00  ................
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0010:  00 00 03 00 00 00 00 00 00                       .........
+Commission server[1179]: repo/library/ssl_tls.c:3089: handshake message: msglen = 12, type = 14, hslen = 12
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_cli.c:2721: <= parse server hello done
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 7
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:4064: => write certificate
+Commission server[1179]: repo/library/ssl_tls.c:4071: <= skip write certificate
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 8
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_cli.c:2732: => write client key exchange
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 22, version = [254:253], msglen = 177
+Commission server[1179]: repo/library/ssl_tls.c:2841: dumping 'output record sent to network' (190 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0000:  16 fe fd 00 00 00 00 00 00 00 02 00 b1 10 00 00  ................
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0010:  a5 00 02 00 00 00 00 00 a5 41 04 e1 99 56 7a 49  .........A...VzI
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0020:  a5 ef 17 a1 9e b1 b2 a7 87 85 e8 84 a5 6c 92 1c  .............l..
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0030:  68 ea b3 38 b3 4c 3d 1e 01 38 27 7c a4 dd 24 48  h..8.L=..8'|..$H
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0040:  f6 e7 4a 31 de 0c 95 88 d8 48 f9 cd f0 a2 43 51  ..J1.....H....CQ
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0050:  f0 d2 96 28 16 1b fe ca 77 eb 93 41 04 15 f8 91  ...(....w..A....
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0060:  dc a7 f1 7d e3 7e a0 10 dc 8a 26 eb db ff cc 7c  ...}.~....&....|
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0070:  5b 63 98 25 1c b3 9e 0c a7 1d 82 88 4b 99 7c ba  [c.%........K.|.
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0080:  3c 6b 06 5b f7 6b a2 f7 fb e0 35 1f 47 c4 a6 73  <k.[.k....5.G..s
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0090:  a0 1d 60 66 8c 40 e1 38 57 11 a2 a1 23 20 96 bf  ..`f.@.8W...# ..
+Commission server[1179]: repo/library/ssl_tls.c:2841: 00a0:  1a 02 8f 1b 54 af 70 04 b9 42 57 dd 5f 5c ae 06  ....T.p..BW._\..
+Commission server[1179]: repo/library/ssl_tls.c:2841: 00b0:  1f e6 3a 1d 83 3b b4 d0 7d ff 59 f6 27 f2        ..:..;..}.Y.'.
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 190, out_left: 190
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 190 (-0xffffff42)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_cli.c:2977: <= write client key exchange
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 9
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_cli.c:2993: => write certificate verify
+Commission server[1179]: repo/library/ssl_tls.c:501: => derive keys
+Commission server[1179]: repo/library/ssl_tls.c:579: dumping 'premaster secret' (32 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:579: 0000:  2b 64 44 55 77 db e1 36 05 00 c3 17 c6 ab a9 de  +dDUw..6........
+Commission server[1179]: repo/library/ssl_tls.c:579: 0010:  9e ac e7 00 09 33 8f af e6 ec d0 ef 39 e6 f6 32  .....3......9..2
+Commission server[1179]: repo/library/ssl_tls.c:667: ciphersuite = TLS-ECJPAKE-WITH-AES-128-CCM-8
+Commission server[1179]: repo/library/ssl_tls.c:668: dumping 'master secret' (48 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:668: 0000:  4b 65 48 06 b7 7d d7 ed c0 28 30 16 03 84 e4 9e  KeH..}...(0.....
+Commission server[1179]: repo/library/ssl_tls.c:668: 0010:  b6 41 e4 86 61 02 f4 af 36 43 17 d8 d5 21 52 a1  .A..a...6C...!R.
+Commission server[1179]: repo/library/ssl_tls.c:668: 0020:  38 fb a1 1f ea b8 57 46 22 90 23 33 c4 28 24 46  8.....WF".#3.($F
+Commission server[1179]: repo/library/ssl_tls.c:669: dumping 'random bytes' (64 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:669: 0000:  2c 6a e5 d1 9a 85 df 24 32 ee 5a 09 ce ce 82 1a  ,j.....$2.Z.....
+Commission server[1179]: repo/library/ssl_tls.c:669: 0010:  1d b7 d7 04 cd 77 7d 63 9e ae 89 71 e6 7e 3b f6  .....w}c...q.~;.
+Commission server[1179]: repo/library/ssl_tls.c:669: 0020:  a3 16 f0 52 c2 22 16 32 3d 48 2b dd 65 15 0c 24  ...R.".2=H+.e..$
+Commission server[1179]: repo/library/ssl_tls.c:669: 0030:  01 58 fc 53 21 62 b2 02 ab 72 5a f4 ef d9 1d 07  .X.S!b...rZ.....
+Commission server[1179]: repo/library/ssl_tls.c:670: dumping 'key block' (256 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:670: 0000:  23 6f 5b e8 0f a4 a2 f8 a7 c1 6a 1b cf 6e a1 28  #o[.......j..n.(
+Commission server[1179]: repo/library/ssl_tls.c:670: 0010:  bc 6c 56 97 c9 38 fe 07 09 e4 33 6c 32 4a 03 1c  .lV..8....3l2J..
+Commission server[1179]: repo/library/ssl_tls.c:670: 0020:  a9 93 8c dc 4d b7 e6 f2 7b 7f 4a b2 5c d5 10 e2  ....M...{.J.\...
+Commission server[1179]: repo/library/ssl_tls.c:670: 0030:  0c 23 34 88 a3 87 95 26 ed ad 1e 67 32 c1 3f 10  .#4....&...g2.?.
+Commission server[1179]: repo/library/ssl_tls.c:670: 0040:  94 5c 6b e7 d9 db db 25 51 18 36 4d af 29 d5 6a  .\k....%Q.6M.).j
+Commission server[1179]: repo/library/ssl_tls.c:670: 0050:  ae 6a c7 44 d2 a5 38 30 46 3c f0 4b 9e bd 29 78  .j.D..80F<.K..)x
+Commission server[1179]: repo/library/ssl_tls.c:670: 0060:  de 86 08 db 2f b8 27 8a e5 14 24 1a c0 58 5b a5  ..../.'...$..X[.
+Commission server[1179]: repo/library/ssl_tls.c:670: 0070:  06 81 0e 44 33 9b aa 31 5d d0 5a 86 24 b7 f7 d5  ...D3..1].Z.$...
+Commission server[1179]: repo/library/ssl_tls.c:670: 0080:  35 44 ed 09 cd 36 0c 79 c9 f5 8d 12 f9 3c d6 78  5D...6.y.....<.x
+Commission server[1179]: repo/library/ssl_tls.c:670: 0090:  ca 09 ed 14 1c ab 00 f9 6d 42 2d f4 d1 53 35 5f  ........mB-..S5_
+Commission server[1179]: repo/library/ssl_tls.c:670: 00a0:  b1 8b ba 1a bd 9d 04 42 3d 35 31 3c f1 ab 29 21  .......B=51<..)!
+Commission server[1179]: repo/library/ssl_tls.c:670: 00b0:  ec d0 0e 8f b3 57 24 b4 19 57 91 8b b6 2d af 36  .....W$..W...-.6
+Commission server[1179]: repo/library/ssl_tls.c:670: 00c0:  c3 de 33 f1 56 4e dd f3 34 6e b3 51 7f a6 5f 5c  ..3.VN..4n.Q.._\
+Commission server[1179]: repo/library/ssl_tls.c:670: 00d0:  c7 bc a3 ce 48 d6 0a 8b d7 86 f1 3c 74 11 21 5e  ....H......<t.!^
+Commission server[1179]: repo/library/ssl_tls.c:670: 00e0:  39 ac f6 a3 db 27 8f b1 a2 1e 01 6b 6b dc 3c 31  9....'.....kk.<1
+Commission server[1179]: repo/library/ssl_tls.c:670: 00f0:  9c 7c cd b2 6d fa a0 03 4d 1b 7a 5b 48 4f cd bd  .|..m...M.z[HO..
+Commission server[1179]: repo/library/ssl_tls.c:767: keylen: 16, minlen: 16, ivlen: 12, maclen: 0
+Commission server[1179]: repo/library/ssl_tls.c:957: <= derive keys
+Commission server[1179]: repo/library/ssl_cli.c:3007: <= skip write certificate verify
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 10
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:4506: => write change cipher spec
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 20, version = [254:253], msglen = 1
+Commission server[1179]: repo/library/ssl_tls.c:2841: dumping 'output record sent to network' (14 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0000:  14 fe fd 00 00 00 00 00 00 00 03 00 01 01        ..............
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 14, out_left: 14
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 14 (-0xfffffff2)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:4520: <= write change cipher spec
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 11
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:5031: => write finished
+Commission server[1179]: repo/library/ssl_tls.c:4856: => calc  finished tls sha256
+Commission server[1179]: repo/library/ssl_tls.c:4868: dumping 'finished sha2 state' (32 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:4868: 0000:  11 40 12 7e ea fc eb df 09 7f 0b 6e 3b 20 f2 66  .@.~.......n; .f
+Commission server[1179]: repo/library/ssl_tls.c:4868: 0010:  7c 25 5c 32 c7 1a 4e d7 e5 16 c6 29 2d 39 cb 37  |%\2..N....)-9.7
+Commission server[1179]: repo/library/ssl_tls.c:4880: dumping 'calc finished result' (12 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:4880: 0000:  1a 24 9f ea cc d1 8e 01 de 4b a3 0b              .$.......K..
+Commission server[1179]: repo/library/ssl_tls.c:4886: <= calc  finished
+Commission server[1179]: repo/library/ssl_tls.c:5085: switching to new transform spec for outbound data
+Commission server[1179]: repo/library/ssl_tls.c:135: update timeout value to 8000 millisecs
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 8000 ms
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:1258: => encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1269: dumping 'before encrypt: output payload' (24 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1269: 0000:  14 00 00 0c 00 03 00 00 00 00 00 0c 1a 24 9f ea  .............$..
+Commission server[1179]: repo/library/ssl_tls.c:1269: 0010:  cc d1 8e 01 de 4b a3 0b                          .....K..
+Commission server[1179]: repo/library/ssl_tls.c:1371: dumping 'additional data used for AEAD' (13 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1371: 0000:  00 01 00 00 00 00 00 00 16 fe fd 00 18           .............
+Commission server[1179]: repo/library/ssl_tls.c:1388: dumping 'IV used' (8 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1388: 0000:  00 01 00 00 00 00 00 00                          ........
+Commission server[1179]: repo/library/ssl_tls.c:1400: before encrypt: msglen = 32, including 0 bytes of padding
+Commission server[1179]: repo/library/ssl_tls.c:1426: dumping 'after encrypt: tag' (8 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1426: 0000:  79 52 b3 ae ec 5b 02 0c                          yR...[..
+Commission server[1179]: repo/library/ssl_tls.c:1560: <= encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 22, version = [254:253], msglen = 40
+Commission server[1179]: repo/library/ssl_tls.c:2841: dumping 'output record sent to network' (53 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0000:  16 fe fd 00 01 00 00 00 00 00 00 00 28 00 01 00  ............(...
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0010:  00 00 00 00 00 e7 2f b7 59 22 d2 56 53 1f 09 4f  ....../.Y".VS..O
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0020:  4c 30 61 4f 87 8f 35 9d be 5e 52 6e da 79 52 b3  L0aO..5..^Rn.yR.
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0030:  ae ec 5b 02 0c                                   ..[..
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 53, out_left: 53
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 53 (-0xffffffcb)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:5140: <= write finished
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 12
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:4529: => parse change cipher spec
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 8000 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 67 (-0xffffffbd)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3479: dumping 'input record header' (13 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3479: 0000:  14 fe fd 00 00 00 00 00 00 00 04 00 01           .............
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 20, version = [3:3], msglen = 1
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 67, nb_want: 14
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3657: dumping 'input record from network' (14 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0000:  14 fe fd 00 00 00 00 00 00 00 04 00 01 01        ..............
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:4553: switching to new transform spec for inbound data
+Commission server[1179]: repo/library/ssl_tls.c:4599: <= parse change cipher spec
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 13
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:5157: => parse finished
+Commission server[1179]: repo/library/ssl_tls.c:4856: => calc  finished tls sha256
+Commission server[1179]: repo/library/ssl_tls.c:4868: dumping 'finished sha2 state' (32 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:4868: 0000:  11 40 12 7e ea fc eb df 09 7f 0b 6e 3b 20 f2 66  .@.~.......n; .f
+Commission server[1179]: repo/library/ssl_tls.c:4868: 0010:  7c 25 5c 32 c7 1a 4e d7 e5 16 c6 29 2d 39 cb 37  |%\2..N....)-9.7
+Commission server[1179]: repo/library/ssl_tls.c:4880: dumping 'calc finished result' (12 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:4880: 0000:  4e 6f 5b 3f 90 f6 63 b6 a7 3c 3c 7e              No[?..c..<<~
+Commission server[1179]: repo/library/ssl_tls.c:4886: <= calc  finished
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2259: next record in same datagram, offset: 14
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 53, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3479: dumping 'input record header' (13 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3479: 0000:  16 fe fd 00 01 00 00 00 00 00 00 00 28           ............(
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 22, version = [3:3], msglen = 40
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 53, nb_want: 53
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3657: dumping 'input record from network' (53 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0000:  16 fe fd 00 01 00 00 00 00 00 00 00 28 00 01 00  ............(...
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0010:  00 00 00 00 00 c4 8b 63 c9 df ce f6 92 d2 16 37  .......c.......7
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0020:  3c 2f bc 8f 35 3f d1 a8 ea 70 36 9f 4a 55 66 ca  </..5?...p6.JUf.
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0030:  c9 ee 00 39 fc                                   ...9.
+Commission server[1179]: repo/library/ssl_tls.c:1576: => decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1654: dumping 'additional data used for AEAD' (13 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1654: 0000:  00 01 00 00 00 00 00 00 16 fe fd 00 18           .............
+Commission server[1179]: repo/library/ssl_tls.c:1661: dumping 'IV used' (12 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1661: 0000:  4d b7 e6 f2 00 01 00 00 00 00 00 00              M...........
+Commission server[1179]: repo/library/ssl_tls.c:1662: dumping 'TAG used' (8 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1662: 0000:  55 66 ca c9 ee 00 39 fc                          Uf....9.
+Commission server[1179]: repo/library/ssl_tls.c:1912: dumping 'raw buffer after decryption' (24 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1912: 0000:  14 00 00 0c 00 04 00 00 00 00 00 0c 4e 6f 5b 3f  ............No[?
+Commission server[1179]: repo/library/ssl_tls.c:1912: 0010:  90 f6 63 b6 a7 3c 3c 7e                          ..c..<<~
+Commission server[1179]: repo/library/ssl_tls.c:2051: <= decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:3684: dumping 'input payload after decrypt' (24 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3684: 0000:  14 00 00 0c 00 04 00 00 00 00 00 0c 4e 6f 5b 3f  ............No[?
+Commission server[1179]: repo/library/ssl_tls.c:3684: 0010:  90 f6 63 b6 a7 3c 3c 7e                          ..c..<<~
+Commission server[1179]: repo/library/ssl_tls.c:3089: handshake message: msglen = 24, type = 20, hslen = 24
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:5219: <= parse finished
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 14
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_cli.c:3390: handshake: done
+Commission server[1179]: repo/library/ssl_cli.c:3279: client state: 15
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:4969: => handshake wrapup
+Commission server[1179]: repo/library/ssl_tls.c:4942: => handshake wrapup: final free
+Commission server[1179]: repo/library/ssl_tls.c:4962: <= handshake wrapup: final free
+Commission server[1179]: repo/library/ssl_tls.c:5024: <= handshake wrapup
+Commission server[1179]: repo/library/ssl_tls.c:6346: <= handshake
+Commission server[1179]: COMM_PET.req: start
+Commission server[1179]: COMM_PET.req: send
+Commission server[1179]: repo/library/ssl_tls.c:6863: => write
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:1258: => encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1269: dumping 'before encrypt: output payload' (25 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1269: 0000:  42 02 bf 4f 5f e8 b1 63 02 63 70 ff 0a 0b 4f 70  B..O_..c.cp...Op
+Commission server[1179]: repo/library/ssl_tls.c:1269: 0010:  65 6e 54 68 72 65 61 64 00                       enThread.
+Commission server[1179]: repo/library/ssl_tls.c:1371: dumping 'additional data used for AEAD' (13 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1371: 0000:  00 01 00 00 00 00 00 01 17 fe fd 00 19           .............
+Commission server[1179]: repo/library/ssl_tls.c:1388: dumping 'IV used' (8 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1388: 0000:  00 01 00 00 00 00 00 01                          ........
+Commission server[1179]: repo/library/ssl_tls.c:1400: before encrypt: msglen = 33, including 0 bytes of padding
+Commission server[1179]: repo/library/ssl_tls.c:1426: dumping 'after encrypt: tag' (8 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1426: 0000:  0b 25 1e 0c dc fb 09 ad                          .%......
+Commission server[1179]: repo/library/ssl_tls.c:1560: <= encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 23, version = [254:253], msglen = 41
+Commission server[1179]: repo/library/ssl_tls.c:2841: dumping 'output record sent to network' (54 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0000:  17 fe fd 00 01 00 00 00 00 00 01 00 29 00 01 00  ............)...
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0010:  00 00 00 00 01 1d 9f 1f da 7a c2 4d eb cd 73 a6  .........z.M..s.
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0020:  3f 2b b9 f2 dd e7 1e 98 f3 96 4d f8 4a 24 0b 25  ?+........M.J$.%
+Commission server[1179]: repo/library/ssl_tls.c:2841: 0030:  1e 0c dc fb 09 ad                                ......
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 54, out_left: 54
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 54 (-0xffffffca)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:6891: <= write
+Commission server[1179]: COMM_PET.req: complete
+Commission server[1179]: repo/library/ssl_tls.c:6522: => read
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 33 (-0xffffffdf)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3479: dumping 'input record header' (13 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3479: 0000:  17 fe fd 00 01 00 00 00 00 00 01 00 14           .............
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 23, version = [3:3], msglen = 20
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 33, nb_want: 33
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3657: dumping 'input record from network' (33 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0000:  17 fe fd 00 01 00 00 00 00 00 01 00 14 00 01 00  ................
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0010:  00 00 00 00 01 a2 31 d0 55 0d 1a 9c a7 ae 86 c7  ......1.U.......
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0020:  a4                                               .
+Commission server[1179]: repo/library/ssl_tls.c:1576: => decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1654: dumping 'additional data used for AEAD' (13 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1654: 0000:  00 01 00 00 00 00 00 01 17 fe fd 00 04           .............
+Commission server[1179]: repo/library/ssl_tls.c:1661: dumping 'IV used' (12 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1661: 0000:  4d b7 e6 f2 00 01 00 00 00 00 00 01              M...........
+Commission server[1179]: repo/library/ssl_tls.c:1662: dumping 'TAG used' (8 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1662: 0000:  0d 1a 9c a7 ae 86 c7 a4                          ........
+Commission server[1179]: repo/library/ssl_tls.c:1912: dumping 'raw buffer after decryption' (4 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1912: 0000:  60 00 bf 4f                                      `..O
+Commission server[1179]: repo/library/ssl_tls.c:2051: <= decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:3684: dumping 'input payload after decrypt' (4 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3684: 0000:  60 00 bf 4f                                      `..O
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:6762: <= read
+Commission server[1179]: repo/library/ssl_tls.c:6522: => read
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 56 (-0xffffffc8)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3479: dumping 'input record header' (13 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3479: 0000:  17 fe fd 00 01 00 00 00 00 00 02 00 2b           ............+
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 23, version = [3:3], msglen = 43
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 56, nb_want: 56
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3657: dumping 'input record from network' (56 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0000:  17 fe fd 00 01 00 00 00 00 00 02 00 2b 00 01 00  ............+...
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0010:  00 00 00 00 02 fc 45 46 8d f8 c6 1e 89 34 76 a4  ......EF.....4v.
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0020:  23 2e 1c df f8 7b 09 f3 0e 23 21 58 7f 57 77 d0  #....{...#!X.Ww.
+Commission server[1179]: repo/library/ssl_tls.c:3657: 0030:  f6 4c 55 1f 5c 28 dc d3                          .LU.\(..
+Commission server[1179]: repo/library/ssl_tls.c:1576: => decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1654: dumping 'additional data used for AEAD' (13 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1654: 0000:  00 01 00 00 00 00 00 02 17 fe fd 00 1b           .............
+Commission server[1179]: repo/library/ssl_tls.c:1661: dumping 'IV used' (12 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1661: 0000:  4d b7 e6 f2 00 01 00 00 00 00 00 02              M...........
+Commission server[1179]: repo/library/ssl_tls.c:1662: dumping 'TAG used' (8 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1662: 0000:  f6 4c 55 1f 5c 28 dc d3                          .LU.\(..
+Commission server[1179]: repo/library/ssl_tls.c:1912: dumping 'raw buffer after decryption' (27 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:1912: 0000:  52 44 5e 8a 5f e8 ff 10 01 01 0a 0b 4f 70 65 6e  RD^._.......Open
+Commission server[1179]: repo/library/ssl_tls.c:1912: 0010:  54 68 72 65 61 64 00 0b 02 be 14                 Thread.....
+Commission server[1179]: repo/library/ssl_tls.c:2051: <= decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:3684: dumping 'input payload after decrypt' (27 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:3684: 0000:  52 44 5e 8a 5f e8 ff 10 01 01 0a 0b 4f 70 65 6e  RD^._.......Open
+Commission server[1179]: repo/library/ssl_tls.c:3684: 0010:  54 68 72 65 61 64 00 0b 02 be 14                 Thread.....
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:6762: <= read
+Commission server[1179]: COMM_PET.rsp: start
+Commission server[1179]: COMM_PET.rsp: state=accepted
+Commission server[1179]: COMM_PET.rsp: ignore-tlv: 10
+Commission server[1179]: COMM_PET.rsp: session-id=48660
+Commission server[1179]: COMM_PET.rsp: complete
+Commission server[1179]: DTLS bound to port 49192.
+Commission server[1179]: COMMISSIONER_SET.req: start
+Commission server[1179]: COMMISSIONER_SET.req: session-id=48660
+Commission server[1179]: COMMISSIONER_SET.req: coap-uri: c/cs
+Commission server[1179]: COMMISSIONER_SET.req: sent
+Commission server[1179]: repo/library/ssl_tls.c:6863: => write
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:1258: => encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1400: before encrypt: msglen = 41, including 0 bytes of padding
+Commission server[1179]: repo/library/ssl_tls.c:1560: <= encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 23, version = [254:253], msglen = 49
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 62, out_left: 62
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 62 (-0xffffffc2)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:6891: <= write
+Commission server[1179]: repo/library/ssl_tls.c:6522: => read
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 39 (-0xffffffd9)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 23, version = [3:3], msglen = 26
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 39, nb_want: 39
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:1576: => decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2051: <= decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:6762: <= read
+Commission server[1179]: COMMISSIONER_SET.rsp: start
+Commission server[1179]: COMM_SET.rsp: state=accepted
+Commission server[1179]: COMMISSIONER_SET.rsp: complete
+Commission server[1179]: COMM_KA.req: send
+Commission server[1179]: repo/library/ssl_tls.c:6863: => write
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:1258: => encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1400: before encrypt: msglen = 29, including 0 bytes of padding
+Commission server[1179]: repo/library/ssl_tls.c:1560: <= encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 23, version = [254:253], msglen = 37
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 50, out_left: 50
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 50 (-0xffffffce)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:6891: <= write
+Commission server[1179]: repo/library/ssl_tls.c:6522: => read
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 33 (-0xffffffdf)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 23, version = [3:3], msglen = 20
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 33, nb_want: 33
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:1576: => decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2051: <= decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:6762: <= read
+Commission server[1179]: repo/library/ssl_tls.c:6522: => read
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 41 (-0xffffffd7)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 23, version = [3:3], msglen = 28
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 41, nb_want: 41
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:1576: => decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2051: <= decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:6762: <= read
+Commission server[1179]: COMM_KA.rsp: start
+Commission server[1179]: COMM_KA.rsp: state=accepted
+Commission server[1179]: COMM_KA.rsp: complete
+Commission server[1179]: repo/library/ssl_tls.c:6522: => read
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 480 (-0xfffffe20)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 23, version = [3:3], msglen = 467
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 480, nb_want: 480
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:1576: => decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2051: <= decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:6762: <= read
+Commission server[1179]: JoinerPort: 1000
+Commission server[1179]: Router locator: 52224
+Commission server[1179]: Trying to accept connection...
+Commission server[1179]: repo/library/ssl_tls.c:0082: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:0082: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:0082: set_timer to 0 ms
+Commission server[1179]: DTLS handshaking...
+Commission server[1179]: repo/library/ssl_tls.c:6336: => handshake
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 0
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 1
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_srv.c:1088: => parse client hello
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 5
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 419 (-0xfffffe5d)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_srv.c:1131: client hello v3, message type: 22
+Commission server[1179]: repo/library/ssl_srv.c:1140: client hello v3, message len.: 406
+Commission server[1179]: repo/library/ssl_srv.c:1143: client hello v3, protocol version: [254:253]
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 419, nb_want: 419
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_srv.c:1242: client hello v3, handshake type: 1
+Commission server[1179]: repo/library/ssl_srv.c:1251: client hello v3, handshake len.: 394
+Commission server[1179]: repo/library/ssl_srv.c:1340: dumping 'client hello, version' (2 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:1340: 0000:  fe fd                                            ..
+Commission server[1179]: repo/library/ssl_srv.c:1373: dumping 'client hello, random bytes' (32 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:1373: 0000:  3e dc 15 d2 91 81 dc 1a 15 08 52 a3 15 cb cf 05  >.........R.....
+Commission server[1179]: repo/library/ssl_srv.c:1373: 0010:  95 00 c4 13 7d 0c 6d 89 18 e6 c2 75 84 ce 14 68  ....}.m....u...h
+Commission server[1179]: repo/library/ssl_srv.c:1389: dumping 'client hello, session id' (0 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:1413: dumping 'client hello, cookie' (0 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:1426: cookie verification failed
+Commission server[1179]: repo/library/ssl_srv.c:1469: dumping 'client hello, ciphersuitelist' (4 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:1469: 0000:  c0 ff 00 ff                                      ....
+Commission server[1179]: repo/library/ssl_srv.c:1487: dumping 'client hello, compression' (1 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:1487: 0000:  00                                               .
+Commission server[1179]: repo/library/ssl_srv.c:1538: dumping 'client hello extensions' (348 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0000:  00 0a 00 04 00 02 00 17 00 0b 00 02 01 00 01 00  ................
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0010:  01 4a 41 04 62 2a 72 52 71 ba 2d 96 d0 00 64 78  .JA.b*rRq.-...dx
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0020:  54 ad 64 e8 7b 40 56 6a dc 26 57 73 ef af 5f 2e  T.d.{@Vj.&Ws.._.
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0030:  2b d0 59 ba 71 05 97 69 fc b3 b0 80 ad b1 53 04  +.Y.q..i......S.
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0040:  aa a3 09 85 9c f9 3c 6e 08 22 40 94 20 5a 4e e0  ......<n."@. ZN.
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0050:  b2 a0 e8 0c 41 04 e6 2c 32 6b cb 43 34 ce f6 75  ....A..,2k.C4..u
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0060:  21 4e 58 69 32 9c c7 4f 76 0e 21 42 94 17 91 6a  !NXi2..Ov.!B...j
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0070:  01 57 19 7d 06 4a c6 89 0e e6 d4 c9 c9 11 5f 0d  .W.}.J........_.
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0080:  eb d3 5c 91 d0 91 23 d3 a0 69 02 82 cb e7 df f6  ..\...#..i......
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0090:  22 a0 38 a3 e2 fa 20 bf 03 85 d9 c3 bc 7b f6 5e  ".8... ......{.^
+Commission server[1179]: repo/library/ssl_srv.c:1538: 00a0:  38 5b bd df 88 5e ab c9 3d b5 62 5c 90 dd 2b b1  8[...^..=.b\..+.
+Commission server[1179]: repo/library/ssl_srv.c:1538: 00b0:  72 4f f1 23 0a e7 fd 41 04 ae 9e 66 73 13 da 9e  rO.#...A...fs...
+Commission server[1179]: repo/library/ssl_srv.c:1538: 00c0:  d2 cd 15 02 44 73 1f 13 82 72 32 76 a1 ca a0 2b  ....Ds...r2v...+
+Commission server[1179]: repo/library/ssl_srv.c:1538: 00d0:  fa 5c 9f 80 07 a4 21 26 5c d9 86 8a 3e 72 d1 e1  .\....!&\...>r..
+Commission server[1179]: repo/library/ssl_srv.c:1538: 00e0:  22 fa a0 d7 23 1d cc cb a2 d6 9f 6a 46 dd 03 b0  "...#......jF...
+Commission server[1179]: repo/library/ssl_srv.c:1538: 00f0:  46 7d 0a 4f 01 57 1d 2b 2e 41 04 f4 60 62 13 80  F}.O.W.+.A..`b..
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0100:  ba 74 41 20 39 0c 00 05 29 fe c7 4d 5b 27 a3 91  .tA 9...)..M['..
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0110:  ad 73 99 e4 bd b1 2a 75 8a cb 26 db 3c 18 52 ff  .s....*u..&.<.R.
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0120:  13 17 10 ba 12 fc da 6e 1c cf 59 d8 a1 6e 57 7a  .......n..Y..nWz
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0130:  9f 91 29 91 73 1c 2a 98 22 85 ea 20 dd 64 bc bc  ..).s.*.".. .d..
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0140:  a2 6c 6b 14 b1 e8 39 fe e9 20 5a a8 31 b2 7f f5  .lk...9.. Z.1...
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0150:  e6 c0 48 b3 12 cc 6a 9b 58 c8 5d c9              ..H...j.X.].
+Commission server[1179]: repo/library/ssl_srv.c:1596: found supported elliptic curves extension
+Commission server[1179]: repo/library/ssl_srv.c:1604: found supported point formats extension
+Commission server[1179]: repo/library/ssl_srv.c:1616: found ecjpake kkpp extension
+Commission server[1179]: repo/library/ssl_srv.c:1732: received TLS_EMPTY_RENEGOTIATION_INFO 
+Commission server[1179]: repo/library/ssl_srv.c:0720: trying ciphersuite: TLS-ECJPAKE-WITH-AES-128-CCM-8
+Commission server[1179]: repo/library/ssl_srv.c:1838: selected ciphersuite: TLS-ECJPAKE-WITH-AES-128-CCM-8
+Commission server[1179]: repo/library/ssl_tls.c:0082: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_srv.c:1850: <= parse client hello
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 2
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_srv.c:2225: => write server hello
+Commission server[1179]: repo/library/ssl_srv.c:2231: client hello was not authenticated
+Commission server[1179]: repo/library/ssl_srv.c:2232: <= write server hello
+Commission server[1179]: repo/library/ssl_srv.c:2160: => write hello verify request
+Commission server[1179]: repo/library/ssl_srv.c:2173: dumping 'server version' (2 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:2173: 0000:  fe fd                                            ..
+Commission server[1179]: repo/library/ssl_srv.c:2196: dumping 'cookie sent' (32 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:2196: 0000:  00 00 00 00 60 b0 3a 0e 0b 41 ef 9b 41 ea c0 66  ....`.:..A..A..f
+Commission server[1179]: repo/library/ssl_srv.c:2196: 0010:  12 ea 98 82 f6 ff 79 af de ec 04 67 9b 78 6e 18  ......y....g.xn.
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 22, version = [254:253], msglen = 47
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 60, out_left: 60
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 60 (-0xffffffc4)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_srv.c:2210: <= write hello verify request
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 18
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:6346: <= handshake
+Commission server[1179]: DTLS handshake failed: -0x6a80!
+Commission server[1179]: repo/library/ssl_tls.c:7064: => free
+Commission server[1179]: repo/library/ssl_tls.c:7129: <= free
+Commission server[1179]: DTLS session destroyed: 4.
+Commission server[1179]: relay from: 127.0.0.1
+Commission server[1179]: RELAY_tx.req: send
+Commission server[1179]: repo/library/ssl_tls.c:6863: => write
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:1258: => encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1400: before encrypt: msglen = 100, including 0 bytes of padding
+Commission server[1179]: repo/library/ssl_tls.c:1560: <= encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 23, version = [254:253], msglen = 108
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 121, out_left: 121
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 121 (-0xffffff87)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:6891: <= write
+Commission server[1179]: repo/library/ssl_tls.c:6522: => read
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 512 (-0xfffffe00)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 23, version = [3:3], msglen = 499
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 512, nb_want: 512
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:1576: => decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2051: <= decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:6762: <= read
+Commission server[1179]: JoinerPort: 1000
+Commission server[1179]: Router locator: 52224
+Commission server[1179]: Trying to accept connection...
+Commission server[1179]: repo/library/ssl_tls.c:0082: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:0082: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:0082: set_timer to 0 ms
+Commission server[1179]: DTLS handshaking...
+Commission server[1179]: repo/library/ssl_tls.c:6336: => handshake
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 0
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 1
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_srv.c:1088: => parse client hello
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 5
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 451 (-0xfffffe3d)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_srv.c:1131: client hello v3, message type: 22
+Commission server[1179]: repo/library/ssl_srv.c:1140: client hello v3, message len.: 438
+Commission server[1179]: repo/library/ssl_srv.c:1143: client hello v3, protocol version: [254:253]
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 451, nb_want: 451
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_srv.c:1242: client hello v3, handshake type: 1
+Commission server[1179]: repo/library/ssl_srv.c:1251: client hello v3, handshake len.: 426
+Commission server[1179]: repo/library/ssl_srv.c:1340: dumping 'client hello, version' (2 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:1340: 0000:  fe fd                                            ..
+Commission server[1179]: repo/library/ssl_srv.c:1373: dumping 'client hello, random bytes' (32 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:1373: 0000:  3e dc 15 d2 91 81 dc 1a 15 08 52 a3 15 cb cf 05  >.........R.....
+Commission server[1179]: repo/library/ssl_srv.c:1373: 0010:  95 00 c4 13 7d 0c 6d 89 18 e6 c2 75 84 ce 14 68  ....}.m....u...h
+Commission server[1179]: repo/library/ssl_srv.c:1389: dumping 'client hello, session id' (0 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:1413: dumping 'client hello, cookie' (32 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:1413: 0000:  00 00 00 00 60 b0 3a 0e 0b 41 ef 9b 41 ea c0 66  ....`.:..A..A..f
+Commission server[1179]: repo/library/ssl_srv.c:1413: 0010:  12 ea 98 82 f6 ff 79 af de ec 04 67 9b 78 6e 18  ......y....g.xn.
+Commission server[1179]: repo/library/ssl_srv.c:1431: cookie verification passed
+Commission server[1179]: repo/library/ssl_srv.c:1469: dumping 'client hello, ciphersuitelist' (4 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:1469: 0000:  c0 ff 00 ff                                      ....
+Commission server[1179]: repo/library/ssl_srv.c:1487: dumping 'client hello, compression' (1 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:1487: 0000:  00                                               .
+Commission server[1179]: repo/library/ssl_srv.c:1538: dumping 'client hello extensions' (348 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0000:  00 0a 00 04 00 02 00 17 00 0b 00 02 01 00 01 00  ................
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0010:  01 4a 41 04 62 2a 72 52 71 ba 2d 96 d0 00 64 78  .JA.b*rRq.-...dx
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0020:  54 ad 64 e8 7b 40 56 6a dc 26 57 73 ef af 5f 2e  T.d.{@Vj.&Ws.._.
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0030:  2b d0 59 ba 71 05 97 69 fc b3 b0 80 ad b1 53 04  +.Y.q..i......S.
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0040:  aa a3 09 85 9c f9 3c 6e 08 22 40 94 20 5a 4e e0  ......<n."@. ZN.
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0050:  b2 a0 e8 0c 41 04 e6 2c 32 6b cb 43 34 ce f6 75  ....A..,2k.C4..u
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0060:  21 4e 58 69 32 9c c7 4f 76 0e 21 42 94 17 91 6a  !NXi2..Ov.!B...j
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0070:  01 57 19 7d 06 4a c6 89 0e e6 d4 c9 c9 11 5f 0d  .W.}.J........_.
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0080:  eb d3 5c 91 d0 91 23 d3 a0 69 02 82 cb e7 df f6  ..\...#..i......
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0090:  22 a0 38 a3 e2 fa 20 bf 03 85 d9 c3 bc 7b f6 5e  ".8... ......{.^
+Commission server[1179]: repo/library/ssl_srv.c:1538: 00a0:  38 5b bd df 88 5e ab c9 3d b5 62 5c 90 dd 2b b1  8[...^..=.b\..+.
+Commission server[1179]: repo/library/ssl_srv.c:1538: 00b0:  72 4f f1 23 0a e7 fd 41 04 ae 9e 66 73 13 da 9e  rO.#...A...fs...
+Commission server[1179]: repo/library/ssl_srv.c:1538: 00c0:  d2 cd 15 02 44 73 1f 13 82 72 32 76 a1 ca a0 2b  ....Ds...r2v...+
+Commission server[1179]: repo/library/ssl_srv.c:1538: 00d0:  fa 5c 9f 80 07 a4 21 26 5c d9 86 8a 3e 72 d1 e1  .\....!&\...>r..
+Commission server[1179]: repo/library/ssl_srv.c:1538: 00e0:  22 fa a0 d7 23 1d cc cb a2 d6 9f 6a 46 dd 03 b0  "...#......jF...
+Commission server[1179]: repo/library/ssl_srv.c:1538: 00f0:  46 7d 0a 4f 01 57 1d 2b 2e 41 04 f4 60 62 13 80  F}.O.W.+.A..`b..
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0100:  ba 74 41 20 39 0c 00 05 29 fe c7 4d 5b 27 a3 91  .tA 9...)..M['..
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0110:  ad 73 99 e4 bd b1 2a 75 8a cb 26 db 3c 18 52 ff  .s....*u..&.<.R.
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0120:  13 17 10 ba 12 fc da 6e 1c cf 59 d8 a1 6e 57 7a  .......n..Y..nWz
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0130:  9f 91 29 91 73 1c 2a 98 22 85 ea 20 dd 64 bc bc  ..).s.*.".. .d..
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0140:  a2 6c 6b 14 b1 e8 39 fe e9 20 5a a8 31 b2 7f f5  .lk...9.. Z.1...
+Commission server[1179]: repo/library/ssl_srv.c:1538: 0150:  e6 c0 48 b3 12 cc 6a 9b 58 c8 5d c9              ..H...j.X.].
+Commission server[1179]: repo/library/ssl_srv.c:1596: found supported elliptic curves extension
+Commission server[1179]: repo/library/ssl_srv.c:1604: found supported point formats extension
+Commission server[1179]: repo/library/ssl_srv.c:1616: found ecjpake kkpp extension
+Commission server[1179]: repo/library/ssl_srv.c:1732: received TLS_EMPTY_RENEGOTIATION_INFO 
+Commission server[1179]: repo/library/ssl_srv.c:0720: trying ciphersuite: TLS-ECJPAKE-WITH-AES-128-CCM-8
+Commission server[1179]: repo/library/ssl_srv.c:1838: selected ciphersuite: TLS-ECJPAKE-WITH-AES-128-CCM-8
+Commission server[1179]: repo/library/ssl_tls.c:0082: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_srv.c:1850: <= parse client hello
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 2
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_srv.c:2225: => write server hello
+Commission server[1179]: repo/library/ssl_srv.c:2259: server hello, chosen version: [254:253]
+Commission server[1179]: repo/library/ssl_srv.c:2283: dumping 'server hello, random bytes' (32 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:2283: 0000:  10 1c dd 2c d2 6f ea 80 84 37 55 3d f9 0d fd 64  ...,.o...7U=...d
+Commission server[1179]: repo/library/ssl_srv.c:2283: 0010:  d5 a0 06 34 f3 5d da 48 17 6b 33 2f b3 9d 8d aa  ...4.].H.k3/....
+Commission server[1179]: repo/library/ssl_srv.c:2356: server hello, session id len.: 32
+Commission server[1179]: repo/library/ssl_srv.c:2357: dumping 'server hello, session id' (32 bytes)
+Commission server[1179]: repo/library/ssl_srv.c:2357: 0000:  97 26 6b fd 08 d2 4d 30 a6 40 5e c0 eb 22 71 e1  .&k...M0.@^.."q.
+Commission server[1179]: repo/library/ssl_srv.c:2357: 0010:  09 47 0d e6 d6 2c fa d2 87 01 4f ba 65 46 ed 5c  .G...,....O.eF.\
+Commission server[1179]: repo/library/ssl_srv.c:2359: no session has been resumed
+Commission server[1179]: repo/library/ssl_srv.c:2366: server hello, chosen ciphersuite: TLS-ECJPAKE-WITH-AES-128-CCM-8
+Commission server[1179]: repo/library/ssl_srv.c:2368: server hello, compress alg.: 0x00
+Commission server[1179]: repo/library/ssl_srv.c:1987: server hello, secure renegotiation extension
+Commission server[1179]: repo/library/ssl_srv.c:2058: server hello, supported_point_formats extension
+Commission server[1179]: repo/library/ssl_srv.c:2090: server hello, ecjpake kkpp extension
+Commission server[1179]: repo/library/ssl_srv.c:2423: server hello, total extension length: 345
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 22, version = [254:253], msglen = 429
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 442, out_left: 442
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 442 (-0xfffffe46)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_srv.c:2442: <= write server hello
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 3
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:4064: => write certificate
+Commission server[1179]: repo/library/ssl_tls.c:4071: <= skip write certificate
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 4
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_srv.c:2687: => write server key exchange
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 22, version = [254:253], msglen = 180
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 193, out_left: 193
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 193 (-0xffffff3f)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_srv.c:3032: <= write server key exchange
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 5
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_srv.c:2457: => write certificate request
+Commission server[1179]: repo/library/ssl_srv.c:2465: <= skip write certificate request
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 6
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_srv.c:3041: => write server hello done
+Commission server[1179]: repo/library/ssl_tls.c:0135: update timeout value to 1000 millisecs
+Commission server[1179]: repo/library/ssl_tls.c:0082: set_timer to 1000 ms
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 22, version = [254:253], msglen = 12
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 25, out_left: 25
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 25 (-0xffffffe7)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_srv.c:3060: <= write server hello done
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 7
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:4084: => parse certificate
+Commission server[1179]: repo/library/ssl_tls.c:4091: <= skip parse certificate
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 8
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_srv.c:3284: => parse client key exchange
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 1000 ms
+Commission server[1179]: repo/library/ssl_tls.c:6346: <= handshake
+Commission server[1179]: DTLS handshake pending: -0x6900.
+Commission server[1179]: DTLS session[9] alive.
+Commission server[1179]: relay from: 127.0.0.1
+Commission server[1179]: RELAY_tx.req: send
+Commission server[1179]: repo/library/ssl_tls.c:6863: => write
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:1258: => encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1400: before encrypt: msglen = 484, including 0 bytes of padding
+Commission server[1179]: repo/library/ssl_tls.c:1560: <= encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 23, version = [254:253], msglen = 492
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 505, out_left: 505
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 505 (-0xfffffe07)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:6891: <= write
+Commission server[1179]: DTLS session[9] alive.
+Commission server[1179]: relay from: 127.0.0.1
+Commission server[1179]: RELAY_tx.req: send
+Commission server[1179]: repo/library/ssl_tls.c:6863: => write
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:1258: => encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1400: before encrypt: msglen = 233, including 0 bytes of padding
+Commission server[1179]: repo/library/ssl_tls.c:1560: <= encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 23, version = [254:253], msglen = 241
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 254, out_left: 254
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 254 (-0xffffff02)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:6891: <= write
+Commission server[1179]: DTLS session[9] alive.
+Commission server[1179]: relay from: 127.0.0.1
+Commission server[1179]: RELAY_tx.req: send
+Commission server[1179]: repo/library/ssl_tls.c:6863: => write
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:1258: => encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1400: before encrypt: msglen = 65, including 0 bytes of padding
+Commission server[1179]: repo/library/ssl_tls.c:1560: <= encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 23, version = [254:253], msglen = 73
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 86, out_left: 86
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 86 (-0xffffffaa)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:6891: <= write
+Commission server[1179]: DTLS session[9] alive.
+Commission server[1179]: repo/library/ssl_tls.c:6522: => read
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 318 (-0xfffffec2)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 23, version = [3:3], msglen = 305
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 318, nb_want: 318
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:1576: => decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2051: <= decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:6762: <= read
+Commission server[1179]: JoinerPort: 1000
+Commission server[1179]: Router locator: 52224
+Commission server[1179]: DTLS session[9] alive.
+Commission server[1179]: DTLS session [9] become readable.
+Commission server[1179]: DTLS handshaking...
+Commission server[1179]: repo/library/ssl_tls.c:6336: => handshake
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 8
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_srv.c:3284: => parse client key exchange
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 1000 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 257 (-0xfffffeff)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 22, version = [3:3], msglen = 177
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 257, nb_want: 190
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3089: handshake message: msglen = 177, type = 16, hslen = 177
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:0501: => derive keys
+Commission server[1179]: repo/library/ssl_tls.c:0579: dumping 'premaster secret' (32 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:0579: 0000:  09 bb 4d 86 50 e5 da bc bf 20 fa 73 f5 e6 6a 3a  ..M.P.... .s..j:
+Commission server[1179]: repo/library/ssl_tls.c:0579: 0010:  11 89 47 f2 41 e2 0a bc 4e cc fd c2 ce 2e fc b6  ..G.A...N.......
+Commission server[1179]: repo/library/ssl_tls.c:0667: ciphersuite = TLS-ECJPAKE-WITH-AES-128-CCM-8
+Commission server[1179]: repo/library/ssl_tls.c:0668: dumping 'master secret' (48 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:0668: 0000:  7d 84 cc 37 27 84 be 25 8b 81 06 26 c6 80 42 40  }..7'..%...&..B@
+Commission server[1179]: repo/library/ssl_tls.c:0668: 0010:  82 a2 f2 90 f0 9b 74 74 e0 87 9a 2f 34 b5 d1 43  ......tt.../4..C
+Commission server[1179]: repo/library/ssl_tls.c:0668: 0020:  05 3e 29 44 c7 3e c1 e6 f6 c4 7d d8 21 1d 30 0c  .>)D.>....}.!.0.
+Commission server[1179]: repo/library/ssl_tls.c:0767: keylen: 16, minlen: 16, ivlen: 12, maclen: 0
+Commission server[1179]: repo/library/ssl_tls.c:0957: <= derive keys
+Commission server[1179]: repo/library/ssl_srv.c:3521: <= parse client key exchange
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 9
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_srv.c:3536: => parse certificate verify
+Commission server[1179]: repo/library/ssl_srv.c:3544: <= skip parse certificate verify
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 10
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:4529: => parse change cipher spec
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2259: next record in same datagram, offset: 190
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 67, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 20, version = [3:3], msglen = 1
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 67, nb_want: 14
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:4553: switching to new transform spec for inbound data
+Commission server[1179]: repo/library/ssl_tls.c:4599: <= parse change cipher spec
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 11
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:5157: => parse finished
+Commission server[1179]: repo/library/ssl_tls.c:4856: => calc  finished tls sha256
+Commission server[1179]: repo/library/ssl_tls.c:4880: dumping 'calc finished result' (12 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:4880: 0000:  e6 06 63 b2 c9 c6 34 90 ff ae 09 7b              ..c...4....{
+Commission server[1179]: repo/library/ssl_tls.c:4886: <= calc  finished
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2259: next record in same datagram, offset: 14
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 53, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 22, version = [3:3], msglen = 40
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 53, nb_want: 53
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:1576: => decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2051: <= decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:3089: handshake message: msglen = 24, type = 20, hslen = 24
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:0082: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:5219: <= parse finished
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 12
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:4506: => write change cipher spec
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 20, version = [254:253], msglen = 1
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 14, out_left: 14
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 14 (-0xfffffff2)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:4520: <= write change cipher spec
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 13
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:5031: => write finished
+Commission server[1179]: repo/library/ssl_tls.c:4856: => calc  finished tls sha256
+Commission server[1179]: repo/library/ssl_tls.c:4880: dumping 'calc finished result' (12 bytes)
+Commission server[1179]: repo/library/ssl_tls.c:4880: 0000:  34 ed 44 ce 94 df 5c 2c a3 da d1 80              4.D...\,....
+Commission server[1179]: repo/library/ssl_tls.c:4886: <= calc  finished
+Commission server[1179]: repo/library/ssl_tls.c:5085: switching to new transform spec for outbound data
+Commission server[1179]: repo/library/ssl_tls.c:0135: update timeout value to 1000 millisecs
+Commission server[1179]: repo/library/ssl_tls.c:0082: set_timer to 1000 ms
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:1258: => encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1400: before encrypt: msglen = 32, including 0 bytes of padding
+Commission server[1179]: repo/library/ssl_tls.c:1560: <= encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 22, version = [254:253], msglen = 40
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 53, out_left: 53
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 53 (-0xffffffcb)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:5140: <= write finished
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 14
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_srv.c:3911: handshake: done
+Commission server[1179]: repo/library/ssl_srv.c:3806: server state: 15
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:4969: => handshake wrapup
+Commission server[1179]: repo/library/ssl_tls.c:0082: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:5016: skip freeing handshake and transform
+Commission server[1179]: repo/library/ssl_tls.c:5024: <= handshake wrapup
+Commission server[1179]: repo/library/ssl_tls.c:6346: <= handshake
+Commission server[1179]: DTLS session ready.
+Commission server[1179]: DTLS session state changed to 1.
+Commission server[1179]: DTLS session[9] alive.
+Commission server[1179]: relay from: 127.0.0.1
+Commission server[1179]: RELAY_tx.req: send
+Commission server[1179]: repo/library/ssl_tls.c:6863: => write
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:1258: => encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1400: before encrypt: msglen = 54, including 0 bytes of padding
+Commission server[1179]: repo/library/ssl_tls.c:1560: <= encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 23, version = [254:253], msglen = 62
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 75, out_left: 75
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 75 (-0xffffffb5)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:6891: <= write
+Commission server[1179]: DTLS session[9] alive.
+Commission server[1179]: relay from: 127.0.0.1
+Commission server[1179]: RELAY_tx.req: send
+Commission server[1179]: repo/library/ssl_tls.c:6863: => write
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:1258: => encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1400: before encrypt: msglen = 93, including 0 bytes of padding
+Commission server[1179]: repo/library/ssl_tls.c:1560: <= encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 23, version = [254:253], msglen = 101
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 114, out_left: 114
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 114 (-0xffffff8e)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:6891: <= write
+Commission server[1179]: DTLS session[9] alive.
+Commission server[1179]: repo/library/ssl_tls.c:6522: => read
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 132 (-0xffffff7c)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 23, version = [3:3], msglen = 119
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 132, nb_want: 132
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:1576: => decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2051: <= decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:6762: <= read
+Commission server[1179]: JoinerPort: 1000
+Commission server[1179]: Router locator: 52224
+Commission server[1179]: DTLS session[9] alive.
+Commission server[1179]: DTLS session [9] become readable.
+Commission server[1179]: repo/library/ssl_tls.c:6522: => read
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:0082: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 71 (-0xffffffb9)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 23, version = [3:3], msglen = 58
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 71, nb_want: 71
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:1576: => decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2051: <= decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:4942: => handshake wrapup: final free
+Commission server[1179]: repo/library/ssl_tls.c:4962: <= handshake wrapup: final free
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:0082: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:6762: <= read
+Commission server[1179]: repo/library/ssl_tls.c:6863: => write
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:1258: => encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1400: before encrypt: msglen = 16, including 0 bytes of padding
+Commission server[1179]: repo/library/ssl_tls.c:1560: <= encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 23, version = [254:253], msglen = 24
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 37, out_left: 37
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 37 (-0xffffffdb)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:6891: <= write
+Commission server[1179]: DTLS session[9] alive.
+Commission server[1179]: relay from: 127.0.0.1
+Commission server[1179]: relay: KEK state
+Commission server[1179]: RELAY_tx.req: send
+Commission server[1179]: repo/library/ssl_tls.c:6863: => write
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:1258: => encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1400: before encrypt: msglen = 111, including 0 bytes of padding
+Commission server[1179]: repo/library/ssl_tls.c:1560: <= encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 23, version = [254:253], msglen = 119
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 132, out_left: 132
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 132 (-0xffffff7c)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:6891: <= write
+Commission server[1179]: DTLS session[9] alive.
+Commission server[1179]: repo/library/ssl_tls.c:6522: => read
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 92 (-0xffffffa4)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 23, version = [3:3], msglen = 79
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 92, nb_want: 92
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:1576: => decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2051: <= decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:3753: <= read record
+Commission server[1179]: repo/library/ssl_tls.c:82: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:6762: <= read
+Commission server[1179]: JoinerPort: 1000
+Commission server[1179]: Router locator: 52224
+Commission server[1179]: DTLS session[9] alive.
+Commission server[1179]: DTLS session [9] become readable.
+Commission server[1179]: repo/library/ssl_tls.c:6522: => read
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2428: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:0082: set_timer to 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:3728: => read record
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 0, nb_want: 13
+Commission server[1179]: repo/library/ssl_tls.c:2307: f_recv_timeout: 0 ms
+Commission server[1179]: repo/library/ssl_tls.c:2315: ssl->f_recv(_timeout)() returned 31 (-0xffffffe1)
+Commission server[1179]: repo/library/ssl_tls.c:2403: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:3488: input record: msgtype = 21, version = [3:3], msglen = 18
+Commission server[1179]: repo/library/ssl_tls.c:2208: => fetch input
+Commission server[1179]: repo/library/ssl_tls.c:2269: in_left: 31, nb_want: 31
+Commission server[1179]: repo/library/ssl_tls.c:2276: <= fetch input
+Commission server[1179]: repo/library/ssl_tls.c:1576: => decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2051: <= decrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:3961: got an alert message, type: [1:0]
+Commission server[1179]: repo/library/ssl_tls.c:3976: is a close notify message
+Commission server[1179]: repo/library/ssl_tls.c:3744: mbedtls_ssl_handle_message_type() returned -30848 (-0x7880)
+Commission server[1179]: repo/library/ssl_tls.c:6577: mbedtls_ssl_read_record() returned -30848 (-0x7880)
+Commission server[1179]: DTLS session closed gracefully.
+Commission server[1179]: DTLS session state changed to 2.
+Commission server[1179]: repo/library/ssl_tls.c:6906: => write close notify
+Commission server[1179]: repo/library/ssl_tls.c:4032: => send alert message
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:1258: => encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1400: before encrypt: msglen = 10, including 0 bytes of padding
+Commission server[1179]: repo/library/ssl_tls.c:1560: <= encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 21, version = [254:253], msglen = 18
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 31, out_left: 31
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 31 (-0xffffffe1)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:4045: <= send alert message
+Commission server[1179]: repo/library/ssl_tls.c:6922: <= write close notify
+Commission server[1179]: DTLS session state changed to 3.
+Commission server[1179]: repo/library/ssl_tls.c:7064: => free
+Commission server[1179]: repo/library/ssl_tls.c:7129: <= free
+Commission server[1179]: DTLS session destroyed: 3.
+Commission server[1179]: relay from: 127.0.0.1
+Commission server[1179]: RELAY_tx.req: send
+Commission server[1179]: repo/library/ssl_tls.c:6863: => write
+Commission server[1179]: repo/library/ssl_tls.c:2701: => write record
+Commission server[1179]: repo/library/ssl_tls.c:1258: => encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:1400: before encrypt: msglen = 71, including 0 bytes of padding
+Commission server[1179]: repo/library/ssl_tls.c:1560: <= encrypt buf
+Commission server[1179]: repo/library/ssl_tls.c:2838: output record: msgtype = 23, version = [254:253], msglen = 79
+Commission server[1179]: repo/library/ssl_tls.c:2416: => flush output
+Commission server[1179]: repo/library/ssl_tls.c:2435: message length: 92, out_left: 92
+Commission server[1179]: repo/library/ssl_tls.c:2441: ssl->f_send() returned 92 (-0xffffffa4)
+Commission server[1179]: repo/library/ssl_tls.c:2460: <= flush output
+Commission server[1179]: repo/library/ssl_tls.c:2850: <= write record
+Commission server[1179]: repo/library/ssl_tls.c:6891: <= write

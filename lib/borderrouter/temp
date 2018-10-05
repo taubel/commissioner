@@ -1,0 +1,1 @@
+CFLAGS='-g -Og -fPIC' CXXFLAGS='-g -Og -fPIC' LDFLAGS='-g -Og -fPIC'

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+declare -a arr=("third_party/libcoap/repo/.libs/libcoap-1.a" "third_party/mbedtls/repo/library/libmbedtls.a" "third_party/mbedtls/.libs/libmbedtls.a" "src/agent/.libs/libotbr-agent.a" "src/common/.libs/libotbr-event-emitter.a" "src/common/.libs/libotbr-logging.a" "src/web/.libs/libotbr-web.a" "src/utils/.libs/libutils.a")
+
+for i in "${arr[@]}"
+do
+	echo "$i"
+	cp $i /home/tautvydas/Documents/codelite_workspace/commissioner-lib/lib
+done

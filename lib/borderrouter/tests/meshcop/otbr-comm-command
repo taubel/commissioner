@@ -1,0 +1,1 @@
+./otbr-commissioner --network-name test_name --xpanid DEAD1111DEAD2222 --agent-passphrase test --agent-addr 127.0.0.1 --agent-port 49191 --commission-device --joiner-passphrase JNRTST --joiner-eui64 18b4300000000004
