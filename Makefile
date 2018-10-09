@@ -1,6 +1,6 @@
 
 CXX = g++
-CXXFLAGS = -fPIC -g -O0 -Wall -Wshadow -Wextra -std=c++11 -pthread -DHAVE_CONFIG_H -DMBEDTLS_CONFIG_FILE='<config-thread.h>'
+CXXFLAGS = -fPIC -g -O0 -Wall -Wshadow -Wextra -std=c++11 -pthread -DHAVE_CONFIG_H -DMBEDTLS_CONFIG_FILE='<config-thread.h>' -Wl,-rpath,/usr/local/lib
 CFLAGS = $(CXXFLAGS)
 #LinkFlags = -g -Og -Wall -Wextra -Wshadow -Werror -std=gnu++98 -Wno-c++14-compat -Wl,-rpath,/home/tautvydas/Documents/codelite_workspace/commissioner-lib/Debug
 LinkFlags = $(CXXFLAGS)

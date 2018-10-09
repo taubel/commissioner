@@ -39,7 +39,7 @@ int main()
 #include <dlfcn.h>
 
 #include "plugin_api.hpp"
-#include "ulfius_http_framework.h"
+#include "ulfius_http_framework.hpp"
 
 class BasicConfig: public Config
 {
@@ -142,16 +142,16 @@ void PluginManager::unloadAll(void)
     }
 }
 
-int ExampleCallback(const struct _u_request* u_request, struct _u_response* u_response, void *context)
-{
-    const IncomingUlfiusRequest request (u_request);
-    OutgoingUlfiusResponse response (u_response);
-
-	std::cout << request.getMethod() << std::endl;
-	std::cout << request.getPath() << std::endl;
-
-    return success_ok;
-}
+//int ExampleCallback(const struct _u_request* u_request, struct _u_response* u_response, void *context)
+//{
+//    const IncomingUlfiusRequest request (u_request);
+//    OutgoingUlfiusResponse response (u_response);
+//
+//	std::cout << request.getMethod() << std::endl;
+//	std::cout << request.getPath() << std::endl;
+//
+//    return success_ok;
+//}
 
 /* Application */
 int main(int argc, const char *argv[])
@@ -181,7 +181,7 @@ int main(int argc, const char *argv[])
     }
 
     UlfiusHttpFramework& u_framework = (UlfiusHttpFramework&)core.getHttp();
-    u_framework.addHandler("GET", "/prefix", 10, &ExampleCallback, NULL);
+//    u_framework.addHandler("GET", "/prefix", 10, &ExampleCallback, NULL);
     u_framework.startFramework();
 
     while(1);

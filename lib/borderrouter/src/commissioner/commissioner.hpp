@@ -158,8 +158,6 @@ public:
      */
     void CommissionerSet(const SteeringData &aSteeringData);
 
-    void CommissionerDeinit(void) { mCommissionState = kStateInvalid; }
-
     ~Commissioner();
 
 private:
