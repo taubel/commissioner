@@ -97,7 +97,7 @@ class ArgcArgv
 {
 public:
     /** Constructor */
-    ArgcArgv(int aArgc, char **aArgv);
+    ArgcArgv(int aArgc, char **aArgv, CommissionerArgs* user_args);
 
     /** pseudo globals for argc & argv parsing */
     int    mARGC; /* analogous to argc */
@@ -105,7 +105,7 @@ public:
     int    mARGx; /**< current argument */
 
     /** Result **/
-    CommissionerArgs args;
+    CommissionerArgs* args;
 
     enum
     {

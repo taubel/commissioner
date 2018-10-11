@@ -81,7 +81,7 @@ int ArgcArgv::ParseArgs(void)
         usage("Unknown option: %s", arg);
         return 1;
     }
-	if((*(opt->handler))(this, &args))
+	if((*(opt->handler))(this, args))
 		return 1;
 
     return 0;
@@ -163,7 +163,7 @@ int ArgcArgv::NumParam(void)
 }
 
 /** see: commissioner_argcargv.hpp, constructor for the commissioner argc/argv parser */
-ArgcArgv::ArgcArgv(int argc, char **argv)
+ArgcArgv::ArgcArgv(int argc, char **argv, CommissionerArgs* user_args): args(user_args)
 {
     mARGC = argc;
     mARGV = argv;
@@ -547,19 +547,19 @@ static int handle_no_syslog(ArgcArgv *pThis, CommissionerArgs *args)
 /** Called by main(), to process commissioner command line arguments */
 int ParseArgs(int aArgc, char **aArgv, CommissionerArgs* user_args)
 {
-    ArgcArgv args(aArgc, aArgv);
+    ArgcArgv args(aArgc, aArgv, user_args);
 
     // default value
-    args.args.mEnvelopeTimeout           = 5 * 60; // 5 minutes;
-    args.args.mAllowAllJoiners           = false;
-    args.args.mNeedSendCommKA            = true;
-    args.args.mSendCommKATxRate          = 15; // send keep alive every 15 seconds;
-    args.args.mSteeringLength            = kSteeringDefaultLength;
-    args.args.mNeedComputePSKc           = false;
-    args.args.mNeedComputeJoinerSteering = false;
-    args.args.mNeedComputeJoinerHashMac  = false;
-    args.args.mNeedCommissionDevice      = true;
-    args.args.mHasPSKc                   = false;
+    args.args->mEnvelopeTimeout           = 5 * 60; // 5 minutes;
+    args.args->mAllowAllJoiners           = false;
+    args.args->mNeedSendCommKA            = true;
+    args.args->mSendCommKATxRate          = 15; // send keep alive every 15 seconds;
+    args.args->mSteeringLength            = kSteeringDefaultLength;
+    args.args->mNeedComputePSKc           = false;
+    args.args->mNeedComputeJoinerSteering = false;
+    args.args->mNeedComputeJoinerHashMac  = false;
+    args.args->mNeedCommissionDevice      = true;
+    args.args->mHasPSKc                   = false;
 
     // args.add_option("--selftest", CommissionerCmdLineSelfTest, "", "perform internal selftests");
     args.AddOption("--joiner-eui64", handle_eui64, "VALUE", "joiner EUI64 value");
@@ -599,7 +599,7 @@ int ParseArgs(int aArgc, char **aArgv, CommissionerArgs* user_args)
     		return 1;
     }
 
-    memcpy(user_args, &args.args, sizeof(CommissionerArgs));
+//    memcpy(user_args, &args.args, sizeof(CommissionerArgs));
     return 0;
 }
 

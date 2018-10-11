@@ -34,7 +34,7 @@ $(BuildDir)/comm-client: $(MainObjects) $(UlfiusObjects)
 plugins: $(BuildDir)/libfoo.so $(BuildDir)/libbar.so $(BuildDir)/libcomm.so
 
 $(BuildDir)/libcomm.so: $(PluginObjects) $(UlfiusObjects)
-	$(CXX) -shared $(CXXFLAGS) -o $(BuildDir)/libcomm.so $(PluginObjects) $(UlfiusObjects) -Wl,--start-group $(ConstLibs) -Wl,--end-group $(LinkFlags) -Wl,--no-undefined -ljansson -lpthread -lulfius
+	$(CXX) -shared $(CXXFLAGS) -o $(BuildDir)/libcomm.so $(PluginObjects) $(UlfiusObjects) -Wl,--start-group $(ConstLibs) -ljansson -lpthread -lulfius -lutils -Wl,--end-group $(LinkFlags) -Wl,--no-undefined -Llib/borderrouter/src/utils/.libs
 
 #$(PluginObjects): %.o : %.cpp
 %.o : %.cpp

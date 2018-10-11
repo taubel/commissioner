@@ -11,6 +11,7 @@
 #include <thread>
 #include <mutex>
 #include <future>
+#include <string>
 
 //COMMISSIONER
 #include "commissioner_argcargv.hpp"
@@ -28,10 +29,11 @@
 using namespace ot;
 using namespace ot::BorderRouter;
 
-class DataContainer
+class DataBuffer
 {
 private:
 
+//	ar reikia 'mutable'?
 	mutable std::mutex d_mutex;
 	size_t size;
 //	std::vector<uint8_t> data;
@@ -39,13 +41,14 @@ private:
 	bool d_flag = false;
 
 public:
-	DataContainer(int buffer_size)
+
+	DataBuffer(int buffer_size)
 	{
 		std::cout << __func__ << std::endl;
 		data = new uint8_t[buffer_size];
 	}
 
-	~DataContainer()
+	~DataBuffer()
 	{
 		std::cout << __func__ << std::endl;
 		delete data;
@@ -70,11 +73,6 @@ public:
 
 	bool DataAvailable()
 	{
-//		turbut nereikia
-//		d_mutex.lock();
-//		bool tmp = d_flag;
-//		d_mutex.unlock();
-//		return tmp;
 		return d_flag;
 	}
 };
@@ -87,6 +85,7 @@ public:
     {
         std::cout << __func__ << " " << this << std::endl;
         mData = new uint8_t[100];
+//        prideti galimybe isjungti thread'a
 		Mngr = new std::thread(&CommissionerPlugin::ThreadManager, this);
 		Mngr->detach();
     }
@@ -96,7 +95,7 @@ public:
         delete mData;
     }
 
-    DataContainer data_io;
+    DataBuffer data_io;
 
 protected:
 
@@ -104,63 +103,58 @@ protected:
 
 private:
 
-    void InitCommissioner(std::future<void> futureObj, std::condition_variable* cv, std::mutex* cv_m);
-    void RunCommissioner(std::future<void> futureObj, std::condition_variable* cv, std::mutex* cv_m);
-    void AddJoiner(std::future<void> futureObj, std::condition_variable* cv, std::mutex* cv_m);
+    void InitCommissioner(std::future<void> futureObj, std::condition_variable* cv);
+    void RunCommissioner(std::future<void> futureObj);
 	void ThreadManager();
 	int JsonParse(uint8_t* buffer);
 
-    Commissioner* commissioner = NULL;
+    Commissioner* commissioner = nullptr;
 
     SteeringData steeringData;
     CommissionerArgs arguments;
 	int network_num = 0;
 	int joiner_num = 0;
 
-	std::thread* InitComm = NULL;
-	std::thread* RunComm = NULL;
-	std::thread* AddJnr = NULL;
-	std::thread* Mngr = NULL;
+	std::thread* Mngr = nullptr;
+
+	bool addjnr = false;
 };
 
-typedef void (CommissionerPlugin::*thread_fun_t)(std::future<void>, std::condition_variable*, std::mutex*);
+typedef void (CommissionerPlugin::*init_thread_fun_t)(std::future<void>, std::condition_variable*);
+typedef void (CommissionerPlugin::*thread_fun_t)(std::future<void>);
 
 class Thread
 {
 public:
 
-	Thread(thread_fun_t fun, CommissionerPlugin* context, std::condition_variable* cond, std::mutex* cond_m): cv(cond), cv_m(cond_m)
+	Thread(init_thread_fun_t fun, CommissionerPlugin* context, std::condition_variable* cond)
 	{
 		promise = new std::promise<void>;
 		future = promise->get_future();
-		thread_fun = new std::thread(fun, context, std::move(future), cv, cv_m);
+		thread_fun = new std::thread(fun, context, std::move(future), cond);
 		std::cout << __func__ << std::endl;
 	}
 	Thread(thread_fun_t fun, CommissionerPlugin* context)
 	{
-		thread_fun = new std::thread(fun, context, std::move(future), nullptr, nullptr);
+		promise = new std::promise<void>;
+		future = promise->get_future();
+		thread_fun = new std::thread(fun, context, std::move(future));
 		std::cout << __func__ << std::endl;
 	}
 	~Thread()
 	{
-		if(promise)
-			promise->set_value();
+		promise->set_value();
 		if(thread_fun->joinable())
 			thread_fun->join();
 		delete promise;
+		delete thread_fun;
 		std::cout << __func__ << std::endl;
 	}
-	void Finish()
-	{
-		if(thread_fun->joinable())
-			thread_fun->join();
-	}
+
 private:
 
 	std::promise<void>* promise = nullptr;
 	std::future<void> future;
-	std::condition_variable* cv;
-	std::mutex* cv_m;
 
 	std::thread* thread_fun;
 };
@@ -175,7 +169,6 @@ void CommissionerPlugin::ThreadManager()
 
 	Thread* Init = nullptr;
 	Thread* Run = nullptr;
-	Thread* Add = nullptr;
 
 	while(1)
 	{
@@ -189,42 +182,27 @@ void CommissionerPlugin::ThreadManager()
 		}
 		if(network_num)
 		{
-			delete Init;
 			delete Run;
+			Run = nullptr;
 			delete commissioner;
-			Init = new Thread(&CommissionerPlugin::InitCommissioner, this, &cv, &cv_m);
-			Run = new Thread(&CommissionerPlugin::RunCommissioner, this, &cv, &cv_m);
+			commissioner = nullptr;
+			Init = new Thread(&CommissionerPlugin::InitCommissioner, this, &cv);
+			ret = cv.wait_for(lk, std::chrono::seconds(2));
+			cv_m.unlock(); //	issiaiskinti kas cia vyksta
+			delete Init;
+			if(ret == std::cv_status::timeout)
+			{
+//				pranesti apie request fail
+				goto cont;
+			}
+			Run = new Thread(&CommissionerPlugin::RunCommissioner, this);
 		}
 		if(joiner_num)
 		{
-			delete Add;
-			if(network_num)
-				Add = new Thread(&CommissionerPlugin::AddJoiner, this, &cv, &cv_m);
-			else
-				Add = new Thread(&CommissionerPlugin::AddJoiner, this);
+//			signal RunThread
+			addjnr = true;
 		}
-		if(network_num)
-		{
-			ret = cv.wait_for(lk, std::chrono::seconds(2));
-			if(ret == std::cv_status::timeout)
-			{
-				cv_m.unlock(); //	issiaiskinti kas cia vyksta
-				delete Init;
-				delete Run;
-				delete Add;
-				delete commissioner;
-			}
-			else
-			{
-				cv_m.unlock(); //	issiaiskinti kas cia vyksta
-				Init->Finish();
-				if(joiner_num)
-					Add->Finish();
-			}
-		}
-		else if(joiner_num)
-			Add->Finish();
-
+cont:
 		network_num = 0;
 		joiner_num = 0;
 	}
@@ -291,45 +269,20 @@ int CommissionerPlugin::JsonParse(uint8_t* buffer)
 
 	int argc = json_object_size(json_parsed) * 2 + 1;
 	const char *(*argv)[40] = &arguments_string;
+    CommissionerArgs tmp;
+    memcpy(&tmp, &arguments, sizeof(CommissionerArgs));
 	if(ParseArgs(argc, (char**)argv, &arguments)) //	visi keys turi tureti value
 		return 1;
 	json_decref(json_parsed);
 	return 0;
 }
 
-void CommissionerPlugin::AddJoiner(std::future<void> futureObj, std::condition_variable* cv, std::mutex* cv_m)
-{
-	if(cv_m)
-	{
-		std::unique_lock<std::mutex> lk(*cv_m);
-		cv->wait(lk);
-		if(futureObj.wait_for(std::chrono::milliseconds(1)) != std::future_status::timeout)
-			return;
-	}
-
-	std::cout << "Adding joiner" << std::endl;
-	steeringData = ComputeSteeringData(arguments.mSteeringLength, arguments.mAllowAllJoiners, arguments.mJoinerEui64Bin);
-//	jeigu petitioning nesuveikia
-//	int count = 0;
-//	while(!(commissioner && commissioner->IsCommissionerAccepted()))
-//	{
-//		std::this_thread::sleep_for(std::chrono::milliseconds(10));
-//		count++;
-//		if(count > 500)
-//		{
-//			printf("%s timeout error\r\n", __func__);
-//			return;
-//		}
-//	}
-	commissioner->SetJoiner(arguments.mJoinerPSKdAscii, steeringData);
-}
-
-void CommissionerPlugin::InitCommissioner(std::future<void> futureObj, std::condition_variable* cv, std::mutex* cv_m)
+void CommissionerPlugin::InitCommissioner(std::future<void> futureObj, std::condition_variable* cv)
 {
 	std::cout << "Initializing commissioner" << std::endl;
 
     uint8_t pskcBin[OT_PSKC_LENGTH];
-    int kaRate;
+    int kaRate = arguments.mSendCommKATxRate;
     int ret;
 
 	if (arguments.mHasPSKc)
@@ -369,13 +322,8 @@ exit:
 	return;
 }
 
-void CommissionerPlugin::RunCommissioner(std::future<void> futureObj, std::condition_variable* cv, std::mutex* cv_m)
+void CommissionerPlugin::RunCommissioner(std::future<void> futureObj)
 {
-	std::unique_lock<std::mutex> lk(*cv_m);
-	cv->wait(lk);
-	if(futureObj.wait_for(std::chrono::milliseconds(1)) != std::future_status::timeout)
-		goto exit;
-
 	std::cout << "Running commissioner thread" << std::endl;
     while (commissioner->IsValid())
     {
@@ -398,6 +346,13 @@ void CommissionerPlugin::RunCommissioner(std::future<void> futureObj, std::condi
             break;
         }
         commissioner->Process(readFdSet, writeFdSet, errorFdSet);
+        if(addjnr)
+        {
+        	ComputeSteeringData(&steeringData, arguments.mSteeringLength, arguments.mAllowAllJoiners, arguments.mJoinerEui64Bin, 5);
+//			steeringData = ComputeSteeringData(arguments.mSteeringLength, arguments.mAllowAllJoiners, arguments.mJoinerEui64Bin);
+			commissioner->SetJoiner(arguments.mJoinerPSKdAscii, steeringData);
+			addjnr = false;
+        }
     	if(futureObj.wait_for(std::chrono::milliseconds(1)) != std::future_status::timeout)
     		goto exit;
     }
@@ -408,7 +363,7 @@ exit:
 
 StatusCode ParamChangeCb(const Request& req, Response& res, void* context)
 {
-	DataContainer* data_io = (DataContainer*)context;
+	DataBuffer* data_io = (DataBuffer*)context;
 
 	std::vector<uint8_t> body = req.getBody();
 	if(body.size())
@@ -448,6 +403,7 @@ extern "C" const plugin_api_t LOREM_IPSUM =
     .papi_version = { 3, 2, 1},
     .papi_create = CommCreate,
 };
+
 
 
 

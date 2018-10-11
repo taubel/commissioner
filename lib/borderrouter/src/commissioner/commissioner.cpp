@@ -302,7 +302,6 @@ void Commissioner::HandleCommissionerPetition(const Coap::Message &aMessage, voi
 
 void Commissioner::CommissionerSet(const SteeringData &aSteeringData)
 {
-	printf("Comm_set.req\r\n");
     uint16_t       token = ++mCoapToken;
     uint8_t        buffer[kSizeMaxPacket];
     Tlv *          tlv = reinterpret_cast<Tlv *>(buffer);
@@ -332,7 +331,6 @@ void Commissioner::CommissionerSet(const SteeringData &aSteeringData)
 
 void Commissioner::HandleCommissionerSet(const Coap::Message &aMessage, void *aContext)
 {
-	printf("Comm_set.rsp\r\n");
     uint16_t       length;
     int            tlvType;
     const Tlv *    tlv;
