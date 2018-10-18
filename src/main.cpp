@@ -181,7 +181,6 @@ int main(int argc, const char *argv[])
     }
 
     UlfiusHttpFramework& u_framework = (UlfiusHttpFramework&)core.getHttp();
-//    u_framework.addHandler("GET", "/prefix", 10, &ExampleCallback, NULL);
     u_framework.startFramework();
 
     while(1);

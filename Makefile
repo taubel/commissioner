@@ -3,9 +3,9 @@ CXX = g++
 CXXFLAGS = -fPIC -g -O0 -Wall -Wshadow -Wextra -std=c++11 -pthread -DHAVE_CONFIG_H -DMBEDTLS_CONFIG_FILE='<config-thread.h>' -Wl,-rpath,/usr/local/lib
 CFLAGS = $(CXXFLAGS)
 #LinkFlags = -g -Og -Wall -Wextra -Wshadow -Werror -std=gnu++98 -Wno-c++14-compat -Wl,-rpath,/home/tautvydas/Documents/codelite_workspace/commissioner-lib/Debug
-LinkFlags = $(CXXFLAGS)
+LinkFlags = -fPIC -g -O0 -Wall -Wshadow -Wextra -std=c++11 -pthread -Wl,-rpath,/usr/local/lib
 IncludePaths = -I. -I./include -I./lib/borderrouter/third_party/mbedtls/repo/include/ -I./lib/borderrouter/src/ -I./lib/borderrouter/src/commissioner -I./lib/borderrouter/src/common -I./lib/borderrouter/include -I./lib/borderrouter/third_party/mbedtls/repo/configs -I./lib/borderrouter/src/agent -I./lib/borderrouter/src/web -I./lib/wakaama/plugin-manager
-Libs = -ldl -ljansson -lpthread -lulfius
+Libs = -ldl -lpthread -lulfius
 #LibPath = -L/home/tautvydas/Documents/codelite_workspace/commissioner-lib/Debug
 LibPath = -L./Debug
 SrcDir = src
@@ -31,10 +31,11 @@ all: plugins $(BuildDir)/comm-client
 $(BuildDir)/comm-client: $(MainObjects) $(UlfiusObjects)
 	$(CXX) -o $(BuildDir)/comm-client $(LinkFlags) $(MainObjects) $(UlfiusObjects) $(LibPath) $(Libs)
 
-plugins: $(BuildDir)/libfoo.so $(BuildDir)/libbar.so $(BuildDir)/libcomm.so
+plugins: $(BuildDir)/libcomm.so
 
-$(BuildDir)/libcomm.so: $(PluginObjects) $(UlfiusObjects)
-	$(CXX) -shared $(CXXFLAGS) -o $(BuildDir)/libcomm.so $(PluginObjects) $(UlfiusObjects) -Wl,--start-group $(ConstLibs) -ljansson -lpthread -lulfius -lutils -Wl,--end-group $(LinkFlags) -Wl,--no-undefined -Llib/borderrouter/src/utils/.libs
+$(BuildDir)/libcomm.so: $(PluginObjects)
+	$(CXX) -shared -fPIC -o $(BuildDir)/libcomm.so -Wl,--start-group $(PluginObjects) /usr/local/lib/libjansson.a $(ConstLibs) -lpthread -Wl,--end-group -Wl,--no-undefined 
+#	$(CXX) -shared $(LinkFlags) -o $(BuildDir)/libcomm.so $(PluginObjects) -Wl,--start-group $(ConstLibs) -lpthread -Wl,--end-group -Llib/borderrouter/src/utils/.libs
 
 #$(PluginObjects): %.o : %.cpp
 %.o : %.cpp
@@ -42,7 +43,7 @@ $(BuildDir)/libcomm.so: $(PluginObjects) $(UlfiusObjects)
 	@cp $@ $(BuildDir)/$(notdir $(MainObjectsP))
 
 clean:
-	rm $(BuildDir)/*.o $(PluginObjects) $(MainObjects) $(BuildDir)/comm-client
+	rm $(BuildDir)/* $(PluginObjects) $(MainObjects) $(UlfiusObjects)
 	
 .PHONY : all plugins clean
 	

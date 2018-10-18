@@ -71,7 +71,7 @@ void ComputeHashMac(uint8_t *aEui64Bin, uint8_t *aHashMacOutBuf);
  * @returns the steering data
  *
  */
-void ComputeSteeringData(SteeringData* data, uint8_t aLength, bool aAllowAny, uint8_t *aEui64Bin, int num);
+void ComputeSteeringData(SteeringData* data, bool aAllowAny, uint8_t *aEui64Bin);
 
 SteeringData ComputeSteeringData(uint8_t aLength, bool aAllowAny, uint8_t *aEui64Bin);
 

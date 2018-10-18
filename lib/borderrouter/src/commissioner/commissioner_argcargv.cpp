@@ -563,16 +563,18 @@ int ParseArgs(int aArgc, char **aArgv, CommissionerArgs* user_args)
 
     // args.add_option("--selftest", CommissionerCmdLineSelfTest, "", "perform internal selftests");
     args.AddOption("--joiner-eui64", handle_eui64, "VALUE", "joiner EUI64 value");
-    args.AddOption("--hashmac", handle_hashmac, "VALUE", "joiner HASHMAC value");
-    args.AddOption("--agent-passphrase", handle_agent_passphrase, "VALUE", "Pass phrase for agent");
+    args.AddOption("--joiner-passphrase", handle_pskd, "VALUE", "PSKd for joiner");
+
     args.AddOption("--network-name", handle_netname, "VALUE", "UTF8 encoded network name");
     args.AddOption("--xpanid", handle_xpanid, "VALUE", "xpanid in hex");
-    args.AddOption("--pskc-bin", handle_pskc_bin, "VALUE", "Precomputed PSKc in hex notation");
-    args.AddOption("--joiner-passphrase", handle_pskd, "VALUE", "PSKd for joiner");
-    args.AddOption("--steering-length", handle_steering_length, "NUMBER", "Length of steering data 1..15");
-    args.AddOption("--allow-all-joiners", handle_allow_all_joiners, "", "Allow any device to join");
+    args.AddOption("--agent-passphrase", handle_agent_passphrase, "VALUE", "Pass phrase for agent");
     args.AddOption("--agent-addr", handle_ip_addr, "VALUE", "ip address of border router agent");
     args.AddOption("--agent-port", handle_ip_port, "VALUE", "ip port used by border router agent");
+
+    args.AddOption("--pskc-bin", handle_pskc_bin, "VALUE", "Precomputed PSKc in hex notation");
+    args.AddOption("--hashmac", handle_hashmac, "VALUE", "joiner HASHMAC value");
+    args.AddOption("--steering-length", handle_steering_length, "NUMBER", "Length of steering data 1..15");
+    args.AddOption("--allow-all-joiners", handle_allow_all_joiners, "", "Allow any device to join");
     args.AddOption("--log-filename", handle_log_filename, "FILENAME", "set logfilename");
     args.AddOption("--compute-pskc", handle_compute_pskc, "", "compute and print the pskc from parameters");
     args.AddOption("--compute-hashmac", handle_compute_hashmac, "", "compute and print the hashmac of the given eui64");

@@ -37,6 +37,7 @@
 #include <arpa/inet.h>
 #include <errno.h>
 #include <sys/socket.h>
+#include <vector>
 
 #if !defined(MBEDTLS_CONFIG_FILE)
 #include "mbedtls/config.h"
@@ -79,10 +80,9 @@ public:
      * This method sets the joiner to join the thread network
      *
      * @param[in]    aPskdAscii         ascii form of pskd
-     * @param[in]    aSteeringData      steering data to filter joiner
      *
      */
-    void SetJoiner(const char *aPskdAscii, const SteeringData &aSteeringData);
+    void SetJoiner(const char *aPskdAscii);
 
     /**
      * This method updates the fd_set and timeout for mainloop.
@@ -213,6 +213,10 @@ private:
     uint16_t mCommissionerSessionId;
 
     JoinerSession *mJoinerSession;
+//    TODO: issiaiskint kodel geriausiai veikia su pointeriais (slicing?, copy constructor?)
+//    TODO: unique_ptr?
+//    TODO: naudot vektoriu kaip klase
+//    std::vector<JoinerSession*> vJoinerSession;
     int            mJoinerSessionClientFd;
     uint16_t       mJoinerUdpPort;
     uint8_t        mJoinerIid[8];

@@ -40,16 +40,21 @@
 namespace ot {
 namespace BorderRouter {
 
-JoinerSession::JoinerSession(uint16_t aInternalServerPort, const char *aPskdAscii) // @suppress("Class members should be properly initialized")
+JoinerSession::JoinerSession(uint16_t aInternalServerPort, const char *aPskdAscii)
     : mDtlsServer(Dtls::Server::Create(aInternalServerPort, JoinerSession::HandleSessionChange, this))
-    , mCoapAgent(Coap::Agent::Create(JoinerSession::SendCoap, this))
-    , mJoinerFinalizeHandler(OT_URI_PATH_JOINER_FINALIZE, HandleJoinerFinalize, this)
+	, mDtlsSession(nullptr)
+	, mCoapAgent(Coap::Agent::Create(JoinerSession::SendCoap, this))
+	, mJoinerFinalizeHandler(OT_URI_PATH_JOINER_FINALIZE, HandleJoinerFinalize, this)
     , mNeedAppendKek(false)
 {
-	printf("%s\r\n", __func__);
     mDtlsServer->SetPSK((const uint8_t *)aPskdAscii, strlen(aPskdAscii));
     mDtlsServer->Start();
     mCoapAgent->AddResource(mJoinerFinalizeHandler);
+}
+
+void JoinerSession::SetPSK(const char* aPskdAscii)
+{
+	mDtlsServer->SetPSK((const uint8_t *)aPskdAscii, strlen(aPskdAscii));
 }
 
 void JoinerSession::HandleSessionChange(Dtls::Session &aSession, Dtls::Session::State aState, void *aContext)
@@ -115,13 +120,18 @@ void JoinerSession::HandleJoinerFinalize(const Coap::Resource &aResource,
                                          void *                aContext)
 {
     JoinerSession *joinerSession = static_cast<JoinerSession *>(aContext);
-    uint8_t        payload[10];
+    uint8_t        payload[50];
     Tlv *          responseTlv = reinterpret_cast<Tlv *>(payload);
+    char string[50] = "test\r\n";
 
     joinerSession->mNeedAppendKek = true;
 
     responseTlv->SetType(Meshcop::kState);
     responseTlv->SetValue(static_cast<uint8_t>(Meshcop::kStateAccepted));
+    responseTlv = responseTlv->GetNext();
+
+    responseTlv->SetType(Meshcop::kUdpEncapsulation);
+    responseTlv->SetValue(string, strlen(string), false);
     responseTlv = responseTlv->GetNext();
 
     // Piggyback response
@@ -165,7 +175,7 @@ void JoinerSession::GetKek(uint8_t *aBuf, size_t aBufSize)
 
 JoinerSession::~JoinerSession()
 {
-	printf("%s\r\n", __func__);
+//	TODO: delete mDtlsSession? kadangi mDtlsSession priskiriamas is callback, jo sunaikinimu rupinasi Dtls serveris
     Dtls::Server::Destroy(mDtlsServer);
     Coap::Agent::Destroy(mCoapAgent);
 }

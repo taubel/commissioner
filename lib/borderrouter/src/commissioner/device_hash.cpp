@@ -81,32 +81,17 @@ void ComputeHashMac(uint8_t *aEui64Bin, uint8_t *aHashMacOutBuf)
     aHashMacOutBuf[0] |= 2;
 }
 
-void ComputeSteeringData(SteeringData* data, uint8_t aLength, bool aAllowAny, uint8_t *aEui64Bin, int num)
+void ComputeSteeringData(SteeringData* data, bool aAllowAny, uint8_t *aEui64Bin)
 {
-	const char* string[] = {"18b4300000000006","18b4300000000002","18b4300000000003","18b4300000000004","18b4300000000005"};
-
-	if(aLength != data->GetLength())
-	{
-		data->Init(aLength);
-	}
     if (aAllowAny)
     {
         data->Set();
     }
     else
     {
-        uint8_t hashMacBin[kEui64Len];
-        uint8_t Bin[kEui64Len];
-
-        for(int i = 0; i < num; i++)
-        {
-        	memset(hashMacBin, 0, kEui64Len);
-        	Hex2Bytes(string[i], Bin, kEui64Len);
-        	ComputeHashMac(Bin, hashMacBin);
-        	data->ComputeBloomFilter(hashMacBin);
-//        	ComputeHashMac(aEui64Bin, hashMacBin);
-//        	data->ComputeBloomFilter(hashMacBin);
-        }
+    	uint8_t hashMacBin[kEui64Len];
+        ComputeHashMac(aEui64Bin, hashMacBin);
+		data->ComputeBloomFilter(hashMacBin);
     }
     return;
 }

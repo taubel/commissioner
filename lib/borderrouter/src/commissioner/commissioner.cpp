@@ -103,7 +103,7 @@ Commissioner::Commissioner(const uint8_t *aPskcBin, int aKeepAliveRate) // @supp
     : mDtlsInitDone(false)
     , mRelayReceiveHandler(OT_URI_PATH_RELAY_RX, Commissioner::HandleRelayReceive, this)
     , mPetitionRetryCount(0)
-    , mJoinerSession(NULL)
+//    , mJoinerSession(NULL)
     , mKeepAliveRate(aKeepAliveRate)
 {
     sockaddr_in addr;
@@ -122,14 +122,18 @@ exit:
     return;
 }
 
-void Commissioner::SetJoiner(const char *aPskdAscii, const SteeringData &aSteeringData)
+void Commissioner::SetJoiner(const char *aPskdAscii)
 {
-    if (mJoinerSession)
-    {
-        delete mJoinerSession;
-    }
-    mJoinerSession = new JoinerSession(kPortJoinerSession, aPskdAscii);
-    CommissionerSet(aSteeringData);
+//	TODO panasu kad reikia su new, nes kitaip virtual metodu nekviecia?
+//	vJoinerSession.push_back(new JoinerSession(kPortJoinerSession, aPskdAscii));
+	if(!mJoinerSession)
+	{
+		mJoinerSession = new JoinerSession(kPortJoinerSession, aPskdAscii);
+	}
+	else
+	{
+		mJoinerSession->SetPSK(aPskdAscii);
+	}
 }
 
 ssize_t Commissioner::SendCoap(const uint8_t *aBuffer,
@@ -406,9 +410,9 @@ void Commissioner::UpdateFdSet(fd_set & aReadFdSet,
     aMaxFd = Utils::Max(mSslClientFd.fd, aMaxFd);
     FD_SET(mJoinerSessionClientFd, &aReadFdSet);
     aMaxFd = Utils::Max(mJoinerSessionClientFd, aMaxFd);
-    if (mJoinerSession)
+    if(mJoinerSession)
     {
-        mJoinerSession->UpdateFdSet(aReadFdSet, aWriteFdSet, aErrorFdSet, aMaxFd, aTimeout);
+    	mJoinerSession->UpdateFdSet(aReadFdSet, aWriteFdSet, aErrorFdSet, aMaxFd, aTimeout);
     }
 }
 
@@ -417,9 +421,9 @@ void Commissioner::Process(const fd_set &aReadFdSet, const fd_set &aWriteFdSet, 
     uint8_t buffer[kSizeMaxPacket];
     timeval nowTime;
 
-    if (mJoinerSession)
+    if(mJoinerSession)
     {
-        mJoinerSession->Process(aReadFdSet, aWriteFdSet, aErrorFdSet);
+    	mJoinerSession->Process(aReadFdSet, aWriteFdSet, aErrorFdSet);
     }
     if (FD_ISSET(mSslClientFd.fd, &aReadFdSet))
     {
@@ -616,17 +620,17 @@ int Commissioner::SendRelayTransmit(uint8_t *aBuf, size_t aLength)
 
     assert(mJoinerSession != NULL);
 
-    if (mJoinerSession->NeedAppendKek())
-    {
-        uint8_t kek[kKEKSize];
+	if(mJoinerSession->NeedAppendKek())
+	{
+		uint8_t kek[kKEKSize];
 
-        mJoinerSession->GetKek(kek, sizeof(kek));
-        mJoinerSession->MarkKekSent();
-        otbrLog(OTBR_LOG_INFO, "relay: KEK state");
-        responseTlv->SetType(Meshcop::kJoinerRouterKek);
-        responseTlv->SetValue(kek, sizeof(kek));
-        responseTlv = responseTlv->GetNext();
-    }
+		mJoinerSession->GetKek(kek, sizeof(kek));
+		mJoinerSession->MarkKekSent();
+		otbrLog(OTBR_LOG_INFO, "relay: KEK state");
+		responseTlv->SetType(Meshcop::kJoinerRouterKek);
+		responseTlv->SetValue(kek, sizeof(kek));
+		responseTlv = responseTlv->GetNext();
+	}
 
     {
         Coap::Message *message;
