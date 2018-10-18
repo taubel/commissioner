@@ -479,6 +479,8 @@ StatusCode JoinersWrite(const Request& req, Response& res, void* context)
 	{
 		return StatusCode::client_error;
 	}
+//	TODO kodel string'as atkeliauja ne null terminated?
+	*(body.data() + body.size()) = 0;
 	const char* string = reinterpret_cast<const char*>(body.data());
 	JoinerList* vector = reinterpret_cast<JoinerList*>(context);
 
@@ -495,7 +497,8 @@ StatusCode NetworkWrite(const Request& req, Response& res, void* context)
 	{
 		return StatusCode::client_error;
 	}
-
+//	TODO kodel string'as atkeliauja ne null terminated?
+	*(body.data() + body.size()) = 0;
 	const char* string = reinterpret_cast<const char*>(body.data());
 	CommissionerArgs* args = reinterpret_cast<CommissionerArgs*>(context);
 
