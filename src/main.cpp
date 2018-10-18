@@ -1,39 +1,4 @@
-#if 0
 
-#include <iostream>
-#include <string>
-
-#include "ulfius_http_framework.h"
-
-StatusCode someCallback(const Request& request, Response& response, void *context)
-{
-    StatusCode status = StatusCode::success_ok;
-    std::string *sp_context = static_cast<std::string*>(context);
-    std::cout << "Context received: " << *sp_context << std::endl;
-
-    response.setCode(status);
-    response.setHeader("Kaip", "sekasi");
-
-    delete sp_context;
-    return status;
-}
-
-int main()
-{
-    void *some_context = static_cast<void*>(new std::string("Kaip sekasi?"));
-    int port = 4242;
-
-    UlfiusHttpFramework u_framework(port, &some_context);
-    u_framework.addHandler("GET", "/prefix", 10, &someCallback);
-
-    u_framework.startFramework();
-
-    while(1);
-
-    return 0;
-}
-
-#else
 #include <iostream>
 #include <list>
 #include <dlfcn.h>
@@ -142,17 +107,6 @@ void PluginManager::unloadAll(void)
     }
 }
 
-//int ExampleCallback(const struct _u_request* u_request, struct _u_response* u_response, void *context)
-//{
-//    const IncomingUlfiusRequest request (u_request);
-//    OutgoingUlfiusResponse response (u_response);
-//
-//	std::cout << request.getMethod() << std::endl;
-//	std::cout << request.getPath() << std::endl;
-//
-//    return success_ok;
-//}
-
 /* Application */
 int main(int argc, const char *argv[])
 {
@@ -193,4 +147,3 @@ int main(int argc, const char *argv[])
 
     return 0;
 }
-#endif

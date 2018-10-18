@@ -103,7 +103,7 @@ Commissioner::Commissioner(const uint8_t *aPskcBin, int aKeepAliveRate) // @supp
     : mDtlsInitDone(false)
     , mRelayReceiveHandler(OT_URI_PATH_RELAY_RX, Commissioner::HandleRelayReceive, this)
     , mPetitionRetryCount(0)
-//    , mJoinerSession(NULL)
+    , mJoinerSession(NULL)
     , mKeepAliveRate(aKeepAliveRate)
 {
     sockaddr_in addr;

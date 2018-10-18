@@ -4,6 +4,7 @@
  *  Created on: Oct 1, 2018
  *      Author: tautvydas
  */
+//	TODO autorius, licenzija...
 
 //STDLIB
 #include <iostream>
@@ -102,9 +103,11 @@ public:
 	//	default
 		mSendCommKATxRate = 15;
 
+		ComputePskc(mXpanidBin, mNetworkName, mPassPhrase, mPSKcBin);
+
 		mParametersChanged = true;
 
-		parameters_string.append(string);
+		parameters_string.assign(string);
 		json_decref(json_parsed);
 		return StatusCode::success_ok;
     }
@@ -116,6 +119,7 @@ public:
     uint8_t mXpanidBin[kXpanidLength];
     char    mNetworkName[kNetworkNameLenMax + 1];
     char    mPassPhrase[kBorderRouterPassPhraseLen + 1];
+    uint8_t mPSKcBin[OT_PSKC_LENGTH];
 
     bool mParametersChanged;
 };
@@ -269,7 +273,7 @@ public:
 	{
 		return updated;
 	}
-	void ListUpdateFinish()
+	void ListUpdateFinished()
 	{
 		updated = false;
 	}
@@ -280,40 +284,7 @@ public:
 	}
 };
 
-class CommissionerPlugin: public Plugin
-{
-public:
-
-	CommissionerPlugin()
-    {
-        std::cout << __func__ << " " << this << std::endl;
-        mngr_future = mngr_promise.get_future();
-		Mngr = new std::thread(&CommissionerPlugin::ThreadManager, this, std::move(mngr_future));
-		Mngr->detach();
-    }
-    ~CommissionerPlugin()
-    {
-        std::cout << __func__ << " " << this << std::endl;
-        mngr_promise.set_value();
-    }
-
-    JoinerList joiner_list;
-    CommissionerArgs arguments;
-    ReturnStatus status;
-
-private:
-
-    void InitCommissioner(std::future<void> futureObj, std::condition_variable* cv);
-    void RunCommissioner(std::future<void> futureObj);
-	void ThreadManager(std::future<void> futureObj);
-
-    Commissioner* commissioner = nullptr;
-
-	std::thread* Mngr = nullptr;
-	std::promise<void> mngr_promise;
-	std::future<void> mngr_future;
-};
-
+class CommissionerPlugin;
 typedef void (CommissionerPlugin::*init_thread_fun_t)(std::future<void>, std::condition_variable*);
 typedef void (CommissionerPlugin::*thread_fun_t)(std::future<void>);
 
@@ -353,6 +324,43 @@ private:
 	std::thread* thread_fun;
 };
 
+class CommissionerPlugin: public Plugin
+{
+public:
+
+	CommissionerPlugin()
+    {
+        std::cout << __func__ << " " << this << std::endl;
+        Mngr = new Thread(&CommissionerPlugin::ThreadManager, this);
+//    	TODO ar nereikia detach?
+    }
+    ~CommissionerPlugin()
+    {
+        std::cout << __func__ << " " << this << std::endl;
+        delete Mngr;
+    }
+    void RestartCommissioner()
+    {
+        std::cout << __func__ << std::endl;
+    	delete Mngr;
+    	Mngr = nullptr;
+    	Mngr = new Thread(&CommissionerPlugin::ThreadManager, this);
+    }
+
+    JoinerList joiner_list;
+    CommissionerArgs arguments;
+    ReturnStatus status;
+
+private:
+
+    void InitCommissioner(std::future<void> futureObj, std::condition_variable* cv);
+    void RunCommissioner(std::future<void> futureObj);
+	void ThreadManager(std::future<void> futureObj);
+
+    Commissioner* commissioner = nullptr;
+    Thread* Mngr = nullptr;
+};
+
 void CommissionerPlugin::ThreadManager(std::future<void> futureObj)
 {
 	std::condition_variable cv;
@@ -360,6 +368,7 @@ void CommissionerPlugin::ThreadManager(std::future<void> futureObj)
 	std::unique_lock<std::mutex> lk(cv_m);
 	std::cv_status ret;
 
+//	TODO scoped_ptr, shared_ptr arba kitas 'smart' pointeris kad isvengt problemu su dvigubu delete
 	Thread* Init = nullptr;
 	Thread* Run = nullptr;
 
@@ -372,15 +381,19 @@ void CommissionerPlugin::ThreadManager(std::future<void> futureObj)
 			delete commissioner;
 			commissioner = nullptr;
 
+			commissioner = new Commissioner(arguments.mPSKcBin, arguments.mSendCommKATxRate);
+
 			Init = new Thread(&CommissionerPlugin::InitCommissioner, this, &cv);
 //			TODO spurious wakeup
 //			TODO InitCommissioner gali iskviesti notify_all pries ThreadManager pasiekiant wait_for. Galima pagalba aprasyta std::condition_variable reference puslapy
 			ret = cv.wait_for(lk, std::chrono::seconds(2));
 			cv_m.unlock(); //	TODO:	issiaiskinti kas cia vyksta
 			delete Init;
+			Init = nullptr;
 			if(ret == std::cv_status::timeout)
 			{
 				status.Set(StatusCode::server_error_internal_server_error);
+				arguments.mParametersChanged = false;
 				goto cont;
 			}
 			Run = new Thread(&CommissionerPlugin::RunCommissioner, this);
@@ -388,10 +401,14 @@ void CommissionerPlugin::ThreadManager(std::future<void> futureObj)
 			arguments.mParametersChanged = false;
 		}
 cont:
-		if(futureObj.wait_for(std::chrono::milliseconds(0)) != std::future_status::timeout)
+		if(futureObj.wait_for(std::chrono::milliseconds(0)) == std::future_status::ready)
 		{
 			delete Init;
+			Init = nullptr;
 			delete Run;
+			Run = nullptr;
+			delete commissioner;
+			commissioner = nullptr;
 			return;
 		}
 	}
@@ -400,18 +417,13 @@ cont:
 void CommissionerPlugin::InitCommissioner(std::future<void> futureObj, std::condition_variable* cv)
 {
 	std::cout << "Initializing commissioner" << std::endl;
-
-    uint8_t pskcBin[OT_PSKC_LENGTH];
-    int kaRate = arguments.mSendCommKATxRate;
     int ret;
 
-	ComputePskc(arguments.mXpanidBin, arguments.mNetworkName, arguments.mPassPhrase, pskcBin);
-	commissioner = new Commissioner(pskcBin, kaRate);
     srand(time(0));
     commissioner->InitDtls(arguments.mAgentAddress_ascii, arguments.mAgentPort_ascii);
     do
     {
-    	if(futureObj.wait_for(std::chrono::milliseconds(0)) != std::future_status::timeout)
+    	if(futureObj.wait_for(std::chrono::milliseconds(0)) == std::future_status::ready)
     	{
     		std::cout << __func__ << " timeout" << std::endl;
     		goto exit;
@@ -422,6 +434,10 @@ void CommissionerPlugin::InitCommissioner(std::future<void> futureObj, std::cond
     if (commissioner->IsValid())
     {
         commissioner->CommissionerPetition();
+    }
+    else
+    {
+    	status.Set(StatusCode::server_error_internal_server_error);
     }
 exit:
 	cv->notify_all();
@@ -459,10 +475,10 @@ void CommissionerPlugin::RunCommissioner(std::future<void> futureObj)
         {
         	commissioner->CommissionerSet(joiner_list.GetSteering());
         	commissioner->SetJoiner(joiner_list.GetLastPskd());
-        	joiner_list.ListUpdateFinish();
+        	joiner_list.ListUpdateFinished();
         }
 
-    	if(futureObj.wait_for(std::chrono::milliseconds(1)) != std::future_status::timeout)
+    	if(futureObj.wait_for(std::chrono::milliseconds(0)) == std::future_status::ready)
     		goto exit;
     }
 exit:
@@ -545,34 +561,53 @@ StatusCode StatusRead(const Request& req, Response& res, void* context)
 	(void)res;
 
 //	TODO ar reikalingas laukimas? Po kolkas jei statusas nepasikeite, returnina sena reiksme
+//	TODO statusas turetu buti ne 'StatusCode' tipo, reiksme turi buti irasoma i body
 	return status->Get();
+}
+
+StatusCode Restart(const Request& req, Response& res, void* context)
+{
+	(void)req;
+	(void)res;
+
+	CommissionerPlugin* plugin = reinterpret_cast<CommissionerPlugin*>(context);
+	plugin->RestartCommissioner();
+
+	return StatusCode::success_ok;
 }
 
 static Plugin * CommCreate(PluginCore &core, Config &config)
 {
 //	TODO po kolkas nenaudojamas
 	(void)config;
-	// 1: initializuoti savo plugin
+
 	CommissionerPlugin* plugin = new CommissionerPlugin;
-	// 2: prachekinti klaidas
 	if (plugin == NULL) return NULL;
 
-	// 3: prisiattachinti prie core
+//	TODO kas atsitinka su handler'iais jeigu plugin'as sunaikinamas?
 	HttpFramework& u_framework = core.getHttp();
-	u_framework.addHandler("POST", "/network", 10, NetworkWrite, (void*)&plugin->arguments);
-	u_framework.addHandler("GET", "/network", 10, NetworkRead, (void*)&plugin->arguments);
+	u_framework.addHandler("POST", "/network", 10, NetworkWrite, reinterpret_cast<void*>(&plugin->arguments));
+	u_framework.addHandler("GET", "/network", 10, NetworkRead, reinterpret_cast<void*>(&plugin->arguments));
 	u_framework.addHandler("GET", "/status", 10, StatusRead, reinterpret_cast<void*>(&plugin->status));
-	u_framework.addHandler("PUT", "/joiners", 10, JoinersWrite, (void*)&plugin->joiner_list);
-	u_framework.addHandler("GET", "/joiners", 10, JoinersRead, (void*)&plugin->joiner_list);
+	u_framework.addHandler("PUT", "/joiners", 10, JoinersWrite, reinterpret_cast<void*>(&plugin->joiner_list));
+	u_framework.addHandler("GET", "/joiners", 10, JoinersRead, reinterpret_cast<void*>(&plugin->joiner_list));
+	u_framework.addHandler("POST", "/restart", 10, Restart, reinterpret_cast<void*>(plugin));
 
     std::cout << __func__ << std::endl;
     return plugin;
 }
 
+static void CommDestroy(Plugin* plugin)
+{
+	(void)plugin;
+}
+
+// TODO LOREM_IPSUM?
 extern "C" const plugin_api_t LOREM_IPSUM =
 {
     .papi_version = { 3, 2, 1},
     .papi_create = CommCreate,
+	.papi_destroy = CommDestroy,
 };
 
 
