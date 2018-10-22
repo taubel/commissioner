@@ -2,23 +2,22 @@
 CXX = g++
 CXXFLAGS = -fPIC -g -O0 -Wall -Wshadow -Wextra -std=c++11 -pthread -DHAVE_CONFIG_H -DMBEDTLS_CONFIG_FILE='<config-thread.h>' -Wl,-rpath,/usr/local/lib
 CFLAGS = $(CXXFLAGS)
-#LinkFlags = -g -Og -Wall -Wextra -Wshadow -Werror -std=gnu++98 -Wno-c++14-compat -Wl,-rpath,/home/tautvydas/Documents/codelite_workspace/commissioner-lib/Debug
 LinkFlags = -fPIC -g -O0 -Wall -Wshadow -Wextra -std=c++11 -pthread -Wl,-rpath,/usr/local/lib
-IncludePaths = -I. -I./include -I./lib/borderrouter/third_party/mbedtls/repo/include/ -I./lib/borderrouter/src/ -I./lib/borderrouter/src/commissioner -I./lib/borderrouter/src/common -I./lib/borderrouter/include -I./lib/borderrouter/third_party/mbedtls/repo/configs -I./lib/borderrouter/src/agent -I./lib/borderrouter/src/web -I./lib/wakaama/plugin-manager
+IncludePaths = -I. -I./include -Ilib/wakaama/http-framework/include/ -Ilib/wakaama/plugin-manager/include/ -Ilib/borderrouter/src/commissioner/ -Ilib/borderrouter/src/ -Ilib/borderrouter/third_party/mbedtls/repo/configs/ -Ilib/borderrouter/third_party/mbedtls/repo/include/ -Ilib/borderrouter/src/common/ -Ilib/wakaama/lwm2m-framework/include/
 Libs = -ldl -lpthread -lulfius
-#LibPath = -L/home/tautvydas/Documents/codelite_workspace/commissioner-lib/Debug
 LibPath = -L./Debug
 SrcDir = src
+MainSrcDir = lib/wakaama/main
 LibDir = lib
 BuildDir = Debug
 PluginDir = $(LibDir)/plugins
 ConstLibDir = $(LibDir)/const_libs
 CommSrcDir = $(LibDir)/borderrouter/src/commissioner
 
-MainSources = $(SrcDir)/main.cpp
+MainSources = $(MainSrcDir)/main.cpp ./lib/wakaama/plugin-manager/src/basic_plugin_manager.cpp ./lib/wakaama/plugin-manager/src/basic_plugin_manager_core.cpp ./lib/wakaama/lwm2m-framework/src/basic_lwm2m_framework.cpp
 MainObjects = $(patsubst %.cpp,%.o,$(MainSources))
 
-UlfiusSources = ./lib/wakaama/plugin-manager/ulfius_http_framework.cpp
+UlfiusSources = ./lib/wakaama/http-framework/src/ulfius_http_framework.cpp ./lib/wakaama/http-framework/src/incoming_ulfius_request.cpp ./lib/wakaama/http-framework/src/outgoing_ulfius_response.cpp
 UlfiusObjects = $(patsubst %.cpp,%.o,$(UlfiusSources))
 
 PluginSources = $(SrcDir)/comm.cpp $(CommSrcDir)/addr_utils.cpp $(CommSrcDir)/commissioner.cpp $(CommSrcDir)/joiner_session.cpp $(CommSrcDir)/commissioner_argcargv.cpp $(CommSrcDir)/device_hash.cpp

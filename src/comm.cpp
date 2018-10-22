@@ -60,9 +60,10 @@ private:
     }
 
 public:
-    void Read(char* to)
+    char* Read()
     {
-    	strcpy(to, parameters_string.c_str());
+		char* str = new char[parameters_string.length() + 1];
+		return strcpy(str, parameters_string.c_str());
     }
     StatusCode ParametersChange(const char* string)
     {
@@ -250,9 +251,10 @@ public:
 		json_decref(parsed);
 		return StatusCode::success_ok;
 	}
-	void Read(char* to)
+	char* Read()
 	{
-		strcpy(to, joiners_string.c_str());
+		char* str = new char[joiners_string.length() + 1];
+		return strcpy(str, joiners_string.c_str());
 	}
 	void Remove()
 	{
@@ -486,75 +488,68 @@ exit:
 	return;
 }
 
-StatusCode JoinersWrite(const Request& req, Response& res, void* context)
+StatusCode JoinersWrite(Request* req, Response* res, void* context)
 {
 //	TODO response
 	(void)res;
-	std::vector<uint8_t> body = req.getBody();
+
+	std::vector<uint8_t> body = req->getBody();
 	if(!body.size())
 	{
 		return StatusCode::client_error;
 	}
-//	TODO kodel string'as atkeliauja ne null terminated?
-	*(body.data() + body.size()) = 0;
-	const char* string = reinterpret_cast<const char*>(body.data());
 	JoinerList* vector = reinterpret_cast<JoinerList*>(context);
-
-	return vector->Append(string);
+	std::string str(body.begin(), body.end());
+	return vector->Append(str.c_str());
 }
 
-StatusCode NetworkWrite(const Request& req, Response& res, void* context)
+StatusCode NetworkWrite(Request* req, Response* res, void* context)
 {
 //	TODO response
 	(void)res;
 
-	std::vector<uint8_t> body = req.getBody();
+	std::vector<uint8_t> body = req->getBody();
 	if(!body.size())
 	{
 		return StatusCode::client_error;
 	}
-//	TODO kodel string'as atkeliauja ne null terminated?
-	*(body.data() + body.size()) = 0;
-	const char* string = reinterpret_cast<const char*>(body.data());
 	CommissionerArgs* args = reinterpret_cast<CommissionerArgs*>(context);
-
-	return args->ParametersChange(string);
+	std::string str(body.begin(), body.end());
+	return args->ParametersChange(str.c_str());
 }
 
-StatusCode NetworkRead(const Request& req, Response& res, void* context)
+StatusCode NetworkRead(Request* req, Response* res, void* context)
 {
 	(void)req;
 
 	CommissionerArgs* args = reinterpret_cast<CommissionerArgs*>(context);
-	char* string = new char[128];
-	args->Read(string);
+	char* string = args->Read();
 	std::vector<uint8_t> response_body(string, string + strlen(string));
-	res.setBody(response_body);
-	res.setCode(StatusCode::success_ok);
-	res.setHeader("200", "OK");
+	res->setBody(response_body);
+	res->setCode(StatusCode::success_ok);
+	res->setHeader("200", "OK");
 
 	delete string;
 	return StatusCode::success_ok;
 }
 
 //	TODO gal iseina konteksta padaryt const?
-StatusCode JoinersRead(const Request& req, Response& res, void* context)
+StatusCode JoinersRead(Request* req, Response* res, void* context)
 {
 	(void)req;
 
 	JoinerList* list = reinterpret_cast<JoinerList*>(context);
-	char* string = new char[1024];
-	list->Read(string);
+	char* string = list->Read();
 	std::vector<uint8_t> response_body(string, string + strlen(string));
-	res.setBody(response_body);
-	res.setCode(StatusCode::success_ok);
-	res.setHeader("200", "OK");
+	res->setBody(response_body);
+	res->setCode(StatusCode::success_ok);
+	res->setHeader("200", "OK");
 
 	delete string;
 	return StatusCode::success_ok;
 }
 
-StatusCode StatusRead(const Request& req, Response& res, void* context)
+StatusCode StatusRead(Request* req, Response* res, void* context)
 {
 	ReturnStatus* status = reinterpret_cast<ReturnStatus*>(context);
 	(void)req;
@@ -565,7 +560,7 @@ StatusCode StatusRead(const Request& req, Response& res, void* context)
 	return status->Get();
 }
 
-StatusCode Restart(const Request& req, Response& res, void* context)
+StatusCode Restart(Request* req, Response* res, void* context)
 {
 	(void)req;
 	(void)res;
@@ -576,22 +571,19 @@ StatusCode Restart(const Request& req, Response& res, void* context)
 	return StatusCode::success_ok;
 }
 
-static Plugin * CommCreate(PluginCore &core, Config &config)
+static Plugin * CommCreate(PluginManagerCore *core)
 {
-//	TODO po kolkas nenaudojamas
-	(void)config;
-
 	CommissionerPlugin* plugin = new CommissionerPlugin;
 	if (plugin == NULL) return NULL;
 
 //	TODO kas atsitinka su handler'iais jeigu plugin'as sunaikinamas?
-	HttpFramework& u_framework = core.getHttp();
-	u_framework.addHandler("POST", "/network", 10, NetworkWrite, reinterpret_cast<void*>(&plugin->arguments));
-	u_framework.addHandler("GET", "/network", 10, NetworkRead, reinterpret_cast<void*>(&plugin->arguments));
-	u_framework.addHandler("GET", "/status", 10, StatusRead, reinterpret_cast<void*>(&plugin->status));
-	u_framework.addHandler("PUT", "/joiners", 10, JoinersWrite, reinterpret_cast<void*>(&plugin->joiner_list));
-	u_framework.addHandler("GET", "/joiners", 10, JoinersRead, reinterpret_cast<void*>(&plugin->joiner_list));
-	u_framework.addHandler("POST", "/restart", 10, Restart, reinterpret_cast<void*>(plugin));
+	HttpFramework* u_framework = core->getHttpFramework();
+	u_framework->addHandler("POST", "/network", 10, NetworkWrite, reinterpret_cast<void*>(&plugin->arguments));
+	u_framework->addHandler("GET", "/network", 10, NetworkRead, reinterpret_cast<void*>(&plugin->arguments));
+	u_framework->addHandler("GET", "/status", 10, StatusRead, reinterpret_cast<void*>(&plugin->status));
+	u_framework->addHandler("POST", "/joiners", 10, JoinersWrite, reinterpret_cast<void*>(&plugin->joiner_list));
+	u_framework->addHandler("GET", "/joiners", 10, JoinersRead, reinterpret_cast<void*>(&plugin->joiner_list));
+	u_framework->addHandler("POST", "/restart", 10, Restart, reinterpret_cast<void*>(plugin));
 
     std::cout << __func__ << std::endl;
     return plugin;
@@ -599,15 +591,16 @@ static Plugin * CommCreate(PluginCore &core, Config &config)
 
 static void CommDestroy(Plugin* plugin)
 {
+//	TODO pabaigti
 	(void)plugin;
 }
 
 // TODO LOREM_IPSUM?
-extern "C" const plugin_api_t LOREM_IPSUM =
+extern "C" const plugin_api_t PLUGIN_API =
 {
-    .papi_version = { 3, 2, 1},
-    .papi_create = CommCreate,
-	.papi_destroy = CommDestroy,
+    .version = { 3, 2, 1},
+    .create = CommCreate,
+	.destroy = CommDestroy,
 };
 
 
