@@ -183,7 +183,7 @@ public:
 class JoinerList
 {
 private:
-	std::string joiners_string;
+	json_t* array;
 
 	std::vector<JoinerInstance> vector;
 
@@ -191,9 +191,21 @@ private:
 
 	bool updated = false;
 
-	void ComputeSteering(uint8_t* euibin)
+	void ComputeSteering(bool recalc_all)
 	{
-		ComputeSteeringData(&steering, false, euibin);
+		if(recalc_all)
+		{
+			steering.Clear();
+			for(auto& i : vector)
+			{
+				ComputeSteeringData(&steering, false, i.mJoinerEui64Bin);
+			}
+		}
+		else
+		{
+			ComputeSteeringData(&steering, false, vector.back().mJoinerEui64Bin);
+		}
+		updated = true;
 	}
 	int JsonUnpack(json_t* obj, int num, ...)
 	{
@@ -219,53 +231,122 @@ public:
 	JoinerList()
 	{
 		steering.Init(kSteeringDefaultLength);
+		array = json_array();
 	}
-	StatusCode Append(const char* string)
+	~JoinerList()
 	{
+		json_decref(array);
+	}
+	StatusCode Write(const char* string)
+	{
+//		TODO patikrinimai
+		steering.Clear();
+		vector.clear();
+		json_array_clear(array);
+
 		json_t* parsed = json_loads(string, 0, nullptr);
 		if(!parsed)
 			return StatusCode::client_error;
 
-		size_t index;
-		json_t* value;
+		bool is_array = false;
 		json_t* psk;
 		json_t* eui;
-		json_array_foreach(parsed, index, value)
+		json_t* current = parsed;
+		size_t size = 1;
+		if(json_is_array(parsed))
 		{
-			if(JsonUnpack(value, 2, "psk", &psk, "eui64", &eui))
+			size = json_array_size(parsed);
+			is_array = true;
+		}
+		for(size_t index = 0; index < size; index++)
+		{
+			if(is_array)
 			{
-				json_decref(parsed);
+				current = json_array_get(parsed, index);
+			}
+			if(JsonUnpack(current, 2, "psk", &psk, "eui64", &eui))
+			{
+				if(is_array)
+					json_array_clear(parsed);
+				else
+					json_object_clear(parsed);
+
 				return StatusCode::client_error;
 			}
-
 			vector.push_back(JoinerInstance());
-			JoinerInstance& current = vector.back();
+			JoinerInstance& current_v = vector.back();
 
-			strcpy(current.mJoinerPSKdAscii, json_string_value(psk));
-			strcpy(current.mJoinerEui64Ascii, json_string_value(eui));
-			Hex2Bytes(current.mJoinerEui64Ascii, current.mJoinerEui64Bin, kEui64Len);
-			ComputeSteering(current.mJoinerEui64Bin);
+			strcpy(current_v.mJoinerPSKdAscii, json_string_value(psk));
+			strcpy(current_v.mJoinerEui64Ascii, json_string_value(eui));
+			Hex2Bytes(current_v.mJoinerEui64Ascii, current_v.mJoinerEui64Bin, kEui64Len);
+//			ComputeSteering(current_v.mJoinerEui64Bin);
+			ComputeSteeringData(&steering, false, current_v.mJoinerEui64Bin);
+
+			json_array_append_new(array, current);
 		}
 		updated = true;
-		joiners_string.append(string);
-		json_decref(parsed);
 		return StatusCode::success_ok;
+	}
+	StatusCode Edit(const char* body, const char* eui)
+	{
+//		TODO patikrinimai
+		bool recalc_all = false;
+		size_t index;
+		json_t* value;
+
+		json_array_foreach(array, index, value)
+		{
+			if(!strcmp(json_string_value(json_object_get(value, "eui64")), eui))
+			{
+				json_array_remove(array, index);
+				vector.erase(vector.begin() + index);
+				recalc_all = true;
+				break;
+			}
+		}
+
+		json_t* obj = json_object();
+		json_object_set_new(obj, "psk", json_string(body));
+		json_object_set_new(obj, "eui64", json_string(eui));
+		json_array_append_new(array, obj);
+
+		vector.push_back(JoinerInstance());
+		JoinerInstance& current = vector.back();
+
+		strcpy(current.mJoinerPSKdAscii, body);
+		strcpy(current.mJoinerEui64Ascii, eui);
+		Hex2Bytes(current.mJoinerEui64Ascii, current.mJoinerEui64Bin, kEui64Len);
+
+		ComputeSteering(recalc_all);
+
+		return StatusCode::success_ok;
+	}
+	void Clear()
+	{
+		steering.Clear();
+		vector.clear();
+		json_array_clear(array);
+		updated = true;
 	}
 	char* Read()
 	{
-		char* str = new char[joiners_string.length() + 1];
-		return strcpy(str, joiners_string.c_str());
+		return json_dumps(array, JSON_COMPACT);
 	}
-	void Remove()
+	StatusCode Remove(const char* eui)
 	{
-//		TODO
-		/*
-		 * Argumentas: psk arba eui64
-		 * 1. Iesko per vektoriu
-		 * 2. Issisaugo indexa i remove_num vektoriu/list/...
-		 * 3. Istrina instance
-		 * 4. Notify
-		 */
+		size_t index;
+		json_t* value;
+		json_array_foreach(array, index, value)
+		{
+			if(!strcmp(json_string_value(json_object_get(value, "eui64")), eui))
+			{
+				json_array_remove(array, index);
+				vector.erase(vector.begin() + index);
+				ComputeSteering(true);
+				return StatusCode::success_ok;
+			}
+		}
+		return StatusCode::client_error_not_found;
 	}
 	SteeringData GetSteering()
 	{
@@ -373,6 +454,7 @@ void CommissionerPlugin::ThreadManager(std::future<void> futureObj)
 //	TODO scoped_ptr, shared_ptr arba kitas 'smart' pointeris kad isvengt problemu su dvigubu delete
 	Thread* Init = nullptr;
 	Thread* Run = nullptr;
+//	TODO pabaigti statusus, vietoje StatusCode reiketu grazinti kazkoki teksta kuris butu labiau descriptive
 
 	while(1)
 	{
@@ -476,7 +558,9 @@ void CommissionerPlugin::RunCommissioner(std::future<void> futureObj)
         if(joiner_list.WasListUpdated())
         {
         	commissioner->CommissionerSet(joiner_list.GetSteering());
-        	commissioner->SetJoiner(joiner_list.GetLastPskd());
+        	const char* last_pskd = joiner_list.GetLastPskd();
+        	if(last_pskd)
+        		commissioner->SetJoiner(last_pskd);
         	joiner_list.ListUpdateFinished();
         }
 
@@ -500,7 +584,61 @@ StatusCode JoinersWrite(Request* req, Response* res, void* context)
 	}
 	JoinerList* vector = reinterpret_cast<JoinerList*>(context);
 	std::string str(body.begin(), body.end());
-	return vector->Append(str.c_str());
+	return vector->Write(str.c_str());
+}
+
+StatusCode JoinersEdit(Request* req, Response* res, void* context)
+{
+//	TODO response
+	(void)res;
+
+	std::vector<uint8_t> body = req->getBody();
+	if(!body.size())
+	{
+		return StatusCode::client_error;
+	}
+	JoinerList* vector = reinterpret_cast<JoinerList*>(context);
+	std::string str_b(body.begin(), body.end());
+	std::string str_p = req->getPath();
+	return vector->Edit(str_b.c_str(), str_p.c_str() + 9);
+}
+
+//	TODO gal iseina konteksta padaryt const?
+StatusCode JoinersRead(Request* req, Response* res, void* context)
+{
+	(void)req;
+
+	JoinerList* list = reinterpret_cast<JoinerList*>(context);
+	char* string = list->Read();
+	std::vector<uint8_t> response_body(string, string + strlen(string));
+	res->setBody(response_body);
+	res->setCode(StatusCode::success_ok);
+	res->setHeader("200", "OK");
+
+	delete string;
+	return StatusCode::success_ok;
+}
+
+StatusCode JoinersClear(Request* req, Response* res, void* context)
+{
+	(void)res;
+	(void)req;
+	JoinerList* list = reinterpret_cast<JoinerList*>(context);
+
+	list->Clear();
+
+	return StatusCode::success_ok;
+}
+
+StatusCode JoinersRemove(Request* req, Response* res, void* context)
+{
+	(void)res;
+	JoinerList* list = reinterpret_cast<JoinerList*>(context);
+
+	std::string str = req->getPath();
+	list->Remove(str.c_str() + 9);
+
+	return StatusCode::success_ok;
 }
 
 StatusCode NetworkWrite(Request* req, Response* res, void* context)
@@ -524,22 +662,6 @@ StatusCode NetworkRead(Request* req, Response* res, void* context)
 
 	CommissionerArgs* args = reinterpret_cast<CommissionerArgs*>(context);
 	char* string = args->Read();
-	std::vector<uint8_t> response_body(string, string + strlen(string));
-	res->setBody(response_body);
-	res->setCode(StatusCode::success_ok);
-	res->setHeader("200", "OK");
-
-	delete string;
-	return StatusCode::success_ok;
-}
-
-//	TODO gal iseina konteksta padaryt const?
-StatusCode JoinersRead(Request* req, Response* res, void* context)
-{
-	(void)req;
-
-	JoinerList* list = reinterpret_cast<JoinerList*>(context);
-	char* string = list->Read();
 	std::vector<uint8_t> response_body(string, string + strlen(string));
 	res->setBody(response_body);
 	res->setCode(StatusCode::success_ok);
@@ -576,14 +698,17 @@ static Plugin * CommCreate(PluginManagerCore *core)
 	CommissionerPlugin* plugin = new CommissionerPlugin;
 	if (plugin == NULL) return NULL;
 
-//	TODO kas atsitinka su handler'iais jeigu plugin'as sunaikinamas?
 	HttpFramework* u_framework = core->getHttpFramework();
 	u_framework->addHandler("POST", "/network", 10, NetworkWrite, reinterpret_cast<void*>(&plugin->arguments));
 	u_framework->addHandler("GET", "/network", 10, NetworkRead, reinterpret_cast<void*>(&plugin->arguments));
 	u_framework->addHandler("GET", "/status", 10, StatusRead, reinterpret_cast<void*>(&plugin->status));
-	u_framework->addHandler("POST", "/joiners", 10, JoinersWrite, reinterpret_cast<void*>(&plugin->joiner_list));
-	u_framework->addHandler("GET", "/joiners", 10, JoinersRead, reinterpret_cast<void*>(&plugin->joiner_list));
 	u_framework->addHandler("POST", "/restart", 10, Restart, reinterpret_cast<void*>(plugin));
+
+	u_framework->addHandler("POST", "/joiners", 9, JoinersWrite, reinterpret_cast<void*>(&plugin->joiner_list));
+	u_framework->addHandler("PUT", "/joiners/*", 10, JoinersEdit, reinterpret_cast<void*>(&plugin->joiner_list));
+	u_framework->addHandler("DELETE", "/joiners", 9, JoinersClear, reinterpret_cast<void*>(&plugin->joiner_list));
+	u_framework->addHandler("DELETE", "/joiners/*", 10, JoinersRemove, reinterpret_cast<void*>(&plugin->joiner_list));
+	u_framework->addHandler("GET", "/joiners", 10, JoinersRead, reinterpret_cast<void*>(&plugin->joiner_list));
 
     std::cout << __func__ << std::endl;
     return plugin;
@@ -591,11 +716,11 @@ static Plugin * CommCreate(PluginManagerCore *core)
 
 static void CommDestroy(Plugin* plugin)
 {
-//	TODO pabaigti
-	(void)plugin;
+	CommissionerPlugin* comm_plugin = reinterpret_cast<CommissionerPlugin*>(plugin);
+	delete comm_plugin;
+//	TODO sunaikinti handlerius
 }
 
-// TODO LOREM_IPSUM?
 extern "C" const plugin_api_t PLUGIN_API =
 {
     .version = { 3, 2, 1},
