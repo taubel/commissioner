@@ -3,7 +3,7 @@ CXX = g++
 CXXFLAGS = -fPIC -g -O0 -Wall -Wshadow -Wextra -std=c++11 -pthread -DHAVE_CONFIG_H -DMBEDTLS_CONFIG_FILE='<config-thread.h>' -Wl,-rpath,/usr/local/lib
 CFLAGS = $(CXXFLAGS)
 LinkFlags = -fPIC -g -O0 -Wall -Wshadow -Wextra -std=c++11 -pthread -Wl,-rpath,/usr/local/lib
-IncludePaths = -I. -I./include -Ilib/wakaama/http-framework/include/ -Ilib/wakaama/plugin-manager/include/ -Ilib/borderrouter/src/commissioner/ -Ilib/borderrouter/src/ -Ilib/borderrouter/third_party/mbedtls/repo/configs/ -Ilib/borderrouter/third_party/mbedtls/repo/include/ -Ilib/borderrouter/src/common/ -Ilib/wakaama/lwm2m-framework/include/
+IncludePaths = -I. -I./inc -Ilib/wakaama/http-framework/include/ -Ilib/wakaama/plugin-manager/include/ -Ilib/borderrouter/src/commissioner/ -Ilib/borderrouter/src/ -Ilib/borderrouter/third_party/mbedtls/repo/configs/ -Ilib/borderrouter/third_party/mbedtls/repo/include/ -Ilib/borderrouter/src/common/ -Ilib/wakaama/lwm2m-framework/include/
 Libs = -ldl -lpthread -lulfius
 LibPath = -L./Debug
 SrcDir = src
@@ -20,7 +20,7 @@ MainObjects = $(patsubst %.cpp,%.o,$(MainSources))
 UlfiusSources = ./lib/wakaama/http-framework/src/ulfius_http_framework.cpp ./lib/wakaama/http-framework/src/incoming_ulfius_request.cpp ./lib/wakaama/http-framework/src/outgoing_ulfius_response.cpp
 UlfiusObjects = $(patsubst %.cpp,%.o,$(UlfiusSources))
 
-PluginSources = $(SrcDir)/comm.cpp $(CommSrcDir)/addr_utils.cpp $(CommSrcDir)/commissioner.cpp $(CommSrcDir)/joiner_session.cpp $(CommSrcDir)/commissioner_argcargv.cpp $(CommSrcDir)/device_hash.cpp
+PluginSources = $(SrcDir)/comm.cpp $(CommSrcDir)/addr_utils.cpp $(CommSrcDir)/commissioner.cpp $(CommSrcDir)/joiner_session.cpp $(CommSrcDir)/commissioner_argcargv.cpp $(CommSrcDir)/device_hash.cpp $(SrcDir)/comm_rest_api.cpp
 PluginObjects = $(patsubst %.cpp,%.o,$(PluginSources))
 
 ConstLibs = $(ConstLibDir)/libmbedtls.a $(ConstLibDir)/libotbr-agent.a $(ConstLibDir)/libutils.a $(ConstLibDir)/libcoap-1.a $(ConstLibDir)/libotbr-web.a
