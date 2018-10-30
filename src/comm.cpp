@@ -21,8 +21,6 @@ void CommissionerPlugin::ManagerThread(std::future<void> futureObj)
 	std::unique_ptr<Thread> Init;
 	std::unique_ptr<Commissioner> Comm;
 
-//	TODO pabaigti statusus, vietoje StatusCode reiketu grazinti kazkoki teksta kuris butu labiau descriptive
-
 	while(1)
 	{
 		if(arguments.mParametersChanged)
@@ -31,6 +29,7 @@ void CommissionerPlugin::ManagerThread(std::future<void> futureObj)
 			Comm.reset(new Commissioner(arguments.mPSKcBin, arguments.mSendCommKATxRate));
 			commissioner = Comm.get();
 			Init.reset(new Thread(&CommissionerPlugin::CommissionerThread, this, &cv));
+			status.Set("Initializing commissioner");
 
 //			TODO spurious wakeup
 //			TODO InitCommissioner gali iskviesti notify_all pries ThreadManager pasiekiant wait_for. Galima pagalba aprasyta std::condition_variable reference puslapy
@@ -39,16 +38,17 @@ void CommissionerPlugin::ManagerThread(std::future<void> futureObj)
 			if(ret == std::cv_status::timeout)
 			{
 				Init.reset(nullptr);
-				status.Set(StatusCode::server_error_internal_server_error);
+				status.Set("Commissioner timeout");
 				arguments.mParametersChanged = false;
 				goto cont;
 			}
-			status.Set(StatusCode::success_ok);
+			status.Set("Commissioner running");
 			arguments.mParametersChanged = false;
 		}
 cont:
 		if(futureObj.wait_for(std::chrono::milliseconds(0)) == std::future_status::ready)
 		{
+			status.Set("Commissioner shutdown");
 			Init.reset(nullptr);
 			Comm.reset(nullptr);
 			return;
@@ -79,7 +79,7 @@ void CommissionerPlugin::CommissionerThread(std::future<void> futureObj, std::co
     }
     else
     {
-    	status.Set(StatusCode::server_error_internal_server_error);
+    	status.Set("Commissioner validation error");
 		goto exit;
     }
 	cv->notify_all();
@@ -103,7 +103,7 @@ void CommissionerPlugin::CommissionerThread(std::future<void> futureObj, std::co
         if (rval < 0)
         {
             otbrLog(OTBR_LOG_ERR, "select() failed", strerror(errno));
-            status.Set(StatusCode::server_error_internal_server_error);
+        	status.Set("Commissioner receive error");
             break;
         }
         commissioner->Process(readFdSet, writeFdSet, errorFdSet);

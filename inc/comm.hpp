@@ -61,7 +61,7 @@ public:
 
     JoinerList joiner_list;
     CommissionerArgs arguments;
-    ReturnStatus status;
+    ReturnStatus<std::string> status;
 
 private:
 

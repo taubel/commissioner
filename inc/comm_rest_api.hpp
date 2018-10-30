@@ -20,12 +20,13 @@ std::unique_ptr<T> make_unique(Args&&... args)
     return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
 }
 
+template <typename T>
 class ReturnStatus
 {
 private:
-	std::unique_ptr<std::promise<StatusCode>> promise;
-	std::unique_ptr<std::future<StatusCode>> future;
-	StatusCode old_status = StatusCode::unknown;
+	std::unique_ptr<std::promise<T>> promise;
+	std::unique_ptr<std::future<T>> future;
+	T old_status;
 //	TODO mutex?
 //	std::mutex mutex;
 
@@ -38,8 +39,8 @@ private:
 	{
 		promise.reset(nullptr);
 		future.reset(nullptr);
-		promise = make_unique<std::promise<StatusCode>>();
-		future = make_unique<std::future<StatusCode>>(promise->get_future());
+		promise = make_unique<std::promise<T>>();
+		future = make_unique<std::future<T>>(promise->get_future());
 	}
 
 public:
@@ -47,11 +48,11 @@ public:
 	{
 		Reset();
 	}
-	StatusCode Get()
+	T Get()
 	{
 		if(IsReady())
 		{
-			StatusCode ret = future->get();
+			T ret = future->get();
 			Reset();
 			return ret;
 		}
@@ -60,7 +61,7 @@ public:
 			return old_status;
 		}
 	}
-	void Set(StatusCode val)
+	void Set(T val)
 	{
 		Reset();
 		promise->set_value(val);

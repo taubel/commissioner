@@ -17,7 +17,7 @@ CommSrcDir = $(LibDir)/borderrouter/src/commissioner
 MainSources = $(MainSrcDir)/main.cpp ./lib/wakaama/plugin-manager/src/basic_plugin_manager.cpp ./lib/wakaama/plugin-manager/src/basic_plugin_manager_core.cpp ./lib/wakaama/lwm2m-framework/src/basic_lwm2m_framework.cpp
 MainObjects = $(patsubst %.cpp,%.o,$(MainSources))
 
-UlfiusSources = ./lib/wakaama/http-framework/src/ulfius_http_framework.cpp ./lib/wakaama/http-framework/src/incoming_ulfius_request.cpp ./lib/wakaama/http-framework/src/outgoing_ulfius_response.cpp
+UlfiusSources = ./lib/wakaama/http-framework/src/ulfius_http_framework.cpp ./lib/wakaama/http-framework/src/ulfius_request.cpp ./lib/wakaama/http-framework/src/ulfius_response.cpp
 UlfiusObjects = $(patsubst %.cpp,%.o,$(UlfiusSources))
 
 PluginSources = $(SrcDir)/comm.cpp $(CommSrcDir)/addr_utils.cpp $(CommSrcDir)/commissioner.cpp $(CommSrcDir)/joiner_session.cpp $(CommSrcDir)/commissioner_argcargv.cpp $(CommSrcDir)/device_hash.cpp $(SrcDir)/comm_rest_api.cpp

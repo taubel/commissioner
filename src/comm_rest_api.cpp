@@ -112,13 +112,15 @@ StatusCode NetworkRead(Request* req, Response* res, void* context)
 
 StatusCode StatusRead(Request* req, Response* res, void* context)
 {
-	ReturnStatus* status = reinterpret_cast<ReturnStatus*>(context);
+	ReturnStatus<std::string>* status = reinterpret_cast<ReturnStatus<std::string>*>(context);
 	(void)req;
-	(void)res;
 
-//	TODO ar reikalingas laukimas? Po kolkas jei statusas nepasikeite, returnina sena reiksme
-//	TODO statusas turetu buti ne 'StatusCode' tipo, reiksme turi buti irasoma i body
-	return status->Get();
+	std::string str = status->Get();
+	std::vector<uint8_t> vec(str.begin(), str.end());
+	res->setBody(vec);
+	res->setCode(StatusCode::success_ok);
+	res->setHeader("200", "OK");
+	return StatusCode::success_ok;
 }
 
 StatusCode Restart(Request* req, Response* res, void* context)
