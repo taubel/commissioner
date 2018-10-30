@@ -56,6 +56,8 @@ public:
     void RestartCommissioner()
     {
         std::cout << __func__ << std::endl;
+        arguments.Clear();
+        joiner_list.Clear();
         Mngr.reset(new Thread(&CommissionerPlugin::ManagerThread, this));
     }
 

@@ -83,6 +83,9 @@ public:
 	}
 	~JoinerList()
 	{
+		steering.Clear();
+		vector.clear();
+		json_array_clear(array);
 		json_decref(array);
 	}
 	StatusCode Write(const char* string)

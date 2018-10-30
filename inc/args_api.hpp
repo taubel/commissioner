@@ -34,6 +34,10 @@ private:
     }
 
 public:
+    void Clear()
+    {
+    	parameters_string.clear();
+    }
     char* Read()
     {
 		char* str = new char[parameters_string.length() + 1];
