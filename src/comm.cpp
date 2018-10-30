@@ -18,48 +18,44 @@ void CommissionerPlugin::ThreadManager(std::future<void> futureObj)
 	std::unique_lock<std::mutex> lk(cv_m);
 	std::cv_status ret;
 
-//	TODO scoped_ptr, shared_ptr arba kitas 'smart' pointeris kad isvengt problemu su dvigubu delete
-	Thread* Init = nullptr;
-	Thread* Run = nullptr;
+	std::unique_ptr<Thread> Init;
+	std::unique_ptr<Thread> Run;
+	std::unique_ptr<Commissioner> Comm;
+
 //	TODO pabaigti statusus, vietoje StatusCode reiketu grazinti kazkoki teksta kuris butu labiau descriptive
 
 	while(1)
 	{
 		if(arguments.mParametersChanged)
 		{
-			delete Run;
-			Run = nullptr;
-			delete commissioner;
-			commissioner = nullptr;
+			Run.reset(nullptr);
+			Comm.reset(nullptr);
 
-			commissioner = new Commissioner(arguments.mPSKcBin, arguments.mSendCommKATxRate);
+			Comm.reset(new Commissioner(arguments.mPSKcBin, arguments.mSendCommKATxRate));
+			commissioner = Comm.get();
+			Init.reset(new Thread(&CommissionerPlugin::InitCommissioner, this, &cv));
 
-			Init = new Thread(&CommissionerPlugin::InitCommissioner, this, &cv);
 //			TODO spurious wakeup
 //			TODO InitCommissioner gali iskviesti notify_all pries ThreadManager pasiekiant wait_for. Galima pagalba aprasyta std::condition_variable reference puslapy
 			ret = cv.wait_for(lk, std::chrono::seconds(2));
 			cv_m.unlock(); //	TODO:	issiaiskinti kas cia vyksta
-			delete Init;
-			Init = nullptr;
+			Init.reset(nullptr);
 			if(ret == std::cv_status::timeout)
 			{
 				status.Set(StatusCode::server_error_internal_server_error);
 				arguments.mParametersChanged = false;
 				goto cont;
 			}
-			Run = new Thread(&CommissionerPlugin::RunCommissioner, this);
+			Run.reset(new Thread(&CommissionerPlugin::RunCommissioner, this));
 			status.Set(StatusCode::success_ok);
 			arguments.mParametersChanged = false;
 		}
 cont:
 		if(futureObj.wait_for(std::chrono::milliseconds(0)) == std::future_status::ready)
 		{
-			delete Init;
-			Init = nullptr;
-			delete Run;
-			Run = nullptr;
-			delete commissioner;
-			commissioner = nullptr;
+			Init.reset(nullptr);
+			Run.reset(nullptr);
+			Comm.reset(nullptr);
 			return;
 		}
 	}
@@ -173,7 +169,4 @@ extern "C" const plugin_api_t PLUGIN_API =
     .create = CommCreate,
 	.destroy = CommDestroy,
 };
-
-
-
 
