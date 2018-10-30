@@ -11,7 +11,7 @@
 using namespace ot;
 using namespace BorderRouter;
 
-void CommissionerPlugin::ThreadManager(std::future<void> futureObj)
+void CommissionerPlugin::ManagerThread(std::future<void> futureObj)
 {
 	std::condition_variable cv;
 	std::mutex cv_m;
@@ -19,7 +19,6 @@ void CommissionerPlugin::ThreadManager(std::future<void> futureObj)
 	std::cv_status ret;
 
 	std::unique_ptr<Thread> Init;
-	std::unique_ptr<Thread> Run;
 	std::unique_ptr<Commissioner> Comm;
 
 //	TODO pabaigti statusus, vietoje StatusCode reiketu grazinti kazkoki teksta kuris butu labiau descriptive
@@ -28,25 +27,22 @@ void CommissionerPlugin::ThreadManager(std::future<void> futureObj)
 	{
 		if(arguments.mParametersChanged)
 		{
-			Run.reset(nullptr);
-			Comm.reset(nullptr);
-
+			Init.reset(nullptr);
 			Comm.reset(new Commissioner(arguments.mPSKcBin, arguments.mSendCommKATxRate));
 			commissioner = Comm.get();
-			Init.reset(new Thread(&CommissionerPlugin::InitCommissioner, this, &cv));
+			Init.reset(new Thread(&CommissionerPlugin::CommissionerThread, this, &cv));
 
 //			TODO spurious wakeup
 //			TODO InitCommissioner gali iskviesti notify_all pries ThreadManager pasiekiant wait_for. Galima pagalba aprasyta std::condition_variable reference puslapy
 			ret = cv.wait_for(lk, std::chrono::seconds(2));
 			cv_m.unlock(); //	TODO:	issiaiskinti kas cia vyksta
-			Init.reset(nullptr);
 			if(ret == std::cv_status::timeout)
 			{
+				Init.reset(nullptr);
 				status.Set(StatusCode::server_error_internal_server_error);
 				arguments.mParametersChanged = false;
 				goto cont;
 			}
-			Run.reset(new Thread(&CommissionerPlugin::RunCommissioner, this));
 			status.Set(StatusCode::success_ok);
 			arguments.mParametersChanged = false;
 		}
@@ -54,16 +50,15 @@ cont:
 		if(futureObj.wait_for(std::chrono::milliseconds(0)) == std::future_status::ready)
 		{
 			Init.reset(nullptr);
-			Run.reset(nullptr);
 			Comm.reset(nullptr);
 			return;
 		}
 	}
 }
 
-void CommissionerPlugin::InitCommissioner(std::future<void> futureObj, std::condition_variable* cv)
+void CommissionerPlugin::CommissionerThread(std::future<void> futureObj, std::condition_variable* cv)
 {
-	std::cout << "Initializing commissioner" << std::endl;
+	std::cout << "CommissionerThread" << std::endl;
     int ret;
 
     srand(time(0));
@@ -85,16 +80,11 @@ void CommissionerPlugin::InitCommissioner(std::future<void> futureObj, std::cond
     else
     {
     	status.Set(StatusCode::server_error_internal_server_error);
+		goto exit;
     }
-exit:
 	cv->notify_all();
-	std::cout << "~Initializing commissioner" << std::endl;
-	return;
-}
 
-void CommissionerPlugin::RunCommissioner(std::future<void> futureObj)
-{
-	std::cout << "Running commissioner thread" << std::endl;
+	std::cout << "Running commissioner" << std::endl;
     while (commissioner->IsValid())
     {
         int            maxFd   = -1;
@@ -131,7 +121,8 @@ void CommissionerPlugin::RunCommissioner(std::future<void> futureObj)
     		goto exit;
     }
 exit:
-	std::cout << __func__ << " return" << std::endl;
+	cv->notify_all();
+	std::cout << "~CommissionerThread" << std::endl;
 	return;
 }
 

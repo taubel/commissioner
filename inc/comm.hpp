@@ -46,20 +46,17 @@ public:
 	CommissionerPlugin()
     {
         std::cout << __func__ << " " << this << std::endl;
-        Mngr = new Thread(&CommissionerPlugin::ThreadManager, this);
-//    	TODO ar nereikia detach?
+        Mngr.reset(new Thread(&CommissionerPlugin::ManagerThread, this));
     }
     ~CommissionerPlugin()
     {
         std::cout << __func__ << " " << this << std::endl;
-        delete Mngr;
+        Mngr.reset(nullptr);
     }
     void RestartCommissioner()
     {
         std::cout << __func__ << std::endl;
-    	delete Mngr;
-    	Mngr = nullptr;
-    	Mngr = new Thread(&CommissionerPlugin::ThreadManager, this);
+        Mngr.reset(new Thread(&CommissionerPlugin::ManagerThread, this));
     }
 
     JoinerList joiner_list;
@@ -68,12 +65,11 @@ public:
 
 private:
 
-    void InitCommissioner(std::future<void> futureObj, std::condition_variable* cv);
-    void RunCommissioner(std::future<void> futureObj);
-	void ThreadManager(std::future<void> futureObj);
+    void CommissionerThread(std::future<void> futureObj, std::condition_variable* cv);
+	void ManagerThread(std::future<void> futureObj);
 
     Commissioner* commissioner = nullptr;
-    Thread* Mngr = nullptr;
+	std::unique_ptr<Thread> Mngr;
 };
 
 } // namespace BorderRouter
