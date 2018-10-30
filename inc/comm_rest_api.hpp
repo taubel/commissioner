@@ -83,8 +83,6 @@ StatusCode NetworkWrite(Request* req, Response* res, void* context);
 
 StatusCode NetworkRead(Request* req, Response* res, void* context);
 
-StatusCode StatusRead(Request* req, Response* res, void* context);
-
-StatusCode Restart(Request* req, Response* res, void* context);
+StatusCode NetworkDelete(Request* req, Response* res, void* context);
 
 #endif /* INC_COMM_REST_API_HPP_ */

@@ -90,7 +90,6 @@ public:
 	}
 	StatusCode Write(const char* string)
 	{
-//		TODO patikrinimai
 		steering.Clear();
 		vector.clear();
 		json_array_clear(array);
@@ -122,6 +121,7 @@ public:
 				else
 					json_object_clear(parsed);
 
+				json_decref(parsed);
 				return StatusCode::client_error;
 			}
 			vector.push_back(JoinerInstance());
@@ -130,7 +130,6 @@ public:
 			strcpy(current_v.mJoinerPSKdAscii, json_string_value(psk));
 			strcpy(current_v.mJoinerEui64Ascii, json_string_value(eui));
 			Utils::Hex2Bytes(current_v.mJoinerEui64Ascii, current_v.mJoinerEui64Bin, kEui64Len);
-//			ComputeSteering(current_v.mJoinerEui64Bin);
 			ComputeSteeringData(&steering, false, current_v.mJoinerEui64Bin);
 
 			json_array_append_new(array, current);
@@ -140,7 +139,9 @@ public:
 	}
 	StatusCode Edit(const char* body, const char* eui)
 	{
-//		TODO patikrinimai
+		if(strlen(eui) != kEui64Len * 2)
+			return StatusCode::client_error;
+
 		bool recalc_all = false;
 		size_t index;
 		json_t* value;

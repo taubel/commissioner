@@ -42,7 +42,6 @@ StatusCode JoinersEdit(Request* req, Response* res, void* context)
 	return vector->Edit(str_b.c_str(), str_p.c_str() + 9);
 }
 
-//	TODO gal iseina konteksta padaryt const?
 StatusCode JoinersRead(Request* req, Response* res, void* context)
 {
 	(void)req;
@@ -99,38 +98,28 @@ StatusCode NetworkRead(Request* req, Response* res, void* context)
 {
 	(void)req;
 
-	CommissionerArgs* args = reinterpret_cast<CommissionerArgs*>(context);
-	char* string = args->Read();
-	std::vector<uint8_t> response_body(string, string + strlen(string));
+	CommissionerPlugin* plugin = reinterpret_cast<CommissionerPlugin*>(context);
+	std::string parameter_string = plugin->arguments.Read();
+	std::string status_string = plugin->status.Get();
+	std::string return_string = "Parameters: " + parameter_string + ", Commissioner status: " + status_string;
+	std::vector<uint8_t> response_body(return_string.begin(), return_string.end());
 	res->setBody(response_body);
 	res->setCode(StatusCode::success_ok);
 	res->setHeader("200", "OK");
 
-	delete string;
 	return StatusCode::success_ok;
 }
 
-StatusCode StatusRead(Request* req, Response* res, void* context)
-{
-	ReturnStatus<std::string>* status = reinterpret_cast<ReturnStatus<std::string>*>(context);
-	(void)req;
-
-	std::string str = status->Get();
-	std::vector<uint8_t> vec(str.begin(), str.end());
-	res->setBody(vec);
-	res->setCode(StatusCode::success_ok);
-	res->setHeader("200", "OK");
-	return StatusCode::success_ok;
-}
-
-StatusCode Restart(Request* req, Response* res, void* context)
+StatusCode NetworkDelete(Request* req, Response* res, void* context)
 {
 	(void)req;
 	(void)res;
 
 	CommissionerPlugin* plugin = reinterpret_cast<CommissionerPlugin*>(context);
-	plugin->RestartCommissioner();
+	plugin->ResetCommissioner();
 
 	return StatusCode::success_ok;
 }
+
+
 

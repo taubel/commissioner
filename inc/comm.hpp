@@ -46,6 +46,7 @@ public:
 	CommissionerPlugin()
     {
         std::cout << __func__ << " " << this << std::endl;
+        status.Set("Disabled");
         Mngr.reset(new Thread(&CommissionerPlugin::ManagerThread, this));
     }
     ~CommissionerPlugin()
@@ -53,7 +54,7 @@ public:
         std::cout << __func__ << " " << this << std::endl;
         Mngr.reset(nullptr);
     }
-    void RestartCommissioner()
+    void ResetCommissioner()
     {
         std::cout << __func__ << std::endl;
         arguments.Clear();

@@ -20,7 +20,7 @@ namespace BorderRouter {
 class CommissionerArgs
 {
 private:
-	std::string parameters_string;
+	json_t* json_obj;
 
     void CopyString(json_t* obj, char* to, int* error)
     {
@@ -34,20 +34,28 @@ private:
     }
 
 public:
+    CommissionerArgs()
+	{
+    	json_obj = json_object();
+	}
+    ~CommissionerArgs()
+	{
+    	json_object_clear(json_obj);
+    	json_decref(json_obj);
+	}
     void Clear()
     {
-    	parameters_string.clear();
+    	json_object_clear(json_obj);
     }
     char* Read()
     {
-		char* str = new char[parameters_string.length() + 1];
-		return strcpy(str, parameters_string.c_str());
+		return json_dumps(json_obj, JSON_COMPACT);
     }
     StatusCode ParametersChange(const char* string)
     {
     	//	TODO netik stringai
 		json_error_t json_error;
-		json_t* json_parsed = NULL;
+		json_t* json_parsed;
 		json_parsed = json_loads(string, 0, &json_error);
 
 		if(!json_parsed)
@@ -86,7 +94,7 @@ public:
 
 		mParametersChanged = true;
 
-		parameters_string.assign(string);
+		json_object_update(json_obj, json_parsed);
 		json_decref(json_parsed);
 		return StatusCode::success_ok;
     }

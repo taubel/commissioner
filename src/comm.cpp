@@ -133,9 +133,8 @@ static Plugin * CommCreate(PluginManagerCore *core)
 
 	HttpFramework* u_framework = core->getHttpFramework();
 	u_framework->addHandler("POST", "/network", 10, NetworkWrite, reinterpret_cast<void*>(&plugin->arguments));
-	u_framework->addHandler("GET", "/network", 10, NetworkRead, reinterpret_cast<void*>(&plugin->arguments));
-	u_framework->addHandler("GET", "/status", 10, StatusRead, reinterpret_cast<void*>(&plugin->status));
-	u_framework->addHandler("POST", "/restart", 10, Restart, reinterpret_cast<void*>(plugin));
+	u_framework->addHandler("GET", "/network", 10, NetworkRead, reinterpret_cast<void*>(plugin));
+	u_framework->addHandler("DELETE", "/network", 10, NetworkDelete, reinterpret_cast<void*>(plugin));
 
 	u_framework->addHandler("POST", "/joiners", 9, JoinersWrite, reinterpret_cast<void*>(&plugin->joiner_list));
 	u_framework->addHandler("PUT", "/joiners/*", 10, JoinersEdit, reinterpret_cast<void*>(&plugin->joiner_list));
