@@ -1,164 +1,166 @@
-**Rest API overview**
+# Rest API overview
 
-*Url*
+## Network Write
 
-/network
+* **Url**
 
-*Method*
+	/network
 
-POST
+* **Method**
 
-*Data*
+	POST
 
-String containing parameters needed for commissioner, formated in JSON. Example:
+* **Data**
 
-	'{"network_name" : "test_name","xpanid" : "DEAD1111DEAD2222","agent_pass" : "test","agent_addr" : "127.0.0.1","agent_port" : "49191"}'
+	String containing parameters needed for commissioner, formated in JSON. Example:
 
-*Description*
+		'{"network_name" : "test_name","xpanid" : "DEAD1111DEAD2222","agent_pass" : "test","agent_addr" : "127.0.0.1","agent_port" : "49191"}'
 
-Initializes and runs commissioner.
+* **Description**
 
+	Initializes and runs commissioner.
 
+## Network Read
 
-*Url*
+* **Url**
 
-/network
+	/network
 
-*Method*
+* **Method**
 
-GET
+	GET
 
-*Response*
+* **Response**
 
-JSON formated string. Example:
+	JSON formated string. Example:
 
-	'{"network_name" : "test_name","xpanid" : "DEAD1111DEAD2222","agent_pass" : "test","agent_addr" : "127.0.0.1","agent_port" : "49191"}'
+		'{"network_name" : "test_name","xpanid" : "DEAD1111DEAD2222","agent_pass" : "test","agent_addr" : "127.0.0.1","agent_port" : "49191"}'
 
-*Description*
+* **Description**
 
-Returns current commissioner configuration
+	Returns current commissioner configuration
 
+## Status Read
 
+* **Url**
 
-*Url*
+	/status
 
-/status
+* **Method**
 
-*Method*
+	GET
 
-GET
+* **Response**
 
-*Response*
+	Status string. Example:
 
-Status string. Example:
+		'Initializing commissioner', 'Commissioner timeout'...
 
-	'Initializing commissioner', 'Commissioner timeout'...
+* **Description**
 
-*Description*
+	Returns string that describes the current state of the plugin
 
-Returns string that describes the current state of the plugin
+## Joiners Write
 
+* **Url**
 
+	/joiners
 
-*Url*
+* **Method**
 
-/joiners
+	POST
 
-*Method*
+* **Data**
 
-POST
+	String containing joiner devices psk and eui64 pairs, formated in JSON. Example:
 
-*Data*
+		'[{"psk":"JNRTST1","eui64":"18b4300000000002"},{"psk":"JNRTST2","eui64":"18b4300000000003"},{"psk":"JNRTST3","eui64":"18b4300000000004"}]'
 
-String containing joiner devices psk and eui64 pairs, formated in JSON. Example:
+* **Description**
 
-	'[{"psk":"JNRTST1","eui64":"18b4300000000002"},{"psk":"JNRTST2","eui64":"18b4300000000003"},{"psk":"JNRTST3","eui64":"18b4300000000004"}]'
+	Overwrites existing joiner device list
 
-*Description*
+## Joiners Edit
 
-Overwrites existing joiner device list
+* **Url**
 
+	/joiners/[eui64]
 
+* **Method**
 
-*Url*
+	PUT
 
-/joiners/[eui64]
+* **Data**
 
-*Method*
+	String containing psk for the joiner device with eui64 specified in the URL. Example:
 
-PUT
+		'JNRTST1'
 
-*Data*
+* **Description**
 
-String containing psk for the joiner device with eui64 specified in the URL. Example:
+	Edits existing joiner or adds new to the list
 
-	'JNRTST1'
+## Joiners Read
 
-*Description*
+* **Url**
 
-Edits existing joiner or adds new to the list
+	/joiners
 
+* **Method**
 
+	GET
 
-*Url*
+* **Response**
 
-/joiners
+	JSON formated string. Example:
 
-*Method*
+		'[{"psk":"JNRTST1","eui64":"18b4300000000002"},{"psk":"JNRTST2","eui64":"18b4300000000003"},{"psk":"JNRTST3","eui64":"18b4300000000004"}]'
 
-GET
+* **Description**
 
-*Response*
+	Returns string containing current list of joiners
 
-JSON formated string. Example:
+## Joiners Clear
 
-	'[{"psk":"JNRTST1","eui64":"18b4300000000002"},{"psk":"JNRTST2","eui64":"18b4300000000003"},{"psk":"JNRTST3","eui64":"18b4300000000004"}]'
+* **Url**
 
-*Description*
+	/joiners
 
-Returns string containing current list of joiners
+* **Method**
 
+	DELETE
 
+* **Description**
 
-*Url*
+	Clears joiners list
 
-/joiners
+## Joiners Remove
 
-*Method*
+* **Url**
 
-DELETE
+	/joiners/[eui64]
 
-*Description*
+* **Method**
 
-Clears joiners list
+	DELETE
 
+* **Description**
 
+	Removes specified joiner from list
 
-*Url*
+## Commissioner Restart
 
-/joiners/[eui64]
+* **Url**
 
-*Method*
+	/restart
 
-DELETE
+* **Method**
 
-*Description*
+	POST
 
-Removes specified joiner from list
+* **Description**
 
-
-
-*Url*
-
-/restart
-
-*Method*
-
-POST
-
-*Description*
-
-Resets the commissioner. Deletes configuration and joiner list
+	Resets the commissioner. Deletes configuration and joiner list
 
 
 
