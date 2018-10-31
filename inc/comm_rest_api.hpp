@@ -1,8 +1,25 @@
 /*
- * comm_rest_api.hpp
+ * MIT License
  *
- *  Created on: Oct 30, 2018
- *      Author: tautvydas
+ * Copyright (c) 2018 8devices
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 #ifndef INC_COMM_REST_API_HPP_
@@ -27,13 +44,11 @@ private:
 	std::unique_ptr<std::promise<T>> promise;
 	std::unique_ptr<std::future<T>> future;
 	T old_status;
-//	TODO mutex?
-//	std::mutex mutex;
+	std::mutex mutex;
 
 	bool IsReady()
 	{
-		std::future_status status = future->wait_for(std::chrono::milliseconds(0));
-		return (status == std::future_status::ready);
+		return (future->wait_for(std::chrono::milliseconds(0)) == std::future_status::ready);
 	}
 	void Reset()
 	{
@@ -52,8 +67,10 @@ public:
 	{
 		if(IsReady())
 		{
+			mutex.lock();
 			T ret = future->get();
 			Reset();
+			mutex.unlock();
 			return ret;
 		}
 		else
@@ -63,9 +80,11 @@ public:
 	}
 	void Set(T val)
 	{
+		mutex.lock();
 		Reset();
 		promise->set_value(val);
 		old_status = val;
+		mutex.unlock();
 	}
 };
 

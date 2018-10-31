@@ -601,7 +601,6 @@ int ParseArgs(int aArgc, char **aArgv, CommissionerArgs* user_args)
     		return 1;
     }
 
-//    memcpy(user_args, &args.args, sizeof(CommissionerArgs));
     return 0;
 }
 

@@ -213,10 +213,6 @@ private:
     uint16_t mCommissionerSessionId;
 
     JoinerSession *mJoinerSession;
-//    TODO: issiaiskint kodel geriausiai veikia su pointeriais (slicing?, copy constructor?)
-//    TODO: unique_ptr?
-//    TODO: naudot vektoriu kaip klase
-//    std::vector<JoinerSession*> vJoinerSession;
     int            mJoinerSessionClientFd;
     uint16_t       mJoinerUdpPort;
     uint8_t        mJoinerIid[8];

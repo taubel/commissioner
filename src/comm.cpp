@@ -1,10 +1,26 @@
 /*
- * comm.cpp
+ * MIT License
  *
- *  Created on: Oct 1, 2018
- *      Author: tautvydas
+ * Copyright (c) 2018 8devices
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
-//	TODO autorius, licenzija...
 
 #include "comm.hpp"
 
@@ -31,10 +47,8 @@ void CommissionerPlugin::ManagerThread(std::future<void> futureObj)
 			Init.reset(new Thread(&CommissionerPlugin::CommissionerThread, this, &cv));
 			status.Set("Petitioning");
 
-//			TODO spurious wakeup
-//			TODO InitCommissioner gali iskviesti notify_all pries ThreadManager pasiekiant wait_for. Galima pagalba aprasyta std::condition_variable reference puslapy
 			ret = cv.wait_for(lk, std::chrono::seconds(2));
-			cv_m.unlock(); //	TODO:	issiaiskinti kas cia vyksta
+			cv_m.unlock();
 			if(ret == std::cv_status::timeout)
 			{
 				Init.reset(nullptr);
@@ -42,7 +56,6 @@ void CommissionerPlugin::ManagerThread(std::future<void> futureObj)
 				arguments.mParametersChanged = false;
 				goto cont;
 			}
-			status.Set("Active");
 			arguments.mParametersChanged = false;
 		}
 cont:
@@ -84,6 +97,7 @@ void CommissionerPlugin::CommissionerThread(std::future<void> futureObj, std::co
     }
 	cv->notify_all();
 
+	status.Set("Active");
 	std::cout << "Running commissioner" << std::endl;
     while (commissioner->IsValid())
     {
@@ -149,8 +163,8 @@ static Plugin * CommCreate(PluginManagerCore *core)
 static void CommDestroy(Plugin* plugin)
 {
 	CommissionerPlugin* comm_plugin = reinterpret_cast<CommissionerPlugin*>(plugin);
+	//	TODO destroy http handlers
 	delete comm_plugin;
-//	TODO sunaikinti handlerius
 }
 
 extern "C" const plugin_api_t PLUGIN_API =

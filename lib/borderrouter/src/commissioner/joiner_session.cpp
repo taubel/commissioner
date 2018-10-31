@@ -175,7 +175,6 @@ void JoinerSession::GetKek(uint8_t *aBuf, size_t aBufSize)
 
 JoinerSession::~JoinerSession()
 {
-//	TODO: delete mDtlsSession? kadangi mDtlsSession priskiriamas is callback, jo sunaikinimu rupinasi Dtls serveris
     Dtls::Server::Destroy(mDtlsServer);
     Coap::Agent::Destroy(mCoapAgent);
 }

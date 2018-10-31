@@ -124,8 +124,6 @@ exit:
 
 void Commissioner::SetJoiner(const char *aPskdAscii)
 {
-//	TODO panasu kad reikia su new, nes kitaip virtual metodu nekviecia?
-//	vJoinerSession.push_back(new JoinerSession(kPortJoinerSession, aPskdAscii));
 	if(!mJoinerSession)
 	{
 		mJoinerSession = new JoinerSession(kPortJoinerSession, aPskdAscii);

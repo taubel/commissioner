@@ -111,10 +111,6 @@ public:
 
     void SetPSK(const char* aPskdAscii);
 
-//    TODO: ar reikia aprasyti copy konstruktoriu?
-//    JoinerSession(const JoinerSession &);
-//    JoinerSession& operator=(const JoinerSession &);
-
 private:
 
     static void    HandleSessionChange(Dtls::Session &aSession, Dtls::Session::State aState, void *aContext);
@@ -133,7 +129,6 @@ private:
 
     uint8_t mKek[kKEKSize];
 
-//    TODO: unique_ptr?
     Dtls::Server * mDtlsServer;
     Dtls::Session *mDtlsSession;
     Coap::Agent *  mCoapAgent;
