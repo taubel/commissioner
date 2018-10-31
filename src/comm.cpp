@@ -29,7 +29,7 @@ void CommissionerPlugin::ManagerThread(std::future<void> futureObj)
 			Comm.reset(new Commissioner(arguments.mPSKcBin, arguments.mSendCommKATxRate));
 			commissioner = Comm.get();
 			Init.reset(new Thread(&CommissionerPlugin::CommissionerThread, this, &cv));
-			status.Set("Initializing commissioner");
+			status.Set("Petitioning");
 
 //			TODO spurious wakeup
 //			TODO InitCommissioner gali iskviesti notify_all pries ThreadManager pasiekiant wait_for. Galima pagalba aprasyta std::condition_variable reference puslapy
@@ -38,17 +38,17 @@ void CommissionerPlugin::ManagerThread(std::future<void> futureObj)
 			if(ret == std::cv_status::timeout)
 			{
 				Init.reset(nullptr);
-				status.Set("Commissioner timeout");
+				status.Set("Timeout");
 				arguments.mParametersChanged = false;
 				goto cont;
 			}
-			status.Set("Commissioner running");
+			status.Set("Active");
 			arguments.mParametersChanged = false;
 		}
 cont:
 		if(futureObj.wait_for(std::chrono::milliseconds(0)) == std::future_status::ready)
 		{
-			status.Set("Commissioner shutdown");
+			status.Set("Disabled");
 			Init.reset(nullptr);
 			Comm.reset(nullptr);
 			return;
@@ -79,7 +79,7 @@ void CommissionerPlugin::CommissionerThread(std::future<void> futureObj, std::co
     }
     else
     {
-    	status.Set("Commissioner validation error");
+    	status.Set("Petitioning error");
 		goto exit;
     }
 	cv->notify_all();
@@ -103,7 +103,7 @@ void CommissionerPlugin::CommissionerThread(std::future<void> futureObj, std::co
         if (rval < 0)
         {
             otbrLog(OTBR_LOG_ERR, "select() failed", strerror(errno));
-        	status.Set("Commissioner receive error");
+        	status.Set("Receive error");
             break;
         }
         commissioner->Process(readFdSet, writeFdSet, errorFdSet);

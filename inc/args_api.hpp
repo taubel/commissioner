@@ -54,9 +54,8 @@ public:
     StatusCode ParametersChange(const char* string)
     {
     	//	TODO netik stringai
-		json_error_t json_error;
 		json_t* json_parsed;
-		json_parsed = json_loads(string, 0, &json_error);
+		json_parsed = json_loads(string, 0, nullptr);
 
 		if(!json_parsed)
 		{
