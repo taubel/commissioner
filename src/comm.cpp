@@ -26,7 +26,7 @@ void CommissionerPlugin::ManagerThread(std::future<void> futureObj)
 		if(arguments.mParametersChanged)
 		{
 			Init.reset(nullptr);
-			Comm.reset(new Commissioner(arguments.mPSKcBin, arguments.mSendCommKATxRate));
+			Comm.reset(new Commissioner(arguments.mPSKcBin, arguments.mSendCommKATxRate, &joiner_list));
 			commissioner = Comm.get();
 			Init.reset(new Thread(&CommissionerPlugin::CommissionerThread, this, &cv));
 			status.Set("Petitioning");

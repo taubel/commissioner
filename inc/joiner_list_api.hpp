@@ -220,6 +220,15 @@ public:
 
 		return vector.back().mJoinerPSKdAscii;
 	}
+	const JoinerInstance* GetJoinerInstance(unsigned int num)
+	{
+		if(num > vector.size() - 1)
+		{
+			return nullptr;
+		}
+		std::vector<JoinerInstance>::iterator it = vector.begin();
+		return &(*(it + num));
+	}
 };
 
 } // namespace BorderRouter

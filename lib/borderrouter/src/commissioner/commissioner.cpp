@@ -47,6 +47,8 @@
 #include "utils/hex.hpp"
 #include "web/pskc-generator/pskc.hpp"
 
+#include "mbedtls/sha256.h"
+
 namespace ot {
 namespace BorderRouter {
 
@@ -99,12 +101,13 @@ static int DummyKeyExport(void *               aContext,
     return 0;
 }
 
-Commissioner::Commissioner(const uint8_t *aPskcBin, int aKeepAliveRate) // @suppress("Class members should be properly initialized")
+Commissioner::Commissioner(const uint8_t *aPskcBin, int aKeepAliveRate, JoinerList* joiners) // @suppress("Class members should be properly initialized")
     : mDtlsInitDone(false)
     , mRelayReceiveHandler(OT_URI_PATH_RELAY_RX, Commissioner::HandleRelayReceive, this)
     , mPetitionRetryCount(0)
     , mJoinerSession(NULL)
     , mKeepAliveRate(aKeepAliveRate)
+	, mJoinerList(joiners)
 {
     sockaddr_in addr;
 
@@ -539,6 +542,31 @@ void Commissioner::HandleCommissionerKeepAlive(const Coap::Message &aMessage, vo
     commissioner->CommissionerResponseNext();
 }
 
+void Commissioner::FindEui(uint8_t* mac)
+{
+	int ret;
+	uint8_t out[32];
+	mbedtls_sha256_context sha256;
+	const JoinerInstance* inst;
+	unsigned int num = 0;
+
+	while((inst = mJoinerList->GetJoinerInstance(num)))
+	{
+		mbedtls_sha256_init(&sha256);
+		mbedtls_sha256_starts(&sha256, 0);
+		mbedtls_sha256_update(&sha256, inst->mJoinerEui64Bin, kEui64Len);
+		mbedtls_sha256_finish(&sha256, out);
+
+//		TODO workaround
+		if(!(ret = memcmp(mac + 1, out + 1, kEui64Len - 1)))
+		{
+			mJoinerSession->SetPSK(inst->mJoinerPSKdAscii);
+			return;
+		}
+		num++;
+	}
+}
+
 void Commissioner::HandleRelayReceive(const Coap::Resource &aResource,
                                       const Coap::Message & aMessage,
                                       Coap::Message &       aResponse,
@@ -574,6 +602,8 @@ void Commissioner::HandleRelayReceive(const Coap::Resource &aResource,
 
         case Meshcop::kJoinerIid:
             memcpy(commissioner->mJoinerIid, requestTlv->GetValue(), sizeof(commissioner->mJoinerIid));
+            commissioner->FindEui(commissioner->mJoinerIid);
+
             break;
 
         case Meshcop::kJoinerRouterLocator:
