@@ -125,9 +125,7 @@ void CommissionerPlugin::CommissionerThread(std::future<void> futureObj, std::co
         if(joiner_list.WasListUpdated())
         {
         	commissioner->CommissionerSet(joiner_list.GetSteering());
-        	const char* last_pskd = joiner_list.GetLastPskd();
-        	if(last_pskd)
-        		commissioner->SetJoiner(last_pskd);
+		commissioner->SetJoiner("DFLT");
         	joiner_list.ListUpdateFinished();
         }
 

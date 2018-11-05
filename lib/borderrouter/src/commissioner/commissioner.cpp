@@ -131,10 +131,6 @@ void Commissioner::SetJoiner(const char *aPskdAscii)
 	{
 		mJoinerSession = new JoinerSession(kPortJoinerSession, aPskdAscii);
 	}
-	else
-	{
-		mJoinerSession->SetPSK(aPskdAscii);
-	}
 }
 
 ssize_t Commissioner::SendCoap(const uint8_t *aBuffer,
@@ -554,9 +550,9 @@ void Commissioner::FindEui(uint8_t* mac)
 		mbedtls_sha256_starts(&sha256, 0);
 		mbedtls_sha256_update(&sha256, inst->mJoinerEui64Bin, kEui64Len);
 		mbedtls_sha256_finish(&sha256, out);
+		out[0] &= 0xfd;
 
-//		TODO workaround
-		if(!(ret = memcmp(mac + 1, out + 1, kEui64Len - 1)))
+		if(!(ret = memcmp(mac, out, kEui64Len)))
 		{
 			mJoinerSession->SetPSK(inst->mJoinerPSKdAscii);
 			return;

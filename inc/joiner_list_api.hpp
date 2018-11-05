@@ -228,13 +228,6 @@ public:
 	{
 		updated = false;
 	}
-	const char* GetLastPskd()
-	{
-		if(!vector.size())
-			return NULL;
-
-		return vector.back().mJoinerPSKdAscii;
-	}
 	const JoinerInstance* GetJoinerInstance(unsigned int num)
 	{
 		if(num > vector.size() - 1)

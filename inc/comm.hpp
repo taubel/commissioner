@@ -44,7 +44,6 @@
 #include "utils/hex.hpp"
 
 //COMMISSIONER
-//#include "commissioner_argcargv.hpp"
 #include "device_hash.hpp"
 #include "commissioner.hpp"
 #include "logging.hpp"
