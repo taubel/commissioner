@@ -61,6 +61,8 @@
 #include "utils/steering_data.hpp"
 #include "web/pskc-generator/pskc.hpp"
 
+#include "joiner_list_api.hpp"
+
 namespace ot {
 namespace BorderRouter {
 
@@ -74,7 +76,7 @@ public:
      * @param[in]    aKeepAliveRate     send keep alive packet every aKeepAliveRate seconds
      *
      */
-    Commissioner(const uint8_t *aPskcBin, int aKeepAliveRate);
+    Commissioner(const uint8_t *aPskcBin, int aKeepAliveRate, JoinerList* joiners);
 
     /**
      * This method sets the joiner to join the thread network
@@ -229,6 +231,10 @@ private:
     static const char     kCommissionerId[];
     static const int      kCoapResponseWaitSecond;
     static const int      kCoapResponseRetryTime;
+
+    void FindEui(uint8_t* mac);
+
+    JoinerList* mJoinerList;
 };
 
 } // namespace BorderRouter

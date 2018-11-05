@@ -32,7 +32,7 @@ $(BuildDir)/comm-client: $(MainObjects) $(UlfiusObjects)
 
 plugins: $(BuildDir)/libcomm.so
 
-$(BuildDir)/libcomm.so: $(PluginObjects)
+$(BuildDir)/libcomm.so: libotbr-agent $(PluginObjects)
 	$(CXX) -shared -fPIC -o $(BuildDir)/libcomm.so -Wl,--start-group $(PluginObjects) /usr/local/lib/libjansson.a $(ConstLibs) -lpthread -Wl,--end-group -Wl,--no-undefined 
 #	$(CXX) -shared $(LinkFlags) -o $(BuildDir)/libcomm.so $(PluginObjects) -Wl,--start-group $(ConstLibs) -lpthread -Wl,--end-group -Llib/borderrouter/src/utils/.libs
 
@@ -41,10 +41,14 @@ $(BuildDir)/libcomm.so: $(PluginObjects)
 	$(CXX) $(CXXFLAGS) $(IncludePaths) -c $< -o $@
 	@cp $@ $(BuildDir)/$(notdir $(MainObjectsP))
 
+libotbr-agent:
+	cd lib/borderrouter/src/agent && make
+	cp lib/borderrouter/src/agent/.libs/libotbr-agent.a $(ConstLibDir)
+
 clean:
 	rm $(BuildDir)/* $(PluginObjects) $(MainObjects) $(UlfiusObjects)
 	
-.PHONY : all plugins clean
+.PHONY : all plugins clean libotbr
 	
 	
 

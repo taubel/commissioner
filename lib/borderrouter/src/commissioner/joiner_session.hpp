@@ -111,9 +111,10 @@ public:
 
     void SetPSK(const char* aPskdAscii);
 
+    static void    HandleSessionChange(Dtls::Session &aSession, Dtls::Session::State aState, void *aContext);
+
 private:
 
-    static void    HandleSessionChange(Dtls::Session &aSession, Dtls::Session::State aState, void *aContext);
     static ssize_t SendCoap(const uint8_t *aBuffer,
                             uint16_t       aLength,
                             const uint8_t *aIp6,
